@@ -66,6 +66,20 @@ QUERIES: dict[str, tuple[str | None, str]] = {
     "copenhagen-atomics":(None, '"Copenhagen Atomics" (reactor OR thorium)'),
     "blykalla-sealer":   ("Blykalla", '"Blykalla" OR "SEALER" reactor Sweden -stock'),
     "thorcon":           ("ThorCon nuclear reactor", '"ThorCon" Indonesia reactor'),
+    "htr-10":            ("HTR-10", '"HTR-10" reactor China'),
+    "prism":             ("PRISM (reactor)", '"PRISM" GE Hitachi sodium reactor'),
+    "vber-300":          ("VBER-300", '"VBER-300" reactor'),
+    "gthtr300":          ("GTHTR300", '"GTHTR300" OR "GTHTR-300" Japan reactor'),
+    "gt-mhr":            ("GT-MHR", '"GT-MHR" reactor'),
+    "w-lfr":             (None, '"Westinghouse" lead-cooled fast reactor LFR'),
+    "salus-100":         (None, '"SALUS-100" OR "SALUS" KAERI sodium reactor'),
+    "bandi":             (None, '"BANDI-60" OR "BANDI" KEPCO reactor'),
+    "thorizon":          ("Thorizon", '"Thorizon" molten salt reactor'),
+    "htmr100":           (None, '"HTMR-100" OR "HTMR100" South Africa reactor'),
+    "peluit-40":         (None, '"PeLUIt" BRIN Indonesia reactor'),
+    "fbnr":              (None, '"Fixed Bed Nuclear Reactor" Brazil'),
+    "hexana":            ("Hexana", '"HEXANA" France sodium reactor'),
+    "abv-6e":            ("ABV-6E", '"ABV-6E" OR "ABV reactor" floating'),
 }
 
 # 노형 id -> IAEA ARIS 설계명(short_reactor_name). ARIS 미등재 노형은 생략.
@@ -79,6 +93,10 @@ ARIS_NAMES: dict[str, str] = {
     "moltex-ssr": "SSR-W", "ga-em2": "FMR", "blykalla-sealer": "SEALER-55",
     "thorcon": "Thorcon 500", "copenhagen-atomics": "Copenhagen Atomics Waste Burner",
     "htr-pm": "HTR-PM", "httr": "HTTR", "last-energy-pws20": "PWR-20",
+    "htr-10": "HTR-10", "prism": "PRISM", "vber-300": "VBER-300", "gthtr300": "GTHTR300",
+    "gt-mhr": "GT-MHR", "w-lfr": "W-LFR", "salus-100": "SALUS-100", "bandi": "BANDI",
+    "thorizon": "Thorizon", "htmr100": "HTMR100", "peluit-40": "PeLUIt-40", "fbnr": "FBNR",
+    "hexana": "HEXANA", "abv-6e": "ABV-6E",
 }
 
 

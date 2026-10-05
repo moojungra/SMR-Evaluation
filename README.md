@@ -54,7 +54,7 @@ smr-evaluation-agent/
 
 ## 분류 체계 (taxonomy)
 
-40개 노형을 다음 축으로 분류해 한눈에 비교한다(대시보드 필터).
+54개 노형을 다음 축으로 분류해 한눈에 비교한다(대시보드 필터).
 
 - **세대**: `Gen III+`(경수로 중심) · `Gen IV`(고속로·고온가스로·용융염·납냉각)
 - **분류**: `경수로 SMR` · `비경수로 SMR` · `마이크로로(MMR)`
@@ -87,7 +87,7 @@ Linglong One·Bharat SMR), 인허가·설계, 마이크로로(eVinci·Pele·Oklo
 `src/collect.py`가 노형별로 공개 소스를 실제 수집한다(추가 의존성은 `requests`뿐).
 
 - **IAEA ARIS JSON API** (`POST /api/DSR/TechnicalData`) — 공식 설계 스펙(설계기관·
-  설계성숙도·정격MWe·노형·냉각재·연료·농축도). 40개 중 28개가 ARIS에 직접 매칭되어
+  설계성숙도·정격MWe·노형·냉각재·연료·농축도). 54개 중 42개가 ARIS에 직접 매칭되어
   권위 있는 '사실 필드'로 교차검증되며, ARIS에만 있는 설계는 **추가 후보**로 리포트.
 - **Wikipedia REST API** — 노형 요약·최종수정일(교차검증·신선도)
 - **Google News RSS** — 노형별 최신 기사(인허가·건설 상태 신호)
