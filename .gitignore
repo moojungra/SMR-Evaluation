@@ -9,6 +9,8 @@ env/
 
 # 생성물 (Actions가 빌드 시 생성; 로컬 테스트 산출물은 커밋하지 않음)
 dashboard/data.js
+data/collected.json
+data/collection_report.md
 
 # OS / editor
 .DS_Store

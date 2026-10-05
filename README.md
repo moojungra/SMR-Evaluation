@@ -81,6 +81,24 @@ Linglong One), 인허가·설계, 마이크로로(eVinci·Project Pele·Oklo 등
 
 ---
 
+## 실수집 파이프라인 (live collection)
+
+`src/collect.py`가 노형별로 공개 소스를 실제 수집한다(추가 의존성은 `requests`뿐).
+
+- **Wikipedia REST API** — 노형 요약·최종수정일(교차검증·신선도)
+- **Google News RSS** — 노형별 최신 기사(인허가·건설 상태 신호)
+- **상태 힌트** — 기사 제목의 마일스톤 키워드(건설허가·착공·계통연계 등)를 감지해
+  해당 차원의 성숙도를 *제안*하고, 큐레이션 값과 불일치 시 `검토 필요`로 플래그
+
+산출물: `data/collected.json`(대시보드가 노형 상세에 '자동수집 신호'로 표시) +
+`data/collection_report.md`(검토 필요 목록). **큐레이션된 평가(level/confidence)는
+덮어쓰지 않는다** — 에이전트는 공개 자료 신호를 수집·제시하고, 승급 판단은 사람이 한다.
+
+IAEA ARIS·NEA·규제기관은 JS 렌더링/비정형이라 현재 메타데이터 단계이며, 커넥터
+인터페이스(`src/sources/`)에 단계적으로 추가한다.
+
+---
+
 ## GitHub로 배포하기 (로컬 Python 불필요)
 
 1. 이 폴더를 GitHub 저장소로 push

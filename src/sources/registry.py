@@ -7,6 +7,8 @@
 from __future__ import annotations
 
 from .base import SourceConnector
+from .googlenews import GoogleNewsConnector
+from .wikipedia import WikipediaConnector
 
 
 class IAEA_ARIS(SourceConnector):
@@ -59,8 +61,11 @@ class KINS(SourceConnector):
     note = "한국 원자력안전위원회/안전기술원. 표준설계인가(SDA) 등 국내 인허가."
 
 
-# 평가가 참조하는 공개 소스 목록 (연결 순서는 신뢰도/표준성 우선)
+# 평가가 참조하는 공개 소스 목록.
+# Wikipedia·Google News 는 실수집 구현 완료(available), 나머지는 메타데이터 단계.
 REGISTRY: list[SourceConnector] = [
+    WikipediaConnector(),
+    GoogleNewsConnector(),
     IAEA_ARIS(),
     IAEA_PRIS(),
     NEA_SMR_Dashboard(),

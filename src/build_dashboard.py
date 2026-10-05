@@ -16,12 +16,22 @@ OUT = ROOT / "dashboard" / "data.js"
 
 
 def build() -> dict:
+    import json
     data = evaluate_all()
     data["sources"] = describe_sources()
     # 분류 체계(세대·분류·기술계열)를 대시보드 필터용으로 전달
-    import json
     with open(ROOT / "data" / "reactors.json", encoding="utf-8") as f:
         data["taxonomy"] = json.load(f).get("taxonomy", {})
+    # 라이브 수집 신호(collect.py 산출물)를 각 노형에 병합
+    collected_path = ROOT / "data" / "collected.json"
+    if collected_path.exists():
+        with open(collected_path, encoding="utf-8") as f:
+            col = json.load(f)
+        data["collected_at"] = col.get("collected_at")
+        live = col.get("reactors", {})
+        for r in data["reactors"]:
+            if r["id"] in live:
+                r["live"] = live[r["id"]]
     return data
 
 

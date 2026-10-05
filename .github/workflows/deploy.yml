@@ -33,8 +33,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Collect sources & generate dashboard data
+      - name: Collect live signals (Wikipedia + Google News)
+        run: python src/collect.py
+        continue-on-error: true   # 네트워크 일시 오류가 배포를 막지 않도록
+
+      - name: Generate dashboard data
         run: python src/build_dashboard.py
+
+      - name: Upload collection report
+        uses: actions/upload-artifact@v4
+        with:
+          name: collection-report
+          path: data/collection_report.md
+          if-no-files-found: ignore
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
