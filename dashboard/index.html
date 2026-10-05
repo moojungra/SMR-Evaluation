@@ -8,18 +8,20 @@
     --ink: #121a21; --ink-2: #5a6c79; --ink-3: #8698a4;
     --line: #dce2e8; --line-2: #c8d2da;
     --accent: #0a7ea4; --accent-ink: #076585; --accent-soft: #e2f1f6;
+    --gen4: #7b53c6; --gen4-soft: #ece4f8;
     --good: #1f9d64; --warn: #c2821a; --crit: #cf4d4d; --neutral: #7b8a96;
     --shadow: 0 1px 2px rgba(16,34,48,.06), 0 4px 16px rgba(16,34,48,.05);
     --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
     --sans: "IBM Plex Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  :root:not([data-theme="light"]) {
-    @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
       color-scheme: dark;
       --bg: #0c1116; --surface: #141c24; --surface-2: #1a232c; --surface-3: #202b35;
       --ink: #e6edf3; --ink-2: #94a4b1; --ink-3: #6b7d8a;
       --line: #253039; --line-2: #324150;
       --accent: #3bb6d8; --accent-ink: #80d3ea; --accent-soft: #10303c;
+      --gen4: #b093ea; --gen4-soft: #241a38;
       --good: #34c07d; --warn: #dca23e; --crit: #e8706e; --neutral: #8597a3;
       --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.28);
     }
@@ -30,6 +32,7 @@
     --ink: #e6edf3; --ink-2: #94a4b1; --ink-3: #6b7d8a;
     --line: #253039; --line-2: #324150;
     --accent: #3bb6d8; --accent-ink: #80d3ea; --accent-soft: #10303c;
+    --gen4: #b093ea; --gen4-soft: #241a38;
     --good: #34c07d; --warn: #dca23e; --crit: #e8706e; --neutral: #8597a3;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.28);
   }
@@ -42,11 +45,10 @@
   a { color: var(--accent-ink); }
   button { font-family: inherit; cursor: pointer; }
 
-  /* header */
   header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
     background: color-mix(in srgb, var(--surface) 88%, transparent);
     backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .head-wrap { max-width: 1180px; margin: 0 auto; padding: 14px 20px;
+  .head-wrap { max-width: 1240px; margin: 0 auto; padding: 13px 20px;
     display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .brand { display: flex; align-items: center; gap: 12px; margin-right: auto; }
   .logo { width: 34px; height: 34px; flex: none; }
@@ -59,141 +61,151 @@
     width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; }
   .icon-btn:hover { color: var(--ink); border-color: var(--line-2); }
 
-  main { max-width: 1180px; margin: 0 auto; padding: 22px 20px 64px; }
+  main { max-width: 1240px; margin: 0 auto; padding: 20px 20px 64px; }
 
-  /* intro / disclaimer */
   .intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;
-    flex-wrap: wrap; margin-bottom: 18px; }
-  .intro p { margin: 6px 0 0; color: var(--ink-2); max-width: 62ch; font-size: 13px; }
-  .intro h2 { font-size: 22px; letter-spacing: -.015em; }
+    flex-wrap: wrap; margin-bottom: 16px; }
+  .intro p { margin: 6px 0 0; color: var(--ink-2); max-width: 64ch; font-size: 13px; }
+  .intro h2 { font-size: 21px; letter-spacing: -.015em; }
   .disclaimer { font-size: 12px; color: var(--warn); background: color-mix(in srgb, var(--warn) 10%, transparent);
     border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); padding: 10px 13px;
     border-radius: 10px; max-width: 420px; }
 
-  /* stat tiles */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
   .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
-    padding: 14px 16px; box-shadow: var(--shadow); }
-  .tile .k { font-size: 11px; color: var(--ink-2); letter-spacing: .04em; text-transform: uppercase; }
-  .tile .v { font-family: var(--mono); font-size: 26px; font-weight: 600; margin-top: 4px; letter-spacing: -.02em; }
-  .tile .v small { font-size: 13px; color: var(--ink-2); font-weight: 500; }
+    padding: 13px 16px; box-shadow: var(--shadow); }
+  .tile .k { font-size: 11px; color: var(--ink-2); letter-spacing: .03em; }
+  .tile .v { font-family: var(--mono); font-size: 25px; font-weight: 600; margin-top: 3px; letter-spacing: -.02em; }
+  .tile .v small { font-size: 12px; color: var(--ink-2); font-weight: 500; }
 
-  /* controls */
-  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
-  .search { flex: 1 1 200px; min-width: 160px; position: relative; }
-  .search input { width: 100%; padding: 9px 12px 9px 32px; border-radius: 9px; border: 1px solid var(--line);
+  /* category segmented control */
+  .segmented { display: flex; gap: 4px; background: var(--surface-3); padding: 4px; border-radius: 11px;
+    flex-wrap: wrap; border: 1px solid var(--line); margin-bottom: 12px; }
+  .segmented button { border: 0; background: none; color: var(--ink-2); font-size: 13px; font-weight: 500;
+    padding: 7px 14px; border-radius: 8px; white-space: nowrap; }
+  .segmented button[aria-pressed="true"] { background: var(--surface); color: var(--ink);
+    box-shadow: var(--shadow); }
+  .segmented button .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-left: 5px; }
+
+  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+  .search { flex: 1 1 180px; min-width: 150px; position: relative; }
+  .search input { width: 100%; padding: 8px 12px 8px 32px; border-radius: 9px; border: 1px solid var(--line);
     background: var(--surface); color: var(--ink); font-family: inherit; font-size: 13px; }
   .search svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
-  select.sort { padding: 9px 12px; border-radius: 9px; border: 1px solid var(--line);
+  select.ctl { padding: 8px 11px; border-radius: 9px; border: 1px solid var(--line);
     background: var(--surface); color: var(--ink); font-family: inherit; font-size: 13px; }
-  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .gen-chips { display: flex; gap: 6px; }
   .chip { font-size: 12px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line);
     background: var(--surface); color: var(--ink-2); }
   .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
   :root[data-theme="dark"] .chip[aria-pressed="true"],
   :root:not([data-theme="light"]) .chip[aria-pressed="true"] { color: #06222b; }
-  .filter-group { display: flex; align-items: center; gap: 6px; }
-  .filter-group > .lbl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em; }
+  .chip.g4[aria-pressed="true"] { background: var(--gen4); border-color: var(--gen4); }
+  .toggle { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-2);
+    margin-left: auto; cursor: pointer; user-select: none; }
+  .toggle input { accent-color: var(--accent); width: 15px; height: 15px; }
+  .count-line { font-size: 12px; color: var(--ink-3); margin: 2px 0 12px; }
 
-  /* reactor list */
-  .list { display: flex; flex-direction: column; gap: 10px; }
+  .group-head { display: flex; align-items: baseline; gap: 10px; margin: 20px 0 9px; }
+  .group-head h3 { font-size: 14px; letter-spacing: -.01em; }
+  .group-head .gc { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); }
+  .group-head .bar-mini { flex: 1; height: 1px; background: var(--line); }
+
+  .list { display: flex; flex-direction: column; gap: 9px; }
   .row { background: var(--surface); border: 1px solid var(--line); border-radius: 13px;
     box-shadow: var(--shadow); overflow: hidden; }
-  .row-head { display: grid; grid-template-columns: 34px minmax(190px, 1.4fr) auto 128px 86px 24px;
-    align-items: center; gap: 14px; padding: 13px 16px; width: 100%; text-align: left;
+  .row-head { display: grid; grid-template-columns: 32px minmax(180px, 1.5fr) auto 120px 74px 22px;
+    align-items: center; gap: 13px; padding: 12px 15px; width: 100%; text-align: left;
     background: none; border: 0; color: inherit; }
   .row-head:hover { background: var(--surface-2); }
-  .rank { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--ink-3);
-    text-align: center; }
+  .rank { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--ink-3); text-align: center; }
   .rank.top { color: var(--accent); }
-  .r-id .nm { font-size: 14.5px; font-weight: 600; letter-spacing: -.01em; }
+  .r-id .nm { font-size: 14px; font-weight: 600; letter-spacing: -.01em; }
   .r-id .meta { font-size: 11.5px; color: var(--ink-2); margin-top: 2px; }
-  .tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-  .tag { font-size: 11px; padding: 3px 8px; border-radius: 6px; background: var(--surface-3);
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+  .tag { font-size: 10.5px; padding: 3px 7px; border-radius: 6px; background: var(--surface-3);
     color: var(--ink-2); border: 1px solid var(--line); white-space: nowrap; }
-  .tag.status { font-weight: 500; }
+  .tag.gen { background: var(--accent-soft); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
+  .tag.gen.g4 { background: var(--gen4-soft); color: var(--gen4); }
+  .tag.fam { font-weight: 500; }
   .tag.op { background: color-mix(in srgb, var(--good) 15%, transparent); color: var(--good); border-color: transparent; }
   .tag.constr { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent-ink); border-color: transparent; }
   .score-cell { display: flex; align-items: center; gap: 9px; }
-  .score-num { font-family: var(--mono); font-size: 19px; font-weight: 600; width: 44px; text-align: right; }
+  .score-num { font-family: var(--mono); font-size: 18px; font-weight: 600; width: 42px; text-align: right; }
   .bar { flex: 1; height: 7px; border-radius: 4px; background: var(--surface-3); overflow: hidden; }
   .bar > i { display: block; height: 100%; border-radius: 4px; }
-  .conf { font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 999px; text-align: center;
-    letter-spacing: .03em; }
+  .conf { font-size: 10px; font-weight: 600; padding: 3px 7px; border-radius: 999px; text-align: center; letter-spacing: .02em; }
   .conf.high { background: color-mix(in srgb, var(--good) 16%, transparent); color: var(--good); }
   .conf.medium { background: color-mix(in srgb, var(--warn) 16%, transparent); color: var(--warn); }
   .conf.low { background: color-mix(in srgb, var(--crit) 16%, transparent); color: var(--crit); }
   .caret { color: var(--ink-3); transition: transform .18s ease; justify-self: center; }
   .row[open] .caret { transform: rotate(90deg); }
 
-  /* detail */
-  .detail { border-top: 1px solid var(--line); padding: 18px 16px; display: none;
-    grid-template-columns: 300px 1fr; gap: 24px; background: var(--surface-2); }
+  .detail { border-top: 1px solid var(--line); padding: 17px 15px; display: none;
+    grid-template-columns: 290px 1fr; gap: 22px; background: var(--surface-2); }
   .row[open] .detail { display: grid; }
   .detail .summary { font-size: 13px; color: var(--ink-2); grid-column: 1 / -1; margin: -2px 0 2px; }
-  .radar-box { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .radar-box .cap { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
-  .dim-list { display: flex; flex-direction: column; gap: 9px; }
-  .dim { display: grid; grid-template-columns: 112px 54px 1fr; gap: 12px; align-items: start; }
+  .radar-box { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .radar-box .cap { font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+  .dim-list { display: flex; flex-direction: column; gap: 8px; }
+  .dim { display: grid; grid-template-columns: 104px 48px 1fr; gap: 11px; align-items: start; }
   .dim .dl { font-size: 12.5px; font-weight: 500; }
   .dim .dl small { display: block; font-size: 10px; color: var(--ink-3); font-weight: 400; }
   .dim .lvl { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
   .dim .lvl b { color: var(--ink); font-size: 14px; }
   .dim .rat { font-size: 12px; color: var(--ink-2); }
-  .dim .wbadge { font-size: 10px; color: var(--ink-3); }
   .src-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
-    border-top: 1px dashed var(--line); padding-top: 12px; font-size: 11.5px; color: var(--ink-3); }
-  .src-row .s { background: var(--surface-3); border: 1px solid var(--line); padding: 3px 8px;
-    border-radius: 6px; color: var(--ink-2); }
+    border-top: 1px dashed var(--line); padding-top: 11px; font-size: 11.5px; color: var(--ink-3); }
+  .src-row .s { background: var(--surface-3); border: 1px solid var(--line); padding: 3px 8px; border-radius: 6px; color: var(--ink-2); }
 
-  /* section heading */
-  .sec { margin: 34px 0 14px; display: flex; align-items: baseline; gap: 12px; }
+  .sec { margin: 32px 0 12px; display: flex; align-items: baseline; gap: 12px; }
   .sec h2 { font-size: 16px; letter-spacing: -.01em; }
   .sec .hint { font-size: 12px; color: var(--ink-3); }
 
-  /* heatmap */
   .heat-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px;
     background: var(--surface); box-shadow: var(--shadow); }
-  table.heat { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 12px; }
-  table.heat th, table.heat td { padding: 9px 8px; text-align: center; border-bottom: 1px solid var(--line); }
+  table.heat { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 12px; }
+  table.heat th, table.heat td { padding: 8px 7px; text-align: center; border-bottom: 1px solid var(--line); }
   table.heat thead th { position: sticky; top: 0; background: var(--surface); color: var(--ink-2);
     font-weight: 500; font-size: 11px; z-index: 1; }
-  table.heat th.name { text-align: left; min-width: 180px; position: sticky; left: 0; background: var(--surface); }
-  table.heat td.name { text-align: left; font-weight: 500; position: sticky; left: 0; background: var(--surface); }
+  table.heat th.name, table.heat td.name { text-align: left; min-width: 196px; position: sticky; left: 0;
+    background: var(--surface); }
+  table.heat td.name { font-weight: 500; }
   table.heat td.name small { color: var(--ink-3); font-weight: 400; }
-  .cell { width: 42px; height: 34px; border-radius: 7px; display: inline-flex; align-items: center;
+  .cell { width: 40px; height: 32px; border-radius: 7px; display: inline-flex; align-items: center;
     justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 12px; position: relative; }
   .cell .dot { position: absolute; top: 3px; right: 3px; width: 5px; height: 5px; border-radius: 50%; }
   td.ov { font-family: var(--mono); font-weight: 600; font-size: 14px; }
+  .heat-cat { font-size: 10px; color: #fff; padding: 1px 6px; border-radius: 5px; font-weight: 600; }
 
-  /* sources panel */
-  .sources { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+  .sources { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
   .source { background: var(--surface); border: 1px solid var(--line); border-radius: 11px;
-    padding: 13px 15px; box-shadow: var(--shadow); }
+    padding: 12px 14px; box-shadow: var(--shadow); }
   .source .top { display: flex; align-items: center; gap: 8px; }
-  .source .nm { font-size: 13.5px; font-weight: 600; }
-  .source .st { font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 999px; margin-left: auto; }
+  .source .nm { font-size: 13px; font-weight: 600; }
+  .source .st { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; margin-left: auto; }
   .source .st.on { background: color-mix(in srgb, var(--good) 16%, transparent); color: var(--good); }
   .source .st.off { background: var(--surface-3); color: var(--ink-3); }
-  .source .note { font-size: 12px; color: var(--ink-2); margin: 7px 0 9px; }
+  .source .note { font-size: 11.5px; color: var(--ink-2); margin: 6px 0 8px; }
   .source .prov { display: flex; flex-wrap: wrap; gap: 4px; }
   .source .prov span { font-size: 10px; background: var(--surface-3); border: 1px solid var(--line);
     padding: 2px 6px; border-radius: 5px; color: var(--ink-3); }
 
-  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11.5px; color: var(--ink-2); margin-top: 10px; }
+  .legend { display: flex; gap: 15px; flex-wrap: wrap; font-size: 11.5px; color: var(--ink-2); margin-top: 10px; }
   .legend .it { display: flex; align-items: center; gap: 6px; }
-  .legend .sw { width: 22px; height: 12px; border-radius: 3px; }
+  .legend .sw { width: 20px; height: 12px; border-radius: 3px; }
 
-  footer { max-width: 1180px; margin: 40px auto 0; padding: 20px; border-top: 1px solid var(--line);
+  footer { max-width: 1240px; margin: 40px auto 0; padding: 20px; border-top: 1px solid var(--line);
     font-size: 11.5px; color: var(--ink-3); line-height: 1.7; }
   footer b { color: var(--ink-2); }
 
-  @media (max-width: 760px) {
+  @media (max-width: 780px) {
     .stats { grid-template-columns: repeat(2, 1fr); }
-    .row-head { grid-template-columns: 28px 1fr 70px 20px; }
+    .row-head { grid-template-columns: 26px 1fr 64px 20px; }
     .row-head .tags, .row-head .conf { display: none; }
     .detail { grid-template-columns: 1fr; }
     .intro h2 { font-size: 19px; }
+    .toggle { margin-left: 0; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -228,30 +240,35 @@
   <div class="intro">
     <div>
       <h2>노형별 배치 준비도 평가</h2>
-      <p>공개 자료(IAEA ARIS·PRIS, NEA SMR Dashboard, WNA, 각국 규제기관, 벤더 공개자료)를 정규화해 6개 차원으로 평가한 베이스라인입니다. 모든 항목에 데이터 신뢰도를 함께 표기합니다.</p>
+      <p>공개 자료(IAEA ARIS·PRIS, NEA SMR Dashboard, WNA, World Nuclear News, 각국 규제기관·벤더)를 2026년 기준으로 정규화해 6개 차원으로 평가. 세대(Gen III+/IV)·분류·기술계열로 필터링할 수 있습니다.</p>
     </div>
     <div class="disclaimer" id="disclaimer">불러오는 중…</div>
   </div>
 
   <div class="stats" id="stats"></div>
 
+  <div class="segmented" id="seg-category"></div>
+
   <div class="controls">
     <label class="search">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="노형·벤더·국가 검색" aria-label="검색">
     </label>
-    <div class="filter-group"><span class="lbl">국가</span><div class="chips" id="f-country"></div></div>
-    <div class="filter-group"><span class="lbl">노형</span><div class="chips" id="f-type"></div></div>
-    <select class="sort" id="sort" aria-label="정렬">
+    <div class="gen-chips" id="gen-chips"></div>
+    <select class="ctl" id="f-family" aria-label="기술계열"><option value="">기술계열 전체</option></select>
+    <select class="ctl" id="f-country" aria-label="국가"><option value="">국가 전체</option></select>
+    <select class="ctl" id="sort" aria-label="정렬">
       <option value="overall">종합점수순</option>
       <option value="overallAdj">신뢰도보정순</option>
       <option value="deployment">배치성숙도순</option>
       <option value="licensing">인허가순</option>
       <option value="capacity">용량순</option>
     </select>
+    <label class="toggle"><input type="checkbox" id="group-toggle"> 분류별 그룹</label>
   </div>
+  <div class="count-line" id="count-line"></div>
 
-  <div class="list" id="list"></div>
+  <div id="list-area"></div>
 
   <div class="sec"><h2>차원별 히트맵</h2><span class="hint">셀 = 성숙도(1–5) · 우상단 점 = 데이터 신뢰도</span></div>
   <div class="heat-wrap"><table class="heat" id="heat"></table></div>
@@ -263,222 +280,235 @@
   <footer id="footer"></footer>
 </main>
 
+<script type="application/json" id="smr-embed">
+{
+  "meta": { "updated": "2026-10-05", "data_version": "0.2.0", "rubric_version": "0.1.0",
+    "disclaimer": "공개 자료를 2026년 기준으로 정규화한 베이스라인이며 수치는 근사·변동 가능합니다. 각 항목의 신뢰도와 출처를 함께 확인하세요." },
+  "taxonomy": {
+    "category": ["경수로 SMR", "비경수로 SMR", "마이크로로(MMR)"],
+    "generation": ["Gen III+", "Gen IV"]
+  },
+  "rubric": { "dimensions": [
+    { "key":"technology_readiness", "label":"기술 성숙도", "label_en":"Tech", "weight":0.22 },
+    { "key":"licensing",           "label":"인허가 진행도", "label_en":"License", "weight":0.20 },
+    { "key":"economics",           "label":"경제성",       "label_en":"Economy", "weight":0.18 },
+    { "key":"safety",              "label":"안전성·설계",  "label_en":"Safety",  "weight":0.15 },
+    { "key":"supply_fuel",         "label":"공급망·연료",  "label_en":"Supply",  "weight":0.13 },
+    { "key":"deployment",          "label":"배치 성숙도",  "label_en":"Deploy",  "weight":0.12 }
+  ]},
+  "sources": [
+    { "name":"IAEA ARIS", "homepage":"https://aris.iaea.org/", "provides":["설계 서술","용량","연료"], "note":"Advanced Reactors Information System — 설계 서술 표준 출처.", "connected":false },
+    { "name":"IAEA PRIS", "homepage":"https://pris.iaea.org/", "provides":["건설/운전 상태"], "note":"Power Reactor Information System — 공정 상태.", "connected":false },
+    { "name":"NEA SMR Dashboard", "homepage":"https://www.oecd-nea.org/smrdashboard", "provides":["인허가","금융","공급망","연료"], "note":"OECD/NEA — 배치 준비도 축 기준.", "connected":false },
+    { "name":"World Nuclear Association", "homepage":"https://world-nuclear.org/", "provides":["개요","현황"], "note":"SMR 정보 라이브러리 — 교차검증.", "connected":false },
+    { "name":"World Nuclear News", "homepage":"https://www.world-nuclear-news.org/", "provides":["최신 상태"], "note":"인허가·건설 최신 뉴스 추적.", "connected":false },
+    { "name":"US NRC", "homepage":"https://www.nrc.gov/reactors/new-reactors/smr.html", "provides":["인허가(미국)"], "note":"설계인증·건설허가 단계.", "connected":false },
+    { "name":"CNSC", "homepage":"https://www.cnsc-ccsn.gc.ca/", "provides":["인허가(캐나다)"], "note":"벤더설계심사·건설허가.", "connected":false },
+    { "name":"KINS/NSSC (한국)", "homepage":"https://www.kins.re.kr/", "provides":["인허가(한국)"], "note":"표준설계인가 등 국내 인허가.", "connected":false }
+  ],
+  "reactors": [
+    {"id":"htr-pm","name":"HTR-PM (스다오완)","vendor":"CNNC / 칭화대","country":"중국","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":210,"capacity_mwe_module":105,"modules":2,"fuel":"LEU TRISO","status":"운전중","foak_target":"2023 상업운전","tags":["운전중","공정열"],"summary":"세계 최초 상업운전 중인 4세대 원자로. 2023년 12월 상업운전 개시, 페블베드 고온가스로로 본질안전성 입증(무개입 잔열제거 시험 성공).","dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"상업 실증 운전 중, 기술 입증 완료."},"licensing":{"level":5,"confidence":"high","rationale":"중국 규제 운영허가 취득."},"economics":{"level":3,"confidence":"low","rationale":"실증로 수준, 상용 단가 불확실."},"safety":{"level":5,"confidence":"high","rationale":"TRISO 본질안전, 무개입 잔열제거 입증."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"중국 내 TRISO 공급망 가동."},"deployment":{"level":5,"confidence":"high","rationale":"상업운전·후속호기 검토."}},"sources":["IAEA ARIS","CNNC","World Nuclear News"]},
+    {"id":"klt-40s","name":"KLT-40S (Akademik Lomonosov)","vendor":"Rosatom","country":"러시아","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":70,"capacity_mwe_module":35,"modules":2,"fuel":"LEU","status":"운전중","foak_target":"2020 상업운전","tags":["운전중","해상부유식"],"summary":"세계 유일 상업 운전 중 부유식 원전. 2019년 Pevek 송전 개시, 2020년 상업운전. 쇄빙선 원자로 계보의 검증 기술.","dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"해상 상업운전 중, 함정 원자로 계보."},"licensing":{"level":5,"confidence":"high","rationale":"러시아 규제 운영허가."},"economics":{"level":3,"confidence":"low","rationale":"오지·특수용도, 일반 단가 비교 제한."},"safety":{"level":3,"confidence":"medium","rationale":"기존 함정로 기반, 피동 특성 제한적."},"supply_fuel":{"level":5,"confidence":"high","rationale":"Rosatom 일관 연료·공급망."},"deployment":{"level":5,"confidence":"high","rationale":"운전 중, Baimsky 후속 사업."}},"sources":["IAEA PRIS","Rosatom","World Nuclear News"]},
+    {"id":"bwrx-300","name":"GE Hitachi BWRX-300","vendor":"GE Vernova Hitachi","country":"캐나다/미국","generation":"Gen III+","category":"경수로 SMR","family":"BWR","coolant":"경수","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"LEU","status":"건설중","foak_target":"2030 상업운전","tags":["건설중"],"summary":"인증 ESBWR 기반 단순화 BWR. 캐나다 OPG Darlington 1호기 착공(2025)·기초 설치(2026), 미국 최초 BWRX-300 건설허가 취득, 영국 GDA 진행.","dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"인증 ESBWR 계보, 검증 기술."},"licensing":{"level":5,"confidence":"high","rationale":"캐나다+미국 NRC 건설허가 취득."},"economics":{"level":3,"confidence":"medium","rationale":"기존 BWR 공급망 활용, FOAK 실적 진행."},"safety":{"level":4,"confidence":"high","rationale":"피동 격리응축기·단순화 계통."},"supply_fuel":{"level":4,"confidence":"high","rationale":"표준 LEU BWR 연료, 성숙 공급망."},"deployment":{"level":5,"confidence":"high","rationale":"Darlington 착공·기초 설치, 다수 파이프라인."}},"sources":["IAEA ARIS","CNSC","US NRC","OPG","World Nuclear News"]},
+    {"id":"linglong-one","name":"Linglong One (ACP100)","vendor":"CNNC","country":"중국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":125,"capacity_mwe_module":125,"modules":1,"fuel":"LEU","status":"시운전","foak_target":"2027 상업운전(지연)","tags":["건설완료단계"],"summary":"세계 최초 착공한 육상 상업용 SMR. 2021년 착공, 냉기능시험(2025)·터빈 시운전(2025) 완료, 2026년 고온기능시험 중. 연료장전 전, 상업운전 2027년 전망.","dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"검증 PWR, FOAK 건설 완료·시운전."},"licensing":{"level":5,"confidence":"high","rationale":"건설허가 취득, 운영허가 심사."},"economics":{"level":3,"confidence":"low","rationale":"건설비 공개 제한, 자국 공급망 이점."},"safety":{"level":4,"confidence":"medium","rationale":"일체형·피동안전."},"supply_fuel":{"level":5,"confidence":"high","rationale":"표준 LEU, CNNC 일관 공급망."},"deployment":{"level":5,"confidence":"high","rationale":"건설 완료·시운전, 상업운전 임박."}},"sources":["IAEA ARIS","CNNC","World Nuclear News"]},
+    {"id":"nuscale-voygr","name":"NuScale VOYGR (US460)","vendor":"NuScale Power","country":"미국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":462,"capacity_mwe_module":77,"modules":6,"fuel":"LEU","status":"인허가","foak_target":"2033 (루마니아)","tags":[],"summary":"자연순환 일체형 PWR. 50MWe 설계 NRC 표준설계승인 취득, US460 상향 심사 중. 루마니아 RoPower VOYGR-6 FEED 완료, FID 2026~2027 전망.","dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"통합시험루프 검증, 신기술 리스크 낮음."},"licensing":{"level":4,"confidence":"high","rationale":"50MWe 표준설계승인, US460 심사 중."},"economics":{"level":2,"confidence":"medium","rationale":"초기 CFPP 비용 상승·취소 전례."},"safety":{"level":5,"confidence":"high","rationale":"완전 피동 냉각, 부지경계 EPZ 추진."},"supply_fuel":{"level":4,"confidence":"high","rationale":"표준 LEU, 모듈 양산 목표."},"deployment":{"level":3,"confidence":"medium","rationale":"루마니아 FID 임박, COD 2033."}},"sources":["IAEA ARIS","US NRC","NuScale","World Nuclear News"]},
+    {"id":"natrium","name":"TerraPower Natrium","vendor":"TerraPower / GEH","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":345,"capacity_mwe_module":345,"modules":1,"fuel":"HALEU 금속","status":"건설중","foak_target":"2030~31 (Kemmerer)","tags":["건설중","축열"],"summary":"소듐냉각 고속로+용융염 축열. 비LWR 최초 NRC 건설허가 취득(2026.3), Kemmerer 본 공사 착수(2026.4). 출력 500MWe까지 유연. HALEU 공급이 리스크.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 계보, 축열 결합은 신규."},"licensing":{"level":4,"confidence":"high","rationale":"NRC 건설허가 취득(비LWR 최초)."},"economics":{"level":2,"confidence":"low","rationale":"FOAK 비용 상향·불확실."},"safety":{"level":4,"confidence":"medium","rationale":"저압 풀형 SFR 피동, 소듐 관리 필요."},"supply_fuel":{"level":2,"confidence":"high","rationale":"HALEU 공급 차질로 일정 지연."},"deployment":{"level":4,"confidence":"high","rationale":"Kemmerer 착공, 완공 목표 2031."}},"sources":["IAEA ARIS","US NRC","US DOE","World Nuclear News"]},
+    {"id":"rolls-royce-smr","name":"Rolls-Royce SMR","vendor":"Rolls-Royce SMR","country":"영국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":470,"capacity_mwe_module":470,"modules":1,"fuel":"LEU","status":"인허가·부지계약","foak_target":"2030년대 초 (Wylfa)","tags":[],"summary":"470MWe급 공장모듈화 PWR. GDA 최종단계(2026.12 종료 예정), GB Energy–Nuclear 선정, 영국 Wylfa(Ynys Môn) 3기 부지계약 체결.","dimensions":{"technology_readiness":{"level":3,"confidence":"high","rationale":"검증 PWR, 공장모듈 실증 전."},"licensing":{"level":4,"confidence":"high","rationale":"GDA 최종단계, 유럽 최선두."},"economics":{"level":3,"confidence":"medium","rationale":"공장제작·반복건설 비용 절감 목표."},"safety":{"level":3,"confidence":"medium","rationale":"피동/능동 혼합 안전계통."},"supply_fuel":{"level":4,"confidence":"high","rationale":"표준 LEU, 영국 공급망."},"deployment":{"level":4,"confidence":"high","rationale":"Wylfa 부지계약, 3기 배치 추진."}},"sources":["IAEA ARIS","UK ONR","Rolls-Royce SMR","World Nuclear News"]},
+    {"id":"smart100","name":"SMART100","vendor":"KAERI / KHNP","country":"대한민국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":110,"capacity_mwe_module":110,"modules":1,"fuel":"LEU","status":"설계인가 취득","foak_target":"미확정","tags":[],"summary":"한국형 일체형 PWR. 사우디 협력으로 피동안전 반영한 SMART100 표준설계인가(SDA) 취득. 수출 추진 중이나 FOAK 부지 미확정.","dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"SMART 계보, 설계 성숙."},"licensing":{"level":4,"confidence":"high","rationale":"표준설계인가 취득."},"economics":{"level":3,"confidence":"low","rationale":"상용 실적 미확보."},"safety":{"level":4,"confidence":"medium","rationale":"피동안전 반영 일체형."},"supply_fuel":{"level":5,"confidence":"high","rationale":"국내 표준 LEU·성숙 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"FOAK 부지·발주 미확정."}},"sources":["IAEA ARIS","KAERI","KHNP","NEI"]},
+    {"id":"i-smr","name":"i-SMR (혁신형 SMR)","vendor":"KHNP / KAERI","country":"대한민국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":680,"capacity_mwe_module":170,"modules":4,"fuel":"LEU","status":"인허가(SDA 심사)","foak_target":"2030년대 중반","tags":["무붕산"],"summary":"SMART 후속 한국형 혁신 SMR. 무붕산·피동안전·부하추종. 2026년 3월 표준설계인가(SDA) 신청, 2028년 승인 목표. 국내 성숙 공급망이 강점.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"SMART 경험 기반, 혁신요소 검증 중."},"licensing":{"level":3,"confidence":"high","rationale":"SDA 신청(2026.3), 심사 진행."},"economics":{"level":3,"confidence":"low","rationale":"경쟁력 목표, 실증단가 미확보."},"safety":{"level":4,"confidence":"medium","rationale":"피동안전·장기냉각, 붕소계통 제거."},"supply_fuel":{"level":5,"confidence":"high","rationale":"국내 표준 LEU·기기 제작 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"FOAK 부지 미확정, 로드맵 단계."}},"sources":["IAEA ARIS","KHNP","KAERI","KINS","World Nuclear News"]},
+    {"id":"holtec-smr-300","name":"Holtec SMR-300","vendor":"Holtec International","country":"미국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"LEU","status":"인허가(건설허가 심사)","foak_target":"2030년대 초 (Palisades)","tags":[],"summary":"300MWe급 피동안전 PWR. Palisades 부지 쌍둥이 SMR 건설허가(CPA)·PSAR 제출(2026), DOE First Mover 4억달러 지원. 영국 Cottam 제안도 진행.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"표준 PWR 기반, 설계 상세화."},"licensing":{"level":3,"confidence":"high","rationale":"NRC 건설허가 심사(Part1·PSAR 제출)."},"economics":{"level":3,"confidence":"medium","rationale":"DOE 4억달러 지원, 상세 단가 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"피동 냉각 중심."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"표준 LEU, Holtec 제작 인프라."},"deployment":{"level":3,"confidence":"medium","rationale":"Palisades 추진, 완공 2030년대 초."}},"sources":["IAEA ARIS","US NRC","Holtec","US DOE","World Nuclear News"]},
+    {"id":"ritm-200","name":"RITM-200 (Baimsky/육상)","vendor":"Rosatom","country":"러시아","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":106,"capacity_mwe_module":53,"modules":2,"fuel":"LEU","status":"건설·제작","foak_target":"2020년대 후반","tags":["해상부유식","건설중"],"summary":"쇄빙선 검증 일체형 PWR. Baimsky 광산용 부유식 4기(각 106MWe)·육상형 추진, 1호 원자로 제작 완료(2026.5).","dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"쇄빙선 다수 운전 실적."},"licensing":{"level":4,"confidence":"medium","rationale":"러시아 규제 건설 단계."},"economics":{"level":3,"confidence":"low","rationale":"오지 특수용도."},"safety":{"level":4,"confidence":"medium","rationale":"일체형·피동 특성 강화."},"supply_fuel":{"level":5,"confidence":"high","rationale":"Rosatom 일관 공급망."},"deployment":{"level":4,"confidence":"medium","rationale":"부유식 유닛 건설·원자로 제작 완료."}},"sources":["IAEA ARIS","Rosatom","World Nuclear News"]},
+    {"id":"kairos-kp-fhr","name":"Kairos KP-FHR (Hermes)","vendor":"Kairos Power","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"FHR","coolant":"불소염(FLiBe)","capacity_mwe_total":140,"capacity_mwe_module":70,"modules":2,"fuel":"HALEU TRISO","status":"건설중(실증)","foak_target":"Hermes 2028 가동","tags":["건설중","실증로"],"summary":"불소염냉각 고온로. Hermes 1 실증로 건설 중(2025 착공, 2028 가동 목표), Hermes 2 착공(2026). 상용 KP-X는 ~140MWe급.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"실증로 건설 중, 상용 입증 전."},"licensing":{"level":4,"confidence":"high","rationale":"NRC 건설허가 취득·건설 중."},"economics":{"level":2,"confidence":"low","rationale":"FOAK 비용 불확실."},"safety":{"level":5,"confidence":"high","rationale":"저압 염냉각+TRISO 본질안전."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU TRISO·FLiBe 공급 구축 중."},"deployment":{"level":3,"confidence":"high","rationale":"Hermes 1·2 건설, 상용 실증 단계."}},"sources":["IAEA ARIS","US NRC","Kairos Power","World Nuclear News"]},
+    {"id":"xe-100","name":"X-energy Xe-100","vendor":"X-energy","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":320,"capacity_mwe_module":80,"modules":4,"fuel":"HALEU TRISO","status":"인허가(건설허가 심사)","foak_target":"2020년대 후반 (Dow)","tags":["공정열"],"summary":"TRISO 페블베드 고온가스로. Dow Seadrift 4모듈 건설허가 심사(환경평가 FONSI 2026.5, 허가 2027 1분기 전망). 고온 공정열 공급.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"HTR-PM 선례, Xe-100 실증 전."},"licensing":{"level":3,"confidence":"high","rationale":"NRC 건설허가 심사, 환경평가 통과."},"economics":{"level":2,"confidence":"low","rationale":"FOAK 비용 불확실, 공정열 가치."},"safety":{"level":5,"confidence":"high","rationale":"TRISO 본질안전, 고온 봉입."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU·TRISO 공급 제약, TX 연료공장 건설."},"deployment":{"level":3,"confidence":"medium","rationale":"Dow Seadrift, 허가 후 착공."}},"sources":["IAEA ARIS","US NRC","X-energy","Dow","World Nuclear News"]},
+    {"id":"brest-od-300","name":"BREST-OD-300","vendor":"Rosatom","country":"러시아","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"질화물(U-Pu)","status":"건설중","foak_target":"2029 가동","tags":["건설중","폐쇄핵주기"],"summary":"납냉각 고속로. Seversk 현장 핵연료주기와 결합. 원자로용기 ~70% 조립(2026 초), 가동 2029년으로 지연. 질화물 연료 현장 제작.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"납냉각·질화물연료 대형 실증 신규."},"licensing":{"level":4,"confidence":"medium","rationale":"러시아 규제 건설허가·건설 중."},"economics":{"level":2,"confidence":"low","rationale":"실증·연료주기 통합, 단가 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"납냉각 저압·고비점 안전 특성."},"supply_fuel":{"level":3,"confidence":"medium","rationale":"질화물연료 현장 제작 시설 가동."},"deployment":{"level":4,"confidence":"medium","rationale":"건설 중, 가동 2029 전망."}},"sources":["IAEA ARIS","Rosatom","World Nuclear News"]},
+    {"id":"carem-25","name":"CAREM-25","vendor":"CNEA","country":"아르헨티나","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":32,"capacity_mwe_module":32,"modules":1,"fuel":"LEU","status":"건설중(지연)","foak_target":"미확정","tags":["건설중","프로토타입"],"summary":"아르헨티나 자체 개발 자연순환 일체형 PWR 프로토타입. 2014 착공했으나 재원 문제로 장기 지연. 설계 경험 가치는 높음.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"자연순환 일체형 설계·일부 건설."},"licensing":{"level":4,"confidence":"high","rationale":"아르헨티나 건설허가·건설 중."},"economics":{"level":1,"confidence":"medium","rationale":"프로토타입 비용 초과·재원 난항."},"safety":{"level":4,"confidence":"medium","rationale":"자연순환·일체형 피동."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"표준 LEU, 자국 연료 역량."},"deployment":{"level":3,"confidence":"high","rationale":"건설 중이나 장기 지연."}},"sources":["IAEA ARIS","CNEA","IAEA PRIS"]},
+    {"id":"ap300","name":"Westinghouse AP300","vendor":"Westinghouse","country":"미국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"LEU","status":"설계·사전인허가","foak_target":"2030년대 초","tags":[],"summary":"인증 AP1000 축소판 단일루프 PWR. 검증 기술 레버리지가 강점이나 인허가·배치는 초기 단계.","dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"AP1000 검증 기술 기반."},"licensing":{"level":2,"confidence":"medium","rationale":"NRC 사전인허가 초기."},"economics":{"level":3,"confidence":"low","rationale":"AP1000 공급망 활용 기대, 실적 전."},"safety":{"level":4,"confidence":"medium","rationale":"AP 피동안전 계승."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"표준 LEU, 기존 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"구체 부지·발주 초기."}},"sources":["IAEA ARIS","Westinghouse","US NRC"]},
+    {"id":"terrestrial-imsr","name":"Terrestrial Energy IMSR","vendor":"Terrestrial Energy","country":"캐나다","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염(연료염)","capacity_mwe_total":195,"capacity_mwe_module":195,"modules":1,"fuel":"LEU 용융염","status":"인허가(CNSC VDR2 완료)","foak_target":"2030년대 초","tags":[],"summary":"일체형 용융염로. CNSC 벤더설계심사 2단계 완료, 상용 액체연료 MSR 최초 NRC 안전평가 선례. 설계·인허가 단계.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"MSR 설계 성숙, 실증 전."},"licensing":{"level":3,"confidence":"high","rationale":"CNSC VDR 2단계 완료, NRC engagement."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"저압 액체연료·피동 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"용융염 연료염·공급망 구축 중."},"deployment":{"level":2,"confidence":"medium","rationale":"부지·발주 초기, 착공 전."}},"sources":["IAEA ARIS","CNSC","Terrestrial Energy","World Nuclear News"]},
+    {"id":"arc-100","name":"ARC-100","vendor":"ARC Clean Technology","country":"캐나다","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"금속연료","status":"인허가(CNSC VDR2 완료)","foak_target":"2030년대 초 (Point Lepreau)","tags":[],"summary":"EBR-II 계보 소듐냉각 고속로. CNSC 벤더설계심사 2단계 완료(2025.7), 뉴브런즈윅 Point Lepreau 배치 목표.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 계보, 상용 실증 전."},"licensing":{"level":3,"confidence":"high","rationale":"CNSC VDR 2단계 완료."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"풀형 SFR 피동 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"금속연료 공급망 구축 중."},"deployment":{"level":2,"confidence":"medium","rationale":"Point Lepreau 목표, 착공 전."}},"sources":["IAEA ARIS","CNSC","ARC Clean Technology"]},
+    {"id":"nuward","name":"Nuward SMR","vendor":"EDF","country":"프랑스","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":340,"capacity_mwe_module":170,"modules":2,"fuel":"LEU","status":"설계(재설계)","foak_target":"2030년대","tags":[],"summary":"EDF 주도 일체형 PWR. 2024년 검증기술 중심으로 설계 전면 재검토. 유럽 공동 인허가 사전검토 추진.","dimensions":{"technology_readiness":{"level":2,"confidence":"medium","rationale":"설계 재검토로 성숙도 재설정."},"licensing":{"level":2,"confidence":"medium","rationale":"유럽 공동 사전검토 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"medium","rationale":"일체형 피동안전 설계."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"프랑스 표준 LEU 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"FOAK 일정 재설정."}},"sources":["IAEA ARIS","EDF","World Nuclear News"]},
+    {"id":"newcleo-lfr","name":"newcleo LFR-AS-200","vendor":"newcleo","country":"영국/이탈리아","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납","capacity_mwe_total":200,"capacity_mwe_module":200,"modules":1,"fuel":"MOX","status":"설계·인허가준비","foak_target":"2030년대","tags":["폐쇄핵주기"],"summary":"납냉각 고속로. MOX 연료로 사용후핵연료 활용 지향. 프랑스 실증로·연료공장 추진, 설계·인허가 준비 단계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"납냉각 상용 실증 전, 개발 초기."},"licensing":{"level":2,"confidence":"medium","rationale":"인허가 사전 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"medium","rationale":"납냉각 저압·고비점 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"MOX 연료 체인 구축 중."},"deployment":{"level":2,"confidence":"low","rationale":"실증로 계획 단계."}},"sources":["IAEA ARIS","newcleo","World Nuclear News"]},
+    {"id":"seaborg-cmsr","name":"Seaborg CMSR","vendor":"Seaborg Technologies","country":"덴마크","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"용융염","status":"설계","foak_target":"미확정","tags":["해상부유식"],"summary":"컴팩트 용융염로를 바지선에 탑재하는 해상 배치 개념. 설계·인허가 사전 단계, 상용 실증 전.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"MSR 개념 설계, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 사전 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"low","rationale":"저압 액체연료 안전 지향."},"supply_fuel":{"level":2,"confidence":"low","rationale":"용융염 연료·조절재 공급 과제."},"deployment":{"level":1,"confidence":"medium","rationale":"구체 배치 계획 초기."}},"sources":["IAEA ARIS","Seaborg","World Nuclear News"]},
+    {"id":"tmsr-lf1","name":"TMSR-LF1 (토륨 용융염)","vendor":"SINAP","country":"중국","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":0,"capacity_mwe_module":0,"modules":1,"fuel":"토륨/용융염","status":"운전(실험로)","foak_target":"실험로 운전","tags":["실험로","운전중","토륨"],"summary":"세계 유일 운전 중 용융염 실험로(2MWth). 2023년 임계, 2025년 토륨 장전으로 토륨연료주기 실증. 발전용 아닌 연구로.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"실험로 운전·토륨 실증, 상용 전."},"licensing":{"level":4,"confidence":"medium","rationale":"중국 규제 운영허가(실험로)."},"economics":{"level":1,"confidence":"low","rationale":"연구로, 상용 단가 해당 없음."},"safety":{"level":4,"confidence":"medium","rationale":"저압 액체연료 안전 특성."},"supply_fuel":{"level":2,"confidence":"low","rationale":"토륨 용융염 연료주기 실증 단계."},"deployment":{"level":2,"confidence":"medium","rationale":"후속 상용로(10MWe급) 계획."}},"sources":["IAEA ARIS","SINAP","World Nuclear News"]},
+    {"id":"evinci","name":"Westinghouse eVinci","vendor":"Westinghouse","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"Heat-pipe","coolant":"히트파이프(고체노심)","capacity_mwe_total":5,"capacity_mwe_module":5,"modules":1,"fuel":"HALEU TRISO","status":"시험(영출력 임계)","foak_target":"2020년대 후반","tags":["마이크로","무냉각재펌프"],"summary":"히트파이프 냉각 고체노심 마이크로로(5MWe). 영출력 임계 시험 성공(2026.8), 미 육군 Janus 프로그램 선정. 가동부 최소화.","dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"영출력 임계 시험으로 핵심 설계 검증."},"licensing":{"level":3,"confidence":"medium","rationale":"NRC 인허가·시험로 단계."},"economics":{"level":2,"confidence":"low","rationale":"오지·분산 특수용도, 단가 전."},"safety":{"level":5,"confidence":"high","rationale":"히트파이프 피동·고체노심 본질안전."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU TRISO 공급 구축 중."},"deployment":{"level":3,"confidence":"medium","rationale":"시험·실증, 군·산업 수요."}},"sources":["IAEA ARIS","US NRC","Westinghouse","US DOE"]},
+    {"id":"bwxt-pele","name":"BWXT Project Pele","vendor":"BWXT","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"HTGR","coolant":"가스(이동형)","capacity_mwe_total":5,"capacity_mwe_module":5,"modules":1,"fuel":"HALEU TRISO","status":"건설·연료장전","foak_target":"2026 실증 (INL)","tags":["마이크로","이동형","국방"],"summary":"미 국방부 이동형 마이크로로. 조립 완료 후 INL에서 연료장전·실증(2026). TRISO 연료 가스냉각 이동형.","dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"하드웨어 조립·실증 임박."},"licensing":{"level":4,"confidence":"medium","rationale":"국방부(DOE 권한) 실증 승인."},"economics":{"level":2,"confidence":"low","rationale":"국방 특수용도."},"safety":{"level":5,"confidence":"high","rationale":"TRISO 본질안전·이동형 격납."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU TRISO 공급 구축."},"deployment":{"level":4,"confidence":"high","rationale":"INL 실증 2026, 하드웨어 완성."}},"sources":["IAEA ARIS","US DoD","BWXT","US DOE"]},
+    {"id":"oklo-aurora","name":"Oklo Aurora","vendor":"Oklo","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"SFR","coolant":"히트파이프/금속","capacity_mwe_total":15,"capacity_mwe_module":15,"modules":1,"fuel":"HALEU 금속","status":"인허가(COLA 준비)","foak_target":"2027~28 (INL)","tags":["마이크로"],"summary":"소형 고속 마이크로로. INL 부지, DOE HALEU 연료 지원. 통합운영허가(COLA) 준비, 가동 2027~28 목표.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 금속연료 계보, 실증 전."},"licensing":{"level":2,"confidence":"medium","rationale":"COLA 준비, 초기 신청 반려 이력."},"economics":{"level":2,"confidence":"low","rationale":"전력판매 모델, 단가 전."},"safety":{"level":4,"confidence":"medium","rationale":"소형 금속연료 피동 특성."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU 공급, DOE 연료 지원."},"deployment":{"level":3,"confidence":"medium","rationale":"INL 부지 확보, 가동 목표 2027~28."}},"sources":["IAEA ARIS","US NRC","Oklo","US DOE"]},
+    {"id":"usnc-mmr","name":"USNC MMR","vendor":"USNC","country":"미국/캐나다","generation":"Gen IV","category":"마이크로로(MMR)","family":"HTGR","coolant":"헬륨","capacity_mwe_total":5,"capacity_mwe_module":5,"modules":1,"fuel":"FCM TRISO","status":"인허가(재편)","foak_target":"미확정","tags":["마이크로"],"summary":"초소형 모듈 고온가스로(5MWe). Chalk River 실증 추진했으나 2024년 모회사 재무난·구조조정으로 일정 불확실.","dimensions":{"technology_readiness":{"level":3,"confidence":"low","rationale":"TRISO/FCM 기반, 모회사 재편으로 불확실."},"licensing":{"level":3,"confidence":"low","rationale":"CNSC 인허가 진행했으나 사업 재편."},"economics":{"level":2,"confidence":"low","rationale":"재무 불확실."},"safety":{"level":5,"confidence":"medium","rationale":"FCM TRISO 본질안전."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU TRISO 공급 과제."},"deployment":{"level":1,"confidence":"low","rationale":"사업 재편으로 배치 일정 불확실."}},"sources":["IAEA ARIS","CNSC","World Nuclear News"]},
+    {"id":"last-energy-pws20","name":"Last Energy PWS-20","vendor":"Last Energy","country":"미국/영국","generation":"Gen III+","category":"마이크로로(MMR)","family":"PWR","coolant":"경수","capacity_mwe_total":20,"capacity_mwe_module":20,"modules":1,"fuel":"LEU","status":"설계·사전발주","foak_target":"2020년대 후반","tags":["마이크로","공장제작"],"summary":"컨테이너형 20MWe 소형 PWR. 검증 PWR 기술로 공장제작·반복배치 지향. 유럽 다수 전력구매 의향(PPA) 체결 보도.","dimensions":{"technology_readiness":{"level":3,"confidence":"low","rationale":"표준 PWR 기반, 자체 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"각국 인허가 초기."},"economics":{"level":3,"confidence":"low","rationale":"반복배치 저가 지향, 실적 전."},"safety":{"level":3,"confidence":"low","rationale":"소형 PWR, 피동 특성 제한적."},"supply_fuel":{"level":4,"confidence":"low","rationale":"표준 LEU."},"deployment":{"level":2,"confidence":"low","rationale":"PPA 의향 다수, 착공 전."}},"sources":["IAEA ARIS","Last Energy","World Nuclear News"]},
+    {"id":"radiant-kaleidos","name":"Radiant Kaleidos","vendor":"Radiant","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"HTGR","coolant":"가스(이동형)","capacity_mwe_total":1,"capacity_mwe_module":1,"modules":1,"fuel":"HALEU TRISO","status":"설계·시험준비","foak_target":"2020년대 후반 (INL 시험)","tags":["마이크로","이동형"],"summary":"컨테이너 이동형 가스냉각 마이크로로(1.2MWe). INL에서 연료 포함 실증시험 추진, 설계·시험 준비 단계.","dimensions":{"technology_readiness":{"level":3,"confidence":"low","rationale":"TRISO 가스로, 실증 시험 준비."},"licensing":{"level":2,"confidence":"low","rationale":"시험·인허가 초기."},"economics":{"level":2,"confidence":"low","rationale":"오지·분산 특수용도."},"safety":{"level":5,"confidence":"medium","rationale":"TRISO 본질안전·이동형."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU TRISO 공급 과제."},"deployment":{"level":2,"confidence":"low","rationale":"INL 실증 시험 준비."}},"sources":["IAEA ARIS","Radiant","US DOE"]}
+  ]
+}
+</script>
+
 <script src="./data.js" onerror="window.__noDataFile=true"></script>
 <script>
-/* ============================================================
-   내장 베이스라인 데이터 (data.js 가 있으면 그것을 우선 사용)
-   - data.js 는 Python 에이전트(build_dashboard.py)가 공개 DB에서
-     수집·정규화해 생성하며 GitHub Actions 가 주기적으로 갱신한다.
-   ============================================================ */
-const EMBEDDED = {
-  meta: { updated: "2026-10-05", data_version: "0.1.0", rubric_version: "0.1.0",
-    disclaimer: "공개 자료 기반 베이스라인이며 수치는 근사·변동 가능합니다. 각 항목의 신뢰도와 출처를 함께 확인하세요. 보유 1차 자료 수신 시 갱신됩니다." },
-  rubric: { dimensions: [
-    { key:"technology_readiness", label:"기술 성숙도", label_en:"Technology", weight:0.22 },
-    { key:"licensing",           label:"인허가 진행도", label_en:"Licensing", weight:0.20 },
-    { key:"economics",           label:"경제성",       label_en:"Economics", weight:0.18 },
-    { key:"safety",              label:"안전성·설계",  label_en:"Safety",    weight:0.15 },
-    { key:"supply_fuel",         label:"공급망·연료",  label_en:"Supply/Fuel", weight:0.13 },
-    { key:"deployment",          label:"배치 성숙도",  label_en:"Deployment", weight:0.12 },
-  ]},
-  sources: [
-    { name:"IAEA ARIS", homepage:"https://aris.iaea.org/", provides:["설계 서술","용량","연료","냉각재"], note:"Advanced Reactors Information System — 설계 서술 표준 출처.", connected:false },
-    { name:"IAEA PRIS", homepage:"https://pris.iaea.org/", provides:["건설/운전 상태"], note:"Power Reactor Information System — 건설·운전 공정 상태.", connected:false },
-    { name:"NEA SMR Dashboard", homepage:"https://www.oecd-nea.org/smrdashboard", provides:["인허가","금융","공급망","연료"], note:"OECD/NEA — 배치 준비도 축 기준.", connected:false },
-    { name:"World Nuclear Association", homepage:"https://world-nuclear.org/information-library/", provides:["개요","현황"], note:"SMR 정보 라이브러리 — 교차검증용.", connected:false },
-    { name:"US NRC", homepage:"https://www.nrc.gov/reactors/new-reactors/smr.html", provides:["인허가(미국)"], note:"설계인증·표준설계승인·건설허가 단계.", connected:false },
-    { name:"CNSC", homepage:"https://www.cnsc-ccsn.gc.ca/", provides:["인허가(캐나다)"], note:"벤더 설계사전심사·건설허가.", connected:false },
-    { name:"KINS/NSSC (한국)", homepage:"https://www.kins.re.kr/", provides:["인허가(한국)"], note:"표준설계인가 등 국내 인허가.", connected:false },
-  ],
-  reactors: [
-    { id:"nuscale-voygr", name:"NuScale VOYGR (US460)", vendor:"NuScale Power", country:"미국", type:"일체형 PWR", coolant:"경수", capacity_mwe_module:77, modules:6, capacity_mwe_total:462, fuel:"LEU (<5%)", status:"인허가", foak_target:"2030년대", summary:"자연순환 일체형 PWR. 50MWe 설계 NRC 표준설계승인(2023) 취득, US460 상향 심사 중. 피동안전이 강점이나 FOAK(CFPP) 비용 문제로 취소.",
-      dimensions:{ technology_readiness:{level:4,confidence:"high",rationale:"통합시험루프 검증, 신기술 리스크 낮음."}, licensing:{level:4,confidence:"high",rationale:"50MWe NRC 표준설계승인 취득, US460 심사 중."}, economics:{level:2,confidence:"medium",rationale:"CFPP 목표단가 상승으로 2023년 사업 취소."}, safety:{level:5,confidence:"high",rationale:"완전 피동 냉각(무전원·무펌프), 부지경계 EPZ 추진."}, supply_fuel:{level:4,confidence:"high",rationale:"표준 LEU, 모듈 양산 목표."}, deployment:{level:2,confidence:"high",rationale:"CFPP 취소 후 확정 착공 없음."} },
-      sources:["IAEA ARIS","US NRC","NuScale","NEA SMR Dashboard"] },
-    { id:"bwrx-300", name:"GE Hitachi BWRX-300", vendor:"GE Hitachi", country:"미국/캐나다", type:"BWR", coolant:"경수", capacity_mwe_module:300, modules:1, capacity_mwe_total:300, fuel:"LEU", status:"건설", foak_target:"2029년경", summary:"인증 ESBWR 기반 단순화 BWR. 캐나다 OPG Darlington에서 북미 최초 상업용 SMR 착공, CNSC 인허가 선도.",
-      dimensions:{ technology_readiness:{level:4,confidence:"high",rationale:"인증 ESBWR 계보, 검증 기술 기반."}, licensing:{level:4,confidence:"high",rationale:"CNSC 선도, Darlington 건설허가·착공."}, economics:{level:3,confidence:"medium",rationale:"기존 BWR 공급망 활용, FOAK 실적 미확정."}, safety:{level:4,confidence:"high",rationale:"피동 격리응축기, 단순화 계통."}, supply_fuel:{level:4,confidence:"high",rationale:"표준 LEU BWR 연료, 성숙 공급망."}, deployment:{level:4,confidence:"high",rationale:"Darlington 1호기 착공, TVA·폴란드 파이프라인."} },
-      sources:["IAEA ARIS","CNSC","GE Hitachi","OPG"] },
-    { id:"acp100", name:"ACP100 '링롱 1호'", vendor:"CNNC", country:"중국", type:"일체형 PWR", coolant:"경수", capacity_mwe_module:125, modules:1, capacity_mwe_total:125, fuel:"LEU", status:"건설완료단계", foak_target:"2026년경", summary:"세계 최초로 건설된 육상 상업용 SMR. 하이난 창장 2021년 착공, 완공·연계 임박. IAEA 설계안전심사 이력.",
-      dimensions:{ technology_readiness:{level:4,confidence:"high",rationale:"검증 PWR 기반, FOAK 건설 거의 완료."}, licensing:{level:5,confidence:"high",rationale:"건설허가 취득·건설 완료, IAEA GRSR 이력."}, economics:{level:3,confidence:"low",rationale:"건설비 공개 제한적, 자국 공급망 이점."}, safety:{level:4,confidence:"medium",rationale:"일체형·피동안전."}, supply_fuel:{level:5,confidence:"high",rationale:"표준 LEU, CNNC 일관 공급망."}, deployment:{level:5,confidence:"high",rationale:"FOAK 건설 완료·상업운전 임박."} },
-      sources:["IAEA ARIS","CNNC","IAEA GRSR"] },
-    { id:"rolls-royce-smr", name:"Rolls-Royce SMR", vendor:"Rolls-Royce SMR", country:"영국", type:"PWR", coolant:"경수", capacity_mwe_module:470, modules:1, capacity_mwe_total:470, fuel:"LEU", status:"인허가", foak_target:"2030년대 초", summary:"470MWe급 공장모듈화 PWR. 영국 GDA 진행, Great British Nuclear 경쟁 선정. 표준 기술·공급망 기반.",
-      dimensions:{ technology_readiness:{level:3,confidence:"medium",rationale:"검증 PWR이나 공장모듈 실증 진행 중."}, licensing:{level:3,confidence:"high",rationale:"영국 GDA 2단계 진행, 완료 전."}, economics:{level:3,confidence:"medium",rationale:"공장제작·반복건설 비용 절감 목표."}, safety:{level:3,confidence:"medium",rationale:"피동/능동 혼합 안전계통."}, supply_fuel:{level:4,confidence:"high",rationale:"표준 LEU, 영국 공급망."}, deployment:{level:3,confidence:"high",rationale:"GBN 선정(2024), 착공 전."} },
-      sources:["IAEA ARIS","UK ONR","Rolls-Royce SMR"] },
-    { id:"holtec-smr-300", name:"Holtec SMR-300", vendor:"Holtec", country:"미국", type:"PWR", coolant:"경수", capacity_mwe_module:300, modules:1, capacity_mwe_total:300, fuel:"LEU", status:"인허가", foak_target:"2030년경", summary:"300MWe급 피동안전 PWR. 미시간 Palisades 부지 배치 추진, DOE 대출보증 확보, NRC 사전심사.",
-      dimensions:{ technology_readiness:{level:3,confidence:"medium",rationale:"표준 PWR 기반, 설계 상세화 진행."}, licensing:{level:3,confidence:"medium",rationale:"NRC 사전심사 단계."}, economics:{level:3,confidence:"low",rationale:"DOE 대출보증 확보, 상세 단가 불확실."}, safety:{level:4,confidence:"medium",rationale:"피동 냉각 중심."}, supply_fuel:{level:4,confidence:"medium",rationale:"표준 LEU, Holtec 제작 인프라."}, deployment:{level:3,confidence:"medium",rationale:"Palisades·네브래스카 추진, 착공 전."} },
-      sources:["IAEA ARIS","US NRC","Holtec","US DOE"] },
-    { id:"i-smr", name:"i-SMR (혁신형 SMR)", vendor:"KHNP/KAERI", country:"대한민국", type:"PWR(무붕산)", coolant:"경수", capacity_mwe_module:170, modules:4, capacity_mwe_total:680, fuel:"LEU", status:"개발·인허가준비", foak_target:"2030년대 중반", summary:"SMART 후속 한국형 혁신 SMR. 무붕산·피동안전·부하추종. 표준설계인가 2028년경 목표. 국내 성숙 공급망이 강점.",
-      dimensions:{ technology_readiness:{level:3,confidence:"medium",rationale:"SMART 경험 기반, 무붕산 등 혁신요소 검증 중."}, licensing:{level:2,confidence:"medium",rationale:"표준설계인가 신청 준비(목표 2028)."}, economics:{level:3,confidence:"low",rationale:"경쟁력 목표, 실증단가 미확보."}, safety:{level:4,confidence:"medium",rationale:"피동안전·장기냉각, 붕소계통 제거."}, supply_fuel:{level:5,confidence:"high",rationale:"국내 표준 LEU·성숙한 기기 제작 공급망."}, deployment:{level:2,confidence:"medium",rationale:"FOAK 부지 미확정, 로드맵 단계."} },
-      sources:["IAEA ARIS","KHNP","KAERI","KINS"] },
-    { id:"xe-100", name:"X-energy Xe-100", vendor:"X-energy", country:"미국", type:"HTGR(페블베드)", coolant:"헬륨", capacity_mwe_module:80, modules:4, capacity_mwe_total:320, fuel:"HALEU TRISO", status:"인허가·설계", foak_target:"2020년대 후반", summary:"TRISO 페블베드 고온가스로. 고온 공정열 공급, 본질안전성 높음. Dow Seadrift·DOE ARDP 지원. HALEU·TRISO 공급망이 변수.",
-      dimensions:{ technology_readiness:{level:3,confidence:"medium",rationale:"HTR-PM 선례 있으나 Xe-100 실증 전."}, licensing:{level:3,confidence:"medium",rationale:"NRC 건설허가 신청 등 진행."}, economics:{level:2,confidence:"low",rationale:"FOAK 비용 불확실, 공정열 틈새가치."}, safety:{level:5,confidence:"high",rationale:"TRISO 본질안전, 고온 봉입."}, supply_fuel:{level:2,confidence:"medium",rationale:"HALEU·TRISO 공급 제약, TX 연료공장 건설 중."}, deployment:{level:3,confidence:"medium",rationale:"Dow Seadrift·ARDP, FOAK 착공 준비."} },
-      sources:["IAEA ARIS","US NRC","X-energy","US DOE ARDP"] },
-    { id:"natrium", name:"TerraPower Natrium", vendor:"TerraPower/GEH", country:"미국", type:"SFR+축열", coolant:"소듐", capacity_mwe_module:345, modules:1, capacity_mwe_total:345, fuel:"HALEU 금속", status:"건설(비원자력)", foak_target:"2030년경", summary:"소듐냉각 고속로+용융염 축열로 출력 500MWe까지 유연 공급. Wyoming Kemmerer 비원자력 공사 착수(2024). HALEU 공급 차질이 리스크.",
-      dimensions:{ technology_readiness:{level:3,confidence:"medium",rationale:"EBR-II 등 SFR 경험, 축열 결합은 신규."}, licensing:{level:3,confidence:"high",rationale:"NRC 건설허가 신청(2024) 심사."}, economics:{level:2,confidence:"low",rationale:"FOAK 비용 상향·불확실."}, safety:{level:4,confidence:"medium",rationale:"저압 풀형 SFR 피동, 소듐 관리 필요."}, supply_fuel:{level:2,confidence:"high",rationale:"HALEU 공급 차질로 일정 지연."}, deployment:{level:3,confidence:"high",rationale:"Kemmerer 비원자력 착공, ARDP 지원."} },
-      sources:["IAEA ARIS","US NRC","TerraPower","US DOE ARDP"] },
-    { id:"carem-25", name:"CAREM-25", vendor:"CNEA", country:"아르헨티나", type:"일체형 PWR", coolant:"경수", capacity_mwe_module:32, modules:1, capacity_mwe_total:32, fuel:"LEU", status:"건설(지연)", foak_target:"미확정", summary:"아르헨티나 자체 개발 자연순환 일체형 PWR 프로토타입. 2014년 착공했으나 재원 문제로 지연. 설계 경험 가치는 높음.",
-      dimensions:{ technology_readiness:{level:3,confidence:"medium",rationale:"자연순환 일체형 설계·일부 건설, 실증 전."}, licensing:{level:4,confidence:"high",rationale:"아르헨티나 건설허가·건설 중."}, economics:{level:1,confidence:"medium",rationale:"프로토타입 비용 초과·재원 난항."}, safety:{level:4,confidence:"medium",rationale:"자연순환·일체형 피동."}, supply_fuel:{level:4,confidence:"medium",rationale:"표준 LEU, 자국 연료 역량."}, deployment:{level:3,confidence:"high",rationale:"건설 중이나 장기 지연."} },
-      sources:["IAEA ARIS","CNEA","IAEA PRIS"] },
-  ]
-};
-
-/* ---------- 점수 엔진 (scoring.py 와 동일한 상수) ---------- */
 const LEVEL_TO_SCORE = {1:10, 2:32.5, 3:55, 4:77.5, 5:100};
 const CONF_FACTOR = {high:1.0, medium:0.85, low:0.7};
+const EMBEDDED = JSON.parse(document.getElementById("smr-embed").textContent);
 const DATA = (!window.__noDataFile && window.SMR_DATA) ? window.SMR_DATA : EMBEDDED;
 const DIMS = DATA.rubric.dimensions;
+const CATS = (DATA.taxonomy && DATA.taxonomy.category) || ["경수로 SMR","비경수로 SMR","마이크로로(MMR)"];
+const CAT_COLOR = {"경수로 SMR":"var(--accent)","비경수로 SMR":"var(--gen4)","마이크로로(MMR)":"var(--neutral)"};
 
-function scoreReactor(r) {
+function scoreReactor(r){
   let w=0, wSum=0, cSum=0, tally={high:0,medium:0,low:0};
-  const dims = DIMS.map(d => {
-    const e = r.dimensions[d.key];
-    const base = LEVEL_TO_SCORE[e.level];
-    w += d.weight; wSum += base*d.weight; cSum += base*d.weight*CONF_FACTOR[e.confidence];
-    tally[e.confidence]++;
-    return {key:d.key, label:d.label, label_en:d.label_en, weight:d.weight,
-      level:e.level, confidence:e.confidence, score:base, rationale:e.rationale};
+  const dims = DIMS.map(d=>{
+    const e=r.dimensions[d.key]; const base=LEVEL_TO_SCORE[e.level];
+    w+=d.weight; wSum+=base*d.weight; cSum+=base*d.weight*CONF_FACTOR[e.confidence]; tally[e.confidence]++;
+    return {key:d.key,label:d.label,label_en:d.label_en,weight:d.weight,level:e.level,confidence:e.confidence,score:base,rationale:e.rationale};
   });
-  const n = tally.high+tally.medium+tally.low || 1;
-  let dc = "medium";
-  if (tally.low/n >= 0.4) dc = "low"; else if (tally.high/n >= 0.5) dc = "high";
-  return { overall:+(wSum/w).toFixed(1), overallAdj:+(cSum/w).toFixed(1), dataConfidence:dc, dims };
+  const n=tally.high+tally.medium+tally.low||1; let dc="medium";
+  if(tally.low/n>=0.4) dc="low"; else if(tally.high/n>=0.5) dc="high";
+  return {overall:+(wSum/w).toFixed(1), overallAdj:+(cSum/w).toFixed(1), dataConfidence:dc, dims};
 }
-
 function scoreColor(s){ return s>=80?"var(--good)": s>=60?"var(--accent)": s>=40?"var(--warn)":"var(--crit)"; }
 function levelAlpha(l){ return {1:.18,2:.36,3:.55,4:.76,5:.96}[l]; }
-function statusClass(st){ if(/운전|완공|완료/.test(st)) return "op"; if(/건설/.test(st)) return "constr"; return ""; }
+function statusClass(st){ if(/운전|완공|완료/.test(st)) return "op"; if(/건설|시운전|장전/.test(st)) return "constr"; return ""; }
+function capText(r){ return r.capacity_mwe_total>0 ? `${r.capacity_mwe_total}MWe${r.modules>1?` (${r.capacity_mwe_module}×${r.modules})`:''}` : "실험로"; }
 
-const R = DATA.reactors.map(r => ({...r, ev: scoreReactor(r)}));
-const state = { q:"", country:null, type:null, sort:"overall" };
-
-/* ---------- 렌더 ---------- */
+const R = DATA.reactors.map(r=>({...r, ev:scoreReactor(r)}));
+const state = { q:"", category:null, generation:null, family:"", country:"", sort:"overall", group:false };
 const el = id => document.getElementById(id);
+
 el("updated").textContent = "업데이트 " + DATA.meta.updated;
 el("disclaimer").textContent = DATA.meta.disclaimer;
 
 function renderStats(){
-  const avg = (R.reduce((a,b)=>a+b.ev.overall,0)/R.length).toFixed(1);
-  const built = R.filter(r=>/건설|운전|완공|완료/.test(r.status)).length;
-  const conn = DATA.sources.length;
+  const op = R.filter(r=>/운전/.test(r.status)).length;
+  const constr = R.filter(r=>/건설|시운전|장전|제작/.test(r.status)).length;
+  const gen4 = R.filter(r=>r.generation==="Gen IV").length;
   const tiles = [
     ["평가 노형", R.length, "개"],
-    ["평균 종합점수", avg, "/100"],
-    ["건설·운전 단계", built, "개"],
-    ["연결 공개 소스", conn, "개"],
+    ["운전 중", op, "개"],
+    ["건설·시운전", constr, "개"],
+    ["Gen IV 노형", gen4, `/ ${R.length}`],
   ];
   el("stats").innerHTML = tiles.map(([k,v,u])=>
     `<div class="tile"><div class="k">${k}</div><div class="v mono">${v}<small> ${u}</small></div></div>`).join("");
 }
 
-function renderFilters(){
-  const countries = [...new Set(R.map(r=>r.country))];
-  const types = [...new Set(R.map(r=>r.type))];
-  const mk = (arr, key) => arr.map(v =>
-    `<button class="chip" data-k="${key}" data-v="${v}" aria-pressed="false">${v}</button>`).join("");
-  el("f-country").innerHTML = mk(countries,"country");
-  el("f-type").innerHTML = mk(types,"type");
-  document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", ()=>{
-    const k=c.dataset.k, v=c.dataset.v;
-    state[k] = state[k]===v ? null : v;
-    document.querySelectorAll(`.chip[data-k="${k}"]`).forEach(x=>
-      x.setAttribute("aria-pressed", x.dataset.v===state[k] ? "true":"false"));
-    renderList();
+function renderCategorySeg(){
+  const counts = {}; CATS.forEach(c=>counts[c]=R.filter(r=>r.category===c).length);
+  const btn = (val,label,n)=>`<button data-v="${val}" aria-pressed="${state.category===val||(val===''&&!state.category)}">${label}<span class="n">${n}</span></button>`;
+  el("seg-category").innerHTML = btn("","전체",R.length) + CATS.map(c=>btn(c,c,counts[c])).join("");
+  el("seg-category").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+    state.category = b.dataset.v || null; renderCategorySeg(); render();
   }));
 }
 
-function filteredSorted(){
-  let list = R.filter(r=>{
+function renderGenChips(){
+  const gens = (DATA.taxonomy&&DATA.taxonomy.generation)||["Gen III+","Gen IV"];
+  el("gen-chips").innerHTML = gens.map(g=>
+    `<button class="chip ${g==='Gen IV'?'g4':''}" data-v="${g}" aria-pressed="${state.generation===g}">${g}</button>`).join("");
+  el("gen-chips").querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
+    state.generation = state.generation===c.dataset.v ? null : c.dataset.v;
+    renderGenChips(); render();
+  }));
+}
+
+function renderSelects(){
+  const fams=[...new Set(R.map(r=>r.family))].sort();
+  const countries=[...new Set(R.map(r=>r.country))].sort();
+  el("f-family").innerHTML = `<option value="">기술계열 전체</option>`+fams.map(f=>`<option value="${f}">${f}</option>`).join("");
+  el("f-country").innerHTML = `<option value="">국가 전체</option>`+countries.map(c=>`<option value="${c}">${c}</option>`).join("");
+}
+
+function filtered(){
+  return R.filter(r=>{
+    if(state.category && r.category!==state.category) return false;
+    if(state.generation && r.generation!==state.generation) return false;
+    if(state.family && r.family!==state.family) return false;
     if(state.country && r.country!==state.country) return false;
-    if(state.type && r.type!==state.type) return false;
     if(state.q){ const q=state.q.toLowerCase();
-      if(!(`${r.name} ${r.vendor} ${r.country} ${r.type}`.toLowerCase().includes(q))) return false; }
+      if(!(`${r.name} ${r.vendor} ${r.country} ${r.family} ${r.type||''}`.toLowerCase().includes(q))) return false; }
     return true;
   });
-  const s = state.sort;
-  list.sort((a,b)=>{
-    if(s==="capacity") return b.capacity_mwe_total - a.capacity_mwe_total;
+}
+function sortList(list){
+  const s=state.sort;
+  return [...list].sort((a,b)=>{
+    if(s==="capacity") return b.capacity_mwe_total-a.capacity_mwe_total;
     if(s==="overall"||s==="overallAdj") return b.ev[s]-a.ev[s];
     const da=a.ev.dims.find(d=>d.key===s), db=b.ev.dims.find(d=>d.key===s);
     return db.score-da.score;
   });
-  return list;
 }
 
 function miniBars(dims){
-  return `<div style="display:flex;gap:3px;margin-top:7px">` + dims.map(d=>
-    `<div title="${d.label}: Lv${d.level}" style="flex:1;height:4px;border-radius:2px;background:color-mix(in srgb, ${scoreColor(d.score)} ${Math.round(levelAlpha(d.level)*100)}%, var(--surface-3))"></div>`).join("") + `</div>`;
+  return `<div style="display:flex;gap:3px;margin-top:6px;max-width:260px">`+dims.map(d=>
+    `<div title="${d.label}: Lv${d.level}" style="flex:1;height:4px;border-radius:2px;background:color-mix(in srgb, ${scoreColor(d.score)} ${Math.round(levelAlpha(d.level)*100)}%, var(--surface-3))"></div>`).join("")+`</div>`;
 }
-
 function radar(dims){
-  const N=dims.length, cx=120, cy=112, Rr=82;
-  const pt=(i,rad)=>{ const a=-Math.PI/2 + i*2*Math.PI/N;
-    return [cx+Math.cos(a)*rad, cy+Math.sin(a)*rad]; };
-  let grid="";
-  [0.25,0.5,0.75,1].forEach(g=>{
-    const p=dims.map((_,i)=>pt(i,Rr*g).map(n=>n.toFixed(1)).join(",")).join(" ");
-    grid+=`<polygon points="${p}" fill="none" stroke="var(--line-2)" stroke-width="1" opacity=".6"/>`;
-  });
-  let axes="", labels="";
-  dims.forEach((d,i)=>{
-    const [x,y]=pt(i,Rr);
+  const N=dims.length, cx=118, cy=110, Rr=80;
+  const pt=(i,rad)=>{const a=-Math.PI/2+i*2*Math.PI/N; return [cx+Math.cos(a)*rad, cy+Math.sin(a)*rad];};
+  let grid=""; [0.25,0.5,0.75,1].forEach(g=>{ const p=dims.map((_,i)=>pt(i,Rr*g).map(n=>n.toFixed(1)).join(",")).join(" ");
+    grid+=`<polygon points="${p}" fill="none" stroke="var(--line-2)" stroke-width="1" opacity=".6"/>`; });
+  let axes="",labels="";
+  dims.forEach((d,i)=>{ const [x,y]=pt(i,Rr);
     axes+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--line-2)" stroke-width="1" opacity=".5"/>`;
-    const [lx,ly]=pt(i,Rr+16);
-    labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" fill="var(--ink-2)" text-anchor="middle" dominant-baseline="middle" font-family="var(--mono)">${d.label_en}</text>`;
-  });
+    const [lx,ly]=pt(i,Rr+15); labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" fill="var(--ink-2)" text-anchor="middle" dominant-baseline="middle" font-family="var(--mono)">${d.label_en}</text>`; });
   const poly=dims.map((d,i)=>pt(i,Rr*d.score/100).map(n=>n.toFixed(1)).join(",")).join(" ");
   const dots=dims.map((d,i)=>{const[x,y]=pt(i,Rr*d.score/100);return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="var(--accent)"/>`;}).join("");
-  return `<svg viewBox="0 0 240 224" width="240" height="224" role="img" aria-label="차원별 레이더">
-    ${grid}${axes}
-    <polygon points="${poly}" fill="color-mix(in srgb, var(--accent) 22%, transparent)" stroke="var(--accent)" stroke-width="2"/>
-    ${dots}${labels}</svg>`;
+  return `<svg viewBox="0 0 236 220" width="236" height="220" role="img" aria-label="차원별 레이더">${grid}${axes}<polygon points="${poly}" fill="color-mix(in srgb, var(--accent) 22%, transparent)" stroke="var(--accent)" stroke-width="2"/>${dots}${labels}</svg>`;
 }
 
-function renderList(){
-  const list = filteredSorted();
-  el("list").innerHTML = list.map((r,idx)=>{
-    const ev=r.ev; const rank=idx+1;
-    const sc=scoreColor(ev.overall);
-    return `<div class="row" data-id="${r.id}">
-      <button class="row-head" aria-expanded="false">
-        <span class="rank ${rank<=3?'top':''} mono">${rank}</span>
-        <span class="r-id">
-          <span class="nm">${r.name}</span>
-          <span class="meta">${r.vendor} · ${r.capacity_mwe_total}MWe${r.modules>1?` (${r.capacity_mwe_module}×${r.modules})`:''} · ${r.coolant}</span>
-          ${miniBars(ev.dims)}
-        </span>
-        <span class="tags">
-          <span class="tag">${r.country}</span>
-          <span class="tag">${r.type}</span>
-          <span class="tag status ${statusClass(r.status)}">${r.status}</span>
-        </span>
-        <span class="score-cell">
-          <span class="score-num mono" style="color:${sc}">${ev.overall}</span>
-          <span class="bar"><i style="width:${ev.overall}%;background:${sc}"></i></span>
-        </span>
-        <span class="conf ${ev.dataConfidence}">${{high:'신뢰 高',medium:'신뢰 中',low:'신뢰 低'}[ev.dataConfidence]}</span>
-        <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
-      </button>
-      <div class="detail">
-        <div class="summary">${r.summary}</div>
-        <div class="radar-box"><div class="cap">6개 차원 프로파일</div>${radar(ev.dims)}
-          <div class="mono" style="font-size:12px;color:var(--ink-2)">종합 <b style="color:${sc};font-size:15px">${ev.overall}</b> · 신뢰도보정 ${ev.overallAdj}</div>
-        </div>
-        <div class="dim-list">
-          ${ev.dims.map(d=>`<div class="dim">
-            <span class="dl">${d.label}<small>${d.label_en} · 가중 ${Math.round(d.weight*100)}%</small></span>
-            <span class="lvl">Lv<b>${d.level}</b><br><span class="conf ${d.confidence}" style="font-size:9px;padding:1px 5px">${{high:'高',medium:'中',low:'低'}[d.confidence]}</span></span>
-            <span class="rat">${d.rationale}</span>
-          </div>`).join("")}
-        </div>
-        <div class="src-row"><span>출처:</span>${r.sources.map(s=>`<span class="s">${s}</span>`).join("")}
-          <span style="margin-left:auto">FOAK 목표: ${r.foak_target} · 연료: ${r.fuel}</span></div>
-      </div>
-    </div>`;
-  }).join("");
+function rowHTML(r, rank){
+  const ev=r.ev; const sc=scoreColor(ev.overall); const g4=r.generation==="Gen IV";
+  return `<div class="row" data-id="${r.id}">
+    <button class="row-head" aria-expanded="false">
+      <span class="rank ${rank<=3?'top':''} mono">${rank}</span>
+      <span class="r-id">
+        <span class="nm">${r.name}</span>
+        <span class="meta">${r.vendor} · ${capText(r)} · ${r.coolant}</span>
+        ${miniBars(ev.dims)}
+      </span>
+      <span class="tags">
+        <span class="tag gen ${g4?'g4':''}">${r.generation}</span>
+        <span class="tag fam">${r.family}</span>
+        <span class="tag">${r.country}</span>
+        <span class="tag status ${statusClass(r.status)}">${r.status}</span>
+      </span>
+      <span class="score-cell">
+        <span class="score-num mono" style="color:${sc}">${ev.overall}</span>
+        <span class="bar"><i style="width:${ev.overall}%;background:${sc}"></i></span>
+      </span>
+      <span class="conf ${ev.dataConfidence}">${{high:'신뢰 高',medium:'신뢰 中',low:'신뢰 低'}[ev.dataConfidence]}</span>
+      <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+    </button>
+    <div class="detail">
+      <div class="summary">${r.summary}</div>
+      <div class="radar-box"><div class="cap mono">6개 차원 프로파일</div>${radar(ev.dims)}
+        <div class="mono" style="font-size:12px;color:var(--ink-2)">종합 <b style="color:${sc};font-size:15px">${ev.overall}</b> · 신뢰도보정 ${ev.overallAdj}</div></div>
+      <div class="dim-list">${ev.dims.map(d=>`<div class="dim">
+        <span class="dl">${d.label}<small>${d.label_en} · 가중 ${Math.round(d.weight*100)}%</small></span>
+        <span class="lvl">Lv<b>${d.level}</b> <span class="conf ${d.confidence}" style="font-size:9px;padding:1px 5px">${{high:'高',medium:'中',low:'低'}[d.confidence]}</span></span>
+        <span class="rat">${d.rationale}</span></div>`).join("")}</div>
+      <div class="src-row"><span>출처:</span>${r.sources.map(s=>`<span class="s">${s}</span>`).join("")}
+        <span style="margin-left:auto">FOAK: ${r.foak_target} · 연료: ${r.fuel}</span></div>
+    </div></div>`;
+}
 
-  document.querySelectorAll(".row-head").forEach(h=>h.addEventListener("click",()=>{
+function render(){
+  const list = filtered();
+  el("count-line").textContent = `${list.length}개 노형 표시 중` + (list.length<R.length?` (전체 ${R.length}개 중)`:"");
+  const area = el("list-area");
+  if(state.group){
+    let html="";
+    CATS.forEach(cat=>{
+      const g = sortList(list.filter(r=>r.category===cat));
+      if(!g.length) return;
+      const avg=(g.reduce((a,b)=>a+b.ev.overall,0)/g.length).toFixed(1);
+      html += `<div class="group-head"><h3 style="color:${CAT_COLOR[cat]}">${cat}</h3><span class="gc">${g.length}개 · 평균 ${avg}</span><span class="bar-mini"></span></div>`;
+      html += `<div class="list">`+g.map((r,i)=>rowHTML(r,i+1)).join("")+`</div>`;
+    });
+    area.innerHTML = html || `<div class="count-line">해당 조건의 노형이 없습니다.</div>`;
+  } else {
+    const sorted = sortList(list);
+    area.innerHTML = `<div class="list">`+sorted.map((r,i)=>rowHTML(r,i+1)).join("")+`</div>`;
+  }
+  area.querySelectorAll(".row-head").forEach(h=>h.addEventListener("click",()=>{
     const row=h.closest(".row"); const open=row.hasAttribute("open");
     if(open){row.removeAttribute("open"); h.setAttribute("aria-expanded","false");}
-    else {row.setAttribute("open",""); h.setAttribute("aria-expanded","true");}
+    else{row.setAttribute("open",""); h.setAttribute("aria-expanded","true");}
   }));
 }
 
@@ -489,38 +519,36 @@ function renderHeat(){
     const cells=r.ev.dims.map(d=>{
       const bg=`color-mix(in srgb, ${scoreColor(d.score)} ${Math.round(levelAlpha(d.level)*100)}%, var(--surface))`;
       const dot={high:"var(--good)",medium:"var(--warn)",low:"var(--crit)"}[d.confidence];
-      const tc = d.level>=4 ? "#fff" : "var(--ink)";
+      const tc=d.level>=4?"#fff":"var(--ink)";
       return `<td><span class="cell" style="background:${bg};color:${tc}" title="${d.label} Lv${d.level}/${d.confidence}">${d.level}<span class="dot" style="background:${dot}"></span></span></td>`;
     }).join("");
-    return `<tr><td class="name">${r.name}<br><small>${r.country} · ${r.type}</small></td>${cells}<td class="ov" style="color:${scoreColor(r.ev.overall)}">${r.ev.overall}</td></tr>`;
+    const catC=CAT_COLOR[r.category]||"var(--neutral)";
+    return `<tr><td class="name">${r.name} <span class="heat-cat" style="background:${catC}">${r.generation}</span><br><small>${r.country} · ${r.family}</small></td>${cells}<td class="ov" style="color:${scoreColor(r.ev.overall)}">${r.ev.overall}</td></tr>`;
   }).join("")+"</tbody>";
   el("heat").innerHTML=head+body;
   el("legend").innerHTML = `
     <div class="it"><span class="sw" style="background:color-mix(in srgb,var(--accent) 18%,var(--surface))"></span>Lv1 개념</div>
     <div class="it"><span class="sw" style="background:color-mix(in srgb,var(--accent) 55%,var(--surface))"></span>Lv3 상세설계</div>
     <div class="it"><span class="sw" style="background:color-mix(in srgb,var(--accent) 96%,var(--surface))"></span>Lv5 실증/운전</div>
-    <div class="it"><span class="sw" style="background:var(--good);width:8px;height:8px;border-radius:50%"></span>신뢰도 高</div>
+    <div class="it"><span class="sw" style="background:var(--good);width:8px;height:8px;border-radius:50%"></span>신뢰 高</div>
     <div class="it"><span class="sw" style="background:var(--warn);width:8px;height:8px;border-radius:50%"></span>中</div>
     <div class="it"><span class="sw" style="background:var(--crit);width:8px;height:8px;border-radius:50%"></span>低</div>`;
 }
 
 function renderSources(){
   el("sources").innerHTML = DATA.sources.map(s=>`<div class="source">
-    <div class="top"><span class="nm">${s.name}</span>
-      <span class="st ${s.connected?'on':'off'}">${s.connected?'연결됨':'연결 대기'}</span></div>
+    <div class="top"><span class="nm">${s.name}</span><span class="st ${s.connected?'on':'off'}">${s.connected?'연결됨':'연결 대기'}</span></div>
     <div class="note">${s.note}</div>
     <div class="prov">${s.provides.map(p=>`<span>${p}</span>`).join("")}</div>
-    <div style="margin-top:9px"><a href="${s.homepage}" target="_blank" rel="noopener" style="font-size:11.5px">${s.homepage.replace(/^https?:\/\//,'')}</a></div>
+    <div style="margin-top:8px"><a href="${s.homepage}" target="_blank" rel="noopener" style="font-size:11.5px">${s.homepage.replace(/^https?:\/\//,'')}</a></div>
   </div>`).join("");
 }
 
 el("footer").innerHTML = `
-  <p><b>평가 방법.</b> 각 노형을 6개 차원(기술 성숙도·인허가·경제성·안전성·공급망/연료·배치 성숙도)에서 성숙도 1~5로 매핑하고, 가중 평균을 0~100으로 정규화합니다.
-  데이터 신뢰도(高/中/低)는 점수에 직접 반영되지 않되 '신뢰도보정' 점수와 배지로 별도 표시됩니다.</p>
-  <p><b>주의.</b> ${DATA.meta.disclaimer} 본 도구는 의사결정 보조용이며 1차 자료 검증을 대체하지 않습니다.
-  rubric v${DATA.meta.rubric_version} · data v${DATA.meta.data_version} · ${DATA.__noDataFile===undefined && window.SMR_DATA?'자동수집 데이터':'내장 베이스라인'}</p>`;
+  <p><b>평가 방법.</b> 각 노형을 6개 차원(기술 성숙도 22% · 인허가 20% · 경제성 18% · 안전성 15% · 공급망/연료 13% · 배치 12%)에서 성숙도 1~5로 매핑하고, 가중 평균을 0~100으로 정규화합니다. 데이터 신뢰도(高/中/低)는 '신뢰도보정' 점수와 배지로 별도 표시됩니다.</p>
+  <p><b>분류.</b> 세대(Gen III+ 경수로 중심 / Gen IV 고속로·고온가스로·용융염·납냉각) · 분류(경수로 SMR / 비경수로 SMR / 마이크로로 MMR) · 기술계열(PWR·iPWR·BWR·HTGR·SFR·LFR·MSR·FHR·히트파이프)로 필터링할 수 있습니다.</p>
+  <p><b>주의.</b> ${DATA.meta.disclaimer} 의사결정 보조용이며 1차 자료 검증을 대체하지 않습니다. rubric v${DATA.meta.rubric_version} · data v${DATA.meta.data_version}</p>`;
 
-// theme toggle
 (function(){
   let t=null; try{t=localStorage.getItem("smr-theme");}catch(e){}
   if(t) document.documentElement.setAttribute("data-theme",t);
@@ -533,8 +561,11 @@ el("footer").innerHTML = `
   });
 })();
 
-el("q").addEventListener("input",e=>{state.q=e.target.value; renderList();});
-el("sort").addEventListener("change",e=>{state.sort=e.target.value; renderList();});
+el("q").addEventListener("input",e=>{state.q=e.target.value; render();});
+el("f-family").addEventListener("change",e=>{state.family=e.target.value; render();});
+el("f-country").addEventListener("change",e=>{state.country=e.target.value; render();});
+el("sort").addEventListener("change",e=>{state.sort=e.target.value; render();});
+el("group-toggle").addEventListener("change",e=>{state.group=e.target.checked; render();});
 
-renderStats(); renderFilters(); renderList(); renderHeat(); renderSources();
+renderStats(); renderCategorySeg(); renderGenChips(); renderSelects(); render(); renderHeat(); renderSources();
 </script>

@@ -52,6 +52,19 @@ smr-evaluation-agent/
 
 ---
 
+## 분류 체계 (taxonomy)
+
+28개 노형을 다음 축으로 분류해 한눈에 비교한다(대시보드 필터).
+
+- **세대**: `Gen III+`(경수로 중심) · `Gen IV`(고속로·고온가스로·용융염·납냉각)
+- **분류**: `경수로 SMR` · `비경수로 SMR` · `마이크로로(MMR)`
+- **기술계열**: PWR · iPWR · BWR · HTGR · SFR · LFR · MSR · FHR · 히트파이프
+
+운전 중(HTR-PM·Akademik Lomonosov)부터 건설 중(BWRX-300·Natrium·BREST·Kairos Hermes·
+Linglong One), 인허가·설계, 마이크로로(eVinci·Project Pele·Oklo 등)까지 포괄한다.
+
+---
+
 ## 참조 공개 데이터 소스
 
 | 소스 | 제공 | 링크 |
