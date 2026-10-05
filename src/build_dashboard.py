@@ -18,6 +18,10 @@ OUT = ROOT / "dashboard" / "data.js"
 def build() -> dict:
     data = evaluate_all()
     data["sources"] = describe_sources()
+    # 분류 체계(세대·분류·기술계열)를 대시보드 필터용으로 전달
+    import json
+    with open(ROOT / "data" / "reactors.json", encoding="utf-8") as f:
+        data["taxonomy"] = json.load(f).get("taxonomy", {})
     return data
 
 
