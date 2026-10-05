@@ -169,7 +169,7 @@ def main(delay: float = 0.8) -> None:
                                           f"(총)/{r.get('capacity_mwe_module')}(모듈) / ARIS={an}MWe ({round(diff*100)}%)")
 
         collected[rid] = {
-            "news": [{k: it[k] for k in ("title", "source", "date", "url")} for it in items[:3]],
+            "news": [{k: it[k] for k in ("title", "source", "date", "url")} for it in items[:5]],
             "wiki": w,
             "status_hint": hint,
             "aris": arec,

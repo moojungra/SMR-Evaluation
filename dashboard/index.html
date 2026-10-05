@@ -183,6 +183,30 @@
   .ar-v { color: var(--ink); font-weight: 500; }
   .ar-note { font-size: 10.5px; color: var(--ink-3); margin-top: 8px; }
 
+  .progress { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 15px 12px; margin-bottom: 2px; }
+  .progress .ph { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; gap: 10px; flex-wrap: wrap; }
+  .progress .ph .t { font-size: 11px; font-weight: 600; color: var(--ink-2); letter-spacing: .03em; }
+  .progress .ph .foak { font-size: 11.5px; color: var(--ink-3); font-family: var(--mono); }
+  .stepper { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; text-align: center; }
+  .step .ball { width: 20px; height: 20px; border-radius: 50%; background: var(--surface-3); border: 2px solid var(--line-2);
+    display: grid; place-items: center; font-size: 10px; color: var(--ink-3); z-index: 1; font-family: var(--mono); }
+  .step.done .ball { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .step.current .ball { background: var(--accent); border-color: var(--accent); color: #fff;
+    box-shadow: 0 0 0 4px var(--accent-soft); }
+  .step .lbl { font-size: 10.5px; color: var(--ink-3); line-height: 1.25; max-width: 72px; }
+  .step.done .lbl, .step.current .lbl { color: var(--ink); font-weight: 500; }
+  .step::before { content: ""; position: absolute; top: 9px; left: -50%; width: 100%; height: 2px;
+    background: var(--line-2); z-index: 0; }
+  .step:first-child::before { display: none; }
+  .step.done::before, .step.current::before { background: var(--accent); }
+  .progress .milestone { margin-top: 12px; font-size: 11.5px; color: var(--ink-2);
+    border-top: 1px dashed var(--line); padding-top: 10px; }
+  .progress .milestone a { color: var(--ink); text-decoration: none; }
+  .progress .milestone a:hover { text-decoration: underline; color: var(--accent-ink); }
+  .progress .milestone .dt { font-family: var(--mono); color: var(--ink-3); font-size: 10.5px; }
+
   .sec { margin: 32px 0 12px; display: flex; align-items: baseline; gap: 12px; }
   .sec h2 { font-size: 16px; letter-spacing: -.01em; }
   .sec .hint { font-size: 12px; color: var(--ink-3); }
@@ -478,6 +502,38 @@ function radar(dims){
   return `<svg viewBox="0 0 236 220" width="236" height="220" role="img" aria-label="차원별 레이더">${grid}${axes}<polygon points="${poly}" fill="color-mix(in srgb, var(--accent) 22%, transparent)" stroke="var(--accent)" stroke-width="2"/>${dots}${labels}</svg>`;
 }
 
+const STAGES = ["개념·기본설계","상세설계","인허가","건설","운전"];
+function stageIndex(r){
+  const s=r.status||"";
+  if(/운전/.test(s)) return 5;
+  if(/건설중|건설·|건설\(|건설 완|건설완료|시운전|착공|제작|연료장전|조립/.test(s)) return 4;
+  if(/인허가|인가|심사|GDA|부지|COLA|발주|신청|규제/.test(s)) return 3;
+  if(/상세설계/.test(s)) return 2;
+  if(/개념|기본|예비|재설계|시험/.test(s)) return 1;
+  const dl=(r.dimensions&&r.dimensions.deployment&&r.dimensions.deployment.level)||1;
+  return Math.min(5, Math.max(1, dl));
+}
+function latestMilestone(r){
+  const h=r.live&&r.live.status_hint;
+  if(h) return {text:`${h.label} — ${h.evidence}`, date:h.date, url:h.url};
+  const n=r.live&&r.live.news&&r.live.news.find(x=>x.title);
+  if(n) return {text:n.title, date:n.date, url:n.url};
+  return null;
+}
+function stepperHTML(r){
+  const cur=stageIndex(r);
+  const steps=STAGES.map((lbl,i)=>{
+    const n=i+1; const cls=n<cur?"done":(n===cur?"current":"");
+    const mark=n<cur?"✓":n;
+    return `<div class="step ${cls}"><span class="ball">${mark}</span><span class="lbl">${lbl}</span></div>`;
+  }).join("");
+  const ms=latestMilestone(r);
+  const msHTML=ms?`<div class="milestone"><b>최근 진척:</b> ${ms.url?`<a href="${ms.url}" target="_blank" rel="noopener">${ms.text}</a>`:ms.text} ${ms.date?`<span class="dt">· ${ms.date}</span>`:''}</div>`:"";
+  return `<div class="progress">
+    <div class="ph"><span class="t">사업 진척현황 · 현재 <b style="color:var(--accent-ink)">${STAGES[cur-1]}</b></span>
+      <span class="foak">FOAK 목표: ${r.foak_target||'—'}</span></div>
+    <div class="stepper">${steps}</div>${msHTML}</div>`;
+}
 function curatedLevel(r, dim){ const d=r.dimensions[dim]; return d?d.level:null; }
 function reviewFlag(r){
   const h=r.live&&r.live.status_hint; if(!h) return null;
@@ -538,6 +594,7 @@ function rowHTML(r, rank){
     </button>
     <div class="detail">
       <div class="summary">${r.summary}</div>
+      ${stepperHTML(r)}
       <div class="radar-box"><div class="cap mono">6개 차원 프로파일</div>${radar(ev.dims)}
         <div class="mono" style="font-size:12px;color:var(--ink-2)">종합 <b style="color:${sc};font-size:15px">${ev.overall}</b> · 신뢰도보정 ${ev.overallAdj}</div></div>
       <div class="dim-list">${ev.dims.map(d=>`<div class="dim">
