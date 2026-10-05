@@ -1,0 +1,219 @@
+<title>삼성물산 SMR 주목 노형</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#eef0f4; --surface:#fff; --surface-2:#f4f6f9; --surface-3:#e9edf2;
+    --ink:#111826; --ink-2:#56657a; --ink-3:#8696aa;
+    --line:#dde2ea; --line-2:#c7cfda;
+    --accent:#1f4aa6; --accent-ink:#1a3f8f; --accent-soft:#e4ebf8;
+    --good:#1f9d64; --warn:#c2821a; --crit:#cf4d4d;
+    --t-direct:#1f4aa6; --t-korea:#3a7bd5; --t-group:#6a7fb0; --t-target:#2e9e6b; --t-monitor:#8696aa;
+    --shadow:0 1px 2px rgba(16,30,60,.06),0 4px 16px rgba(16,30,60,.05);
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --sans:"IBM Plex Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0b0f16; --surface:#131a26; --surface-2:#18212f; --surface-3:#1f2a3a;
+    --ink:#e7edf5; --ink-2:#94a4ba; --ink-3:#6b7d94;
+    --line:#243043; --line-2:#334257;
+    --accent:#5b86d9; --accent-ink:#8fb0ea; --accent-soft:#17263f;
+    --good:#34c07d; --warn:#dca23e; --crit:#e8706e;
+    --t-direct:#5b86d9; --t-korea:#6fa0e8; --t-group:#8aa0cc; --t-target:#34c07d; --t-monitor:#7d8ea6;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.28);
+  }}
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#0b0f16; --surface:#131a26; --surface-2:#18212f; --surface-3:#1f2a3a;
+    --ink:#e7edf5; --ink-2:#94a4ba; --ink-3:#6b7d94;
+    --line:#243043; --line-2:#334257;
+    --accent:#5b86d9; --accent-ink:#8fb0ea; --accent-soft:#17263f;
+    --t-direct:#5b86d9; --t-korea:#6fa0e8; --t-group:#8aa0cc; --t-target:#34c07d; --t-monitor:#7d8ea6;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.28);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
+  a{color:var(--accent-ink)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(180deg,var(--accent-soft),transparent);border-bottom:1px solid var(--line)}
+  .head{display:flex;align-items:center;gap:14px;padding:22px 20px 20px;max-width:1040px;margin:0 auto;flex-wrap:wrap}
+  .mark{width:40px;height:40px;border-radius:10px;background:var(--accent);display:grid;place-items:center;flex:none}
+  .mark svg{width:24px;height:24px}
+  .head h1{font-size:19px;letter-spacing:-.01em}
+  .head .sub{font-size:12px;color:var(--ink-2);margin-top:2px}
+  .head .back{margin-left:auto;font-size:12px}
+  main{padding:20px 0 60px}
+  .intro{font-size:13px;color:var(--ink-2);max-width:68ch;margin:4px 0 16px}
+  .method{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:18px;box-shadow:var(--shadow);font-size:12.5px;color:var(--ink-2)}
+  .method b{color:var(--ink)}
+  .method .f{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+  .method .f span{background:var(--surface-3);border:1px solid var(--line);padding:3px 9px;border-radius:999px;font-size:11.5px;font-family:var(--mono)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:22px}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
+  .tile .k{font-size:11px;color:var(--ink-2)}
+  .tile .v{font-family:var(--mono);font-size:24px;font-weight:600;margin-top:3px}
+  .tile .v small{font-size:12px;color:var(--ink-3)}
+  .group{margin:24px 0 10px;display:flex;align-items:center;gap:10px}
+  .group .dot{width:10px;height:10px;border-radius:3px}
+  .group h2{font-size:15px}
+  .group .c{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  .group .line{flex:1;height:1px;background:var(--line)}
+  .list{display:flex;flex-direction:column;gap:9px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:30px 1fr 150px;gap:14px;align-items:center}
+  .rank{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink-3);text-align:center}
+  .rank.top{color:var(--accent)}
+  .ci .nm{font-size:14.5px;font-weight:600}
+  .ci .nm .tier{font-size:10px;font-weight:700;color:#fff;padding:2px 7px;border-radius:5px;margin-left:7px;vertical-align:middle}
+  .ci .reason{font-size:12.5px;color:var(--accent-ink);margin-top:3px}
+  .ci .facts{font-size:11.5px;color:var(--ink-2);margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+  .ci .facts b{color:var(--ink);font-weight:600}
+  .score{text-align:right}
+  .score .n{font-family:var(--mono);font-size:22px;font-weight:600}
+  .score .bar{height:7px;border-radius:4px;background:var(--surface-3);overflow:hidden;margin-top:5px}
+  .score .bar>i{display:block;height:100%;border-radius:4px;background:var(--accent)}
+  .score .cap{font-size:10px;color:var(--ink-3);margin-top:3px;letter-spacing:.03em}
+  .mon{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:9px}
+  .mon .m{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow);font-size:12.5px}
+  .mon .m .t{font-weight:600}
+  .mon .m .d{font-size:11px;color:var(--ink-2);margin-top:3px}
+  .mon .m .s{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  footer{border-top:1px solid var(--line);margin-top:34px;padding-top:16px;font-size:11.5px;color:var(--ink-3);line-height:1.7}
+  .disc{font-size:11.5px;color:var(--warn);background:color-mix(in srgb,var(--warn) 10%,transparent);border:1px solid color-mix(in srgb,var(--warn) 28%,transparent);padding:9px 12px;border-radius:9px;margin-bottom:16px}
+  @media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.card{grid-template-columns:26px 1fr;}.card .score{grid-column:2;text-align:left}.score .bar{max-width:200px}}
+</style>
+
+<header>
+  <div class="head">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+    <div>
+      <h1>삼성물산 SMR 주목 노형</h1>
+      <div class="sub">독립 분석 · 공개자료 기반 EPC 관점 우선순위</div>
+    </div>
+    <a class="back" id="back" href="#">← 전체 평가 대시보드</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="disc" id="disc">※ 본 페이지는 공개 자료 기반 <b>독립 분석</b>이며 삼성물산의 공식 입장·계획이 아닙니다. 파트너십은 공개 발표 기준입니다.</div>
+  <p class="intro">삼성물산(Samsung C&amp;T)이 EPC·투자 관점에서 주목할 SMR 노형을, 공개된 파트너십·배치 임박도·사업 규모·사업성으로 가중 평가해 정렬했습니다.</p>
+
+  <div class="method">
+    <b>평가식</b> — 주목도 = 파트너십 45% + 배치 임박도 25% + EPC 규모(용량) 15% + 사업성(종합평가) 15%
+    <div class="f"><span>직접 파트너십 100</span><span>한국·그룹 60–75</span><span>EPC 후보 50</span><span>모니터링 15</span></div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div id="groups"></div>
+
+  <div class="group" style="margin-top:26px"><span class="dot" style="background:var(--t-monitor)"></span><h2>기타 모니터링</h2><span class="c" id="mon-c"></span><span class="line"></span></div>
+  <div class="mon" id="monitor"></div>
+
+  <footer id="footer"></footer>
+</main>
+
+<script src="./data.js" onerror="window.__noData=true"></script>
+<script>
+const MAIN_URL="https://moojungra.github.io/SMR-Evaluation/";
+const LEVEL_TO_SCORE={1:10,2:32.5,3:55,4:77.5,5:100};
+const WEIGHTS={technology_readiness:.22,licensing:.20,economics:.18,safety:.15,supply_fuel:.13,deployment:.12};
+
+const TIER={
+  direct:{label:"직접 파트너십",w:100,color:"var(--t-direct)"},
+  korea:{label:"한국·그룹",w:72,color:"var(--t-korea)"},
+  group:{label:"그룹(삼성중공업)",w:60,color:"var(--t-group)"},
+  target:{label:"글로벌 EPC 후보",w:50,color:"var(--t-target)"},
+  monitor:{label:"모니터링",w:15,color:"var(--t-monitor)"},
+};
+const TIES={
+  "kairos-kp-fhr":{tier:"direct",note:"직접 투자 최대 $100M + EPC 파트너 — Hermes 2(구글 전용, 테네시)"},
+  "nuscale-voygr":{tier:"direct",note:"EPC 협력 — 루마니아·유럽 경수로 SMR"},
+  "bwrx-300":{tier:"direct",note:"EPC 협력 — 스웨덴·루마니아 프로젝트"},
+  "i-smr":{tier:"korea",note:"한국 혁신형 SMR — 국내 실증 EPC 유력"},
+  "smart100":{tier:"korea",note:"한국 일체형 SMR — 수출·EPC 후보"},
+  "salus-100":{tier:"korea",note:"KAERI 소듐로 — 국내 차세대 EPC 잠재"},
+  "bandi":{tier:"korea",note:"KEPCO E&C 소형 PWR — 국내 협력 가능"},
+  "seaborg-cmsr":{tier:"group",note:"삼성중공업 부유식 MSR 협력(그룹 차원)"},
+  "natrium":{tier:"target",note:"건설 임박 대형 Gen IV(미국) — 글로벌 EPC 입찰 대상"},
+  "holtec-smr-300":{tier:"target",note:"건설허가 진행 대형 경수로(미·영) — EPC 대상"},
+  "rolls-royce-smr":{tier:"target",note:"영국 대형 SMR — 유럽 EPC 대상"},
+  "xe-100":{tier:"target",note:"대형 HTGR 건설 준비(미국) — EPC 대상"},
+};
+
+const el=id=>document.getElementById(id);
+el("back").href=MAIN_URL;
+
+const DATA=(!window.__noData&&window.SMR_DATA)?window.SMR_DATA:null;
+if(!DATA){
+  el("groups").innerHTML='<div class="method">데이터(data.js)를 불러오지 못했습니다. 전체 대시보드에서 확인하세요: <a href="'+MAIN_URL+'">'+MAIN_URL+'</a></div>';
+} else {
+  const STAGES=["개념·기본설계","상세설계","인허가","건설","운전"];
+  function stageIdx(r){const s=r.status||"";
+    if(/운전/.test(s))return 5; if(/건설중|건설·|건설\(|건설 완|건설완료|시운전|착공|제작|연료장전|조립|파일럿건설/.test(s))return 4;
+    if(/인허가|인가|심사|GDA|부지|COLA|발주|신청|규제/.test(s))return 3; if(/상세설계/.test(s))return 2;
+    if(/개념|기본|예비|재설계|시험/.test(s))return 1;
+    const dl=(r.dimensions&&r.dimensions.deployment&&r.dimensions.deployment.level)||1; return Math.min(5,Math.max(1,dl));}
+  function overall(r){let w=0,s=0;for(const k in WEIGHTS){const e=r.dimensions[k];if(!e)continue;w+=WEIGHTS[k];s+=LEVEL_TO_SCORE[e.level]*WEIGHTS[k];}return s/w;}
+  function deployScore(r){const e=r.dimensions.deployment;return e?LEVEL_TO_SCORE[e.level]:10;}
+  function capScore(r){return Math.min((r.capacity_mwe_total||0)/500,1)*100;}
+
+  const rows=DATA.reactors.map(r=>{
+    const tie=TIES[r.id]||{tier:"monitor",note:""};
+    const tw=TIER[tie.tier].w;
+    const rel=Math.round(0.45*tw+0.25*deployScore(r)+0.15*capScore(r)+0.15*overall(r));
+    return {r,tie,rel,stage:STAGES[stageIdx(r)-1],ov:Math.round(overall(r))};
+  }).sort((a,b)=>b.rel-a.rel);
+
+  // stats
+  const cnt=t=>rows.filter(x=>x.tie.tier===t).length;
+  el("stats").innerHTML=[
+    ["직접 파트너십",cnt("direct"),"개"],
+    ["한국·그룹",cnt("korea")+cnt("group"),"개"],
+    ["글로벌 EPC 후보",cnt("target"),"개"],
+    ["전체 노형",rows.length,"개"],
+  ].map(([k,v,u])=>`<div class="tile"><div class="k">${k}</div><div class="v mono">${v}<small> ${u}</small></div></div>`).join("");
+
+  const capTxt=r=>r.capacity_mwe_total>0?`${r.capacity_mwe_total}MWe`:"열공급/시험";
+  function cardHTML(x,rank){
+    const {r,tie,rel}=x; const tc=TIER[tie.tier].color;
+    return `<div class="card">
+      <span class="rank ${rank<=3?'top':''} mono">${rank}</span>
+      <div class="ci">
+        <div class="nm">${r.name}<span class="tier" style="background:${tc}">${TIER[tie.tier].label}</span></div>
+        ${tie.note?`<div class="reason">${tie.note}</div>`:''}
+        <div class="facts"><span>${r.country} · ${r.family}</span><span>용량 <b>${capTxt(r)}</b></span>
+          <span>단계 <b>${x.stage}</b></span><span>FOAK <b>${r.foak_target||'—'}</b></span><span>종합평가 <b>${x.ov}</b></span></div>
+      </div>
+      <div class="score"><div class="n mono" style="color:${tc}">${rel}</div>
+        <div class="bar"><i style="width:${rel}%;background:${tc}"></i></div><div class="cap">주목도</div></div>
+    </div>`;
+  }
+
+  // grouped priority tiers
+  const order=["direct","korea","group","target"];
+  let gh="";
+  order.forEach(t=>{
+    const g=rows.filter(x=>x.tie.tier===t); if(!g.length)return;
+    gh+=`<div class="group"><span class="dot" style="background:${TIER[t].color}"></span><h2>${TIER[t].label}</h2><span class="c">${g.length}개</span><span class="line"></span></div>`;
+    gh+=`<div class="list">`+g.map((x,i)=>cardHTML(x,i+1)).join("")+`</div>`;
+  });
+  el("groups").innerHTML=gh;
+
+  // monitoring (rest) — compact, sorted by relevance
+  const mon=rows.filter(x=>x.tie.tier==="monitor");
+  el("mon-c").textContent=`${mon.length}개`;
+  el("monitor").innerHTML=mon.map(x=>`<div class="m"><div class="t">${x.r.name}</div>
+    <div class="d">${x.r.country} · ${x.r.family} · ${capTxt(x.r)}</div>
+    <div class="s">주목도 ${x.rel} · ${x.stage}</div></div>`).join("");
+
+  el("footer").innerHTML=`<p><b>방법.</b> 파트너십 등급(직접/한국·그룹/EPC후보/모니터링)은 공개 발표 기준으로 분류했고, 배치 임박도·사업성은 전체 평가 대시보드의 차원 점수를 사용했습니다. 각 노형의 상세(레이더·근거·기사·ARIS 스펙)는 전체 대시보드에서 확인하세요.</p>
+  <p>데이터 기준일 ${DATA.meta?DATA.meta.updated:''}${DATA.collected_at?' · 자동수집 '+DATA.collected_at.slice(0,10):''} · <a href="${MAIN_URL}">전체 평가 대시보드 →</a></p>`;
+}
+
+// theme follow
+(function(){let t=null;try{t=localStorage.getItem("smr-theme")}catch(e){}if(t)document.documentElement.setAttribute("data-theme",t)})();
+</script>
