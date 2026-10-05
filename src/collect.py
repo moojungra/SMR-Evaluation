@@ -80,6 +80,7 @@ QUERIES: dict[str, tuple[str | None, str]] = {
     "fbnr":              (None, '"Fixed Bed Nuclear Reactor" Brazil'),
     "hexana":            ("Hexana", '"HEXANA" France sodium reactor'),
     "abv-6e":            ("ABV-6E", '"ABV-6E" OR "ABV reactor" floating'),
+    "steady-ldr50":      ("Steady Energy", '"Steady Energy" OR "LDR-50" district heating reactor'),
 }
 
 # 노형 id -> IAEA ARIS 설계명(short_reactor_name). ARIS 미등재 노형은 생략.
