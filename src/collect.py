@@ -104,6 +104,18 @@ def curated_levels(reactor: dict) -> dict[str, int]:
     return {k: v["level"] for k, v in reactor.get("dimensions", {}).items()}
 
 
+def fam_group(t: str | None) -> str:
+    """계열 동치 그룹: iPWR≡PWR, HTGR≡GCR, FHR≡MSR."""
+    t = (t or "").upper()
+    if "PWR" in t:
+        return "PWR"
+    if "HTGR" in t or "GCR" in t:
+        return "HTGR"
+    if "MSR" in t or "FHR" in t:
+        return "MSR"
+    return t
+
+
 def main(delay: float = 0.8) -> None:
     with open(DATA / "reactors.json", encoding="utf-8") as f:
         db = json.load(f)
@@ -142,12 +154,19 @@ def main(delay: float = 0.8) -> None:
             arec = aris_idx.get(norm_name(aname))
             if arec:
                 matched_aris.add(norm_name(aname))
-                # 노형계열 불일치(참고용) 플래그
-                fam = (r.get("family") or "").upper()
-                atype = (arec.get("type") or "").upper()
-                if atype and fam and atype not in fam and fam not in atype \
-                        and not (fam in ("IPWR", "PWR") and atype == "PWR"):
-                    aris_flags.append(f"ℹ {r['name']}: 계열 DB={r.get('family')} / ARIS={arec.get('type')}")
+                # 계열 불일치(동치 그룹 고려): iPWR≡PWR, HTGR≡GCR, MSR≡FHR
+                if fam_group(r.get("family")) and fam_group(arec.get("type")) \
+                        and fam_group(r.get("family")) != fam_group(arec.get("type")):
+                    aris_flags.append(f"ℹ 계열 {r['name']}: DB={r.get('family')} / ARIS={arec.get('type')}")
+                # 용량 불일치(다모듈이면 모듈당 비교, >20%)
+                mods = r.get("modules") or 1
+                ours = r.get("capacity_mwe_module") if mods > 1 else r.get("capacity_mwe_total")
+                an = arec.get("net_mwe")
+                if an and ours and an > 0 and ours > 0:
+                    diff = abs(an - ours) / ((an + ours) / 2)
+                    if diff > 0.2:
+                        aris_flags.append(f"ℹ 용량 {r['name']}: DB={ours}MWe"
+                                          f"{'/모듈' if mods > 1 else ''} / ARIS={an}MWe ({round(diff*100)}%)")
 
         collected[rid] = {
             "news": [{k: it[k] for k in ("title", "source", "date", "url")} for it in items[:3]],
