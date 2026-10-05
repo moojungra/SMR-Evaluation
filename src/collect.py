@@ -158,15 +158,15 @@ def main(delay: float = 0.8) -> None:
                 if fam_group(r.get("family")) and fam_group(arec.get("type")) \
                         and fam_group(r.get("family")) != fam_group(arec.get("type")):
                     aris_flags.append(f"ℹ 계열 {r['name']}: DB={r.get('family')} / ARIS={arec.get('type')}")
-                # 용량 불일치(다모듈이면 모듈당 비교, >20%)
-                mods = r.get("modules") or 1
-                ours = r.get("capacity_mwe_module") if mods > 1 else r.get("capacity_mwe_total")
+                # 용량 불일치: ARIS는 설계마다 '모듈당' 또는 '플랜트 총량'을 섞어 제공하므로
+                # 총량·모듈 양쪽과 비교해 둘 다 20% 넘게 어긋날 때만 플래그.
                 an = arec.get("net_mwe")
-                if an and ours and an > 0 and ours > 0:
-                    diff = abs(an - ours) / ((an + ours) / 2)
+                cands = [c for c in (r.get("capacity_mwe_total"), r.get("capacity_mwe_module")) if c and c > 0]
+                if an and an > 0 and cands:
+                    diff = min(abs(an - c) / ((an + c) / 2) for c in cands)
                     if diff > 0.2:
-                        aris_flags.append(f"ℹ 용량 {r['name']}: DB={ours}MWe"
-                                          f"{'/모듈' if mods > 1 else ''} / ARIS={an}MWe ({round(diff*100)}%)")
+                        aris_flags.append(f"ℹ 용량 {r['name']}: DB={r.get('capacity_mwe_total')}MWe"
+                                          f"(총)/{r.get('capacity_mwe_module')}(모듈) / ARIS={an}MWe ({round(diff*100)}%)")
 
         collected[rid] = {
             "news": [{k: it[k] for k in ("title", "source", "date", "url")} for it in items[:3]],
