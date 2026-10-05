@@ -1,0 +1,99 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-10-05",
+  "description": "SMR 노형 평가 루브릭. 각 차원은 1~5의 성숙도/점수로 평가하며, 수집된 공개 자료를 근거로 에이전트가 매핑한다. 종합 점수는 가중 평균을 0~100으로 정규화한다.",
+  "maturity_scale": {
+    "1": "개념 설계 (Conceptual)",
+    "2": "기본 설계 (Preliminary design)",
+    "3": "상세/최종 설계 (Detailed / final design)",
+    "4": "인허가·건설 단계 (Licensing / under construction)",
+    "5": "실증·운전 입증 (Operating / demonstrated)"
+  },
+  "confidence_levels": ["high", "medium", "low"],
+  "dimensions": [
+    {
+      "key": "technology_readiness",
+      "label": "기술 성숙도",
+      "label_en": "Technology Readiness",
+      "weight": 0.22,
+      "description": "노형 설계의 성숙도와 기반 기술(냉각재·연료·구조)의 운전 경험. 검증된 기술 계보일수록 높음.",
+      "criteria": {
+        "5": "실증로/상용로 운전 경험 또는 동급 기술 다수 운전 실적",
+        "4": "설계인증 완료 또는 FOAK 건설 중, 주요 기술 검증 완료",
+        "3": "상세설계 완료, 핵심 계통 시험 상당 진행",
+        "2": "기본설계 수준, 신기술 요소 검증 진행 중",
+        "1": "개념설계, 미검증 신기술 비중 높음"
+      }
+    },
+    {
+      "key": "licensing",
+      "label": "인허가 진행도",
+      "label_en": "Licensing & Regulatory",
+      "weight": 0.2,
+      "description": "규제기관과의 인허가 진행 단계. 설계인증/표준설계승인/건설허가 취득 여부.",
+      "criteria": {
+        "5": "건설/운영 허가 취득 또는 다수 규제권역에서 승인",
+        "4": "설계인증(DC)·표준설계승인(SDA) 취득 또는 건설허가 심사 중",
+        "3": "설계 사전심사(pre-application) 진행 중, 주요 토픽 리포트 제출",
+        "2": "규제기관과 초기 engagement 단계",
+        "1": "인허가 전략 수립 전/미공개"
+      }
+    },
+    {
+      "key": "economics",
+      "label": "경제성",
+      "label_en": "Economics",
+      "weight": 0.18,
+      "description": "목표 균등화발전원가(LCOE), 건설단가($/kWe), FOAK 비용 신뢰도. 공개 수치의 불확실성이 크므로 신뢰도 함께 기록.",
+      "criteria": {
+        "5": "실적 기반 경쟁력 있는 단가 입증",
+        "4": "확정 발주·고정가 계약 등으로 비용 신뢰도 높음",
+        "3": "상세 비용 추정 공개, 목표 LCOE 경쟁력 있음",
+        "2": "개략 비용 추정만 존재, 불확실성 큼",
+        "1": "비용 정보 미공개 또는 매우 불확실"
+      }
+    },
+    {
+      "key": "safety",
+      "label": "안전성·설계특성",
+      "label_en": "Safety & Design",
+      "weight": 0.15,
+      "description": "피동안전 수준, 비상계획구역(EPZ) 축소 가능성, 노심손상빈도, 핵확산저항성.",
+      "criteria": {
+        "5": "완전 피동안전 + 부지경계 EPZ 등 규제적으로 입증",
+        "4": "피동안전계통 중심, EPZ 대폭 축소 설계 반영",
+        "3": "피동/능동 혼합, 안전목표 명확",
+        "2": "기존 대형로 대비 점진적 개선",
+        "1": "안전 특성 차별성 불명확"
+      }
+    },
+    {
+      "key": "supply_fuel",
+      "label": "공급망·연료",
+      "label_en": "Supply Chain & Fuel",
+      "weight": 0.13,
+      "description": "연료 유형(LEU/HALEU)과 연료 공급 준비도, 핵심기기 제작 공급망 성숙도.",
+      "criteria": {
+        "5": "기성 LEU 연료 + 확립된 공급망, 모듈 양산체계 가동",
+        "4": "연료 공급 확보, 주요 기기 제작처 확정",
+        "3": "표준 연료지만 공급망 구축 중",
+        "2": "HALEU 등 공급 제약 연료, 공급망 초기",
+        "1": "연료/공급망 미확립, 병목 큼"
+      }
+    },
+    {
+      "key": "deployment",
+      "label": "배치 성숙도",
+      "label_en": "Deployment Readiness",
+      "weight": 0.12,
+      "description": "확정 발주·부지·착공 여부, FOAK 목표 상업운전 시점, 배치 파이프라인.",
+      "criteria": {
+        "5": "상업운전 중 또는 다수 확정 발주·착공",
+        "4": "FOAK 착공 또는 구속력 있는 발주 계약 체결",
+        "3": "부지 선정·초기 발주 의향, FOAK 2030년 전후 목표",
+        "2": "타당성조사/MOU 수준 파이프라인",
+        "1": "구체적 배치 계획 부재"
+      }
+    }
+  ]
+}

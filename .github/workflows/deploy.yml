@@ -1,0 +1,53 @@
+name: Build & Deploy SMR Dashboard
+
+# 로컬에 Python 설치 없이, GitHub 러너(Python 기본 제공)가
+# 공개 DB 수집 + 점수 데이터(data.js) 생성 + GitHub Pages 배포를 수행한다.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * 1"        # 매주 월요일 00:00 UTC 자동 갱신
+  workflow_dispatch:            # 수동 실행 버튼
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect sources & generate dashboard data
+        run: python src/build_dashboard.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
