@@ -86,17 +86,21 @@ Linglong One·Bharat SMR), 인허가·설계, 마이크로로(eVinci·Pele·Oklo
 
 `src/collect.py`가 노형별로 공개 소스를 실제 수집한다(추가 의존성은 `requests`뿐).
 
+- **IAEA ARIS JSON API** (`POST /api/DSR/TechnicalData`) — 공식 설계 스펙(설계기관·
+  설계성숙도·정격MWe·노형·냉각재·연료·농축도). 40개 중 28개가 ARIS에 직접 매칭되어
+  권위 있는 '사실 필드'로 교차검증되며, ARIS에만 있는 설계는 **추가 후보**로 리포트.
 - **Wikipedia REST API** — 노형 요약·최종수정일(교차검증·신선도)
 - **Google News RSS** — 노형별 최신 기사(인허가·건설 상태 신호)
 - **상태 힌트** — 기사 제목의 마일스톤 키워드(건설허가·착공·계통연계 등)를 감지해
   해당 차원의 성숙도를 *제안*하고, 큐레이션 값과 불일치 시 `검토 필요`로 플래그
 
-산출물: `data/collected.json`(대시보드가 노형 상세에 '자동수집 신호'로 표시) +
-`data/collection_report.md`(검토 필요 목록). **큐레이션된 평가(level/confidence)는
-덮어쓰지 않는다** — 에이전트는 공개 자료 신호를 수집·제시하고, 승급 판단은 사람이 한다.
+산출물: `data/collected.json`(대시보드가 노형 상세에 '자동수집 신호' + 'IAEA ARIS 공식
+스펙'으로 표시) + `data/collection_report.md`(검토 필요 + ARIS 매칭/추가 후보 목록).
+**큐레이션된 평가(level/confidence)는 덮어쓰지 않는다** — 에이전트는 공개 자료를
+수집·제시하고, 승급 판단은 사람이 한다.
 
-IAEA ARIS·NEA·규제기관은 JS 렌더링/비정형이라 현재 메타데이터 단계이며, 커넥터
-인터페이스(`src/sources/`)에 단계적으로 추가한다.
+> **NEA SMR Dashboard**는 Power BI 임베드(app.powerbi.com)라 깨끗한 JSON API가 없어
+> 자동수집이 비현실적 — 링크/참조용으로만 둔다. IAEA PRIS·규제기관은 단계적 추가 대상.
 
 ---
 

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from .base import SourceConnector
 from .googlenews import GoogleNewsConnector
+from .iaea_aris import IaeaArisConnector
 from .wikipedia import WikipediaConnector
 
 
@@ -30,7 +31,7 @@ class NEA_SMR_Dashboard(SourceConnector):
     name = "NEA SMR Dashboard"
     homepage = "https://www.oecd-nea.org/smrdashboard"
     provides = ["licensing", "deployment", "economics", "supply_fuel"]
-    note = "OECD/NEA. 인허가·입지·금융·공급망·연료 축의 배치 준비도 트래킹 기준."
+    note = "OECD/NEA SMR Digital Dashboard(4판, 95개). Power BI 임베드라 자동수집 불가 — 링크/참조용."
 
 
 class WNA(SourceConnector):
@@ -64,9 +65,9 @@ class KINS(SourceConnector):
 # 평가가 참조하는 공개 소스 목록.
 # Wikipedia·Google News 는 실수집 구현 완료(available), 나머지는 메타데이터 단계.
 REGISTRY: list[SourceConnector] = [
+    IaeaArisConnector(),
     WikipediaConnector(),
     GoogleNewsConnector(),
-    IAEA_ARIS(),
     IAEA_PRIS(),
     NEA_SMR_Dashboard(),
     WNA(),

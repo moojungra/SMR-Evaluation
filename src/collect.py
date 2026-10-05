@@ -16,6 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from sources.googlenews import GoogleNewsConnector, status_hint
+from sources.iaea_aris import IaeaArisConnector, norm_name
 from sources.wikipedia import WikipediaConnector
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -67,6 +68,19 @@ QUERIES: dict[str, tuple[str | None, str]] = {
     "thorcon":           ("ThorCon nuclear reactor", '"ThorCon" Indonesia reactor'),
 }
 
+# 노형 id -> IAEA ARIS 설계명(short_reactor_name). ARIS 미등재 노형은 생략.
+ARIS_NAMES: dict[str, str] = {
+    "nuscale-voygr": "NuScale Power Module", "bwrx-300": "BWRX-300", "linglong-one": "ACP100",
+    "rolls-royce-smr": "Rolls-Royce SMR", "holtec-smr-300": "SMR-300", "i-smr": "i-SMR",
+    "smart100": "SMART", "ap300": "AP300", "carem-25": "CAREM", "klt-40s": "KLT-40S",
+    "ritm-200": "RITM-200N", "nuward": "NUWARD", "xe-100": "Xe-100", "natrium": "Natrium",
+    "kairos-kp-fhr": "KP-FHR", "terrestrial-imsr": "IMSR400", "arc-100": "ARC-100",
+    "newcleo-lfr": "LFR-AS-200", "seaborg-cmsr": "CMSR", "svbr-100": "SVBR-100",
+    "moltex-ssr": "SSR-W", "ga-em2": "FMR", "blykalla-sealer": "SEALER-55",
+    "thorcon": "Thorcon 500", "copenhagen-atomics": "Copenhagen Atomics Waste Burner",
+    "htr-pm": "HTR-PM", "httr": "HTTR", "last-energy-pws20": "PWR-20",
+}
+
 
 def curated_levels(reactor: dict) -> dict[str, int]:
     return {k: v["level"] for k, v in reactor.get("dimensions", {}).items()}
@@ -78,11 +92,19 @@ def main(delay: float = 0.8) -> None:
 
     wiki = WikipediaConnector()
     news = GoogleNewsConnector()
-    print(f"수집 시작: {len(db['reactors'])}개 노형 · Wikipedia={wiki.available()} · GoogleNews={news.available()}")
+    aris = IaeaArisConnector()
+    print(f"수집 시작: {len(db['reactors'])}개 노형 · Wikipedia={wiki.available()} · "
+          f"GoogleNews={news.available()} · ARIS={aris.available()}")
+
+    # IAEA ARIS 공식 설계 스펙을 1회 수집(SMR 인덱스)
+    aris_idx = aris.index_smr()
+    print(f"  ARIS SMR 설계 {len(aris_idx)}건 수신")
+    matched_aris: set[str] = set()
 
     collected: dict[str, dict] = {}
     report_lines: list[str] = []
     flags: list[str] = []
+    aris_flags: list[str] = []
 
     for r in db["reactors"]:
         rid = r["id"]
@@ -94,10 +116,26 @@ def main(delay: float = 0.8) -> None:
         time.sleep(delay)
 
         hint = status_hint(items)
+
+        # IAEA ARIS 공식 스펙 매칭
+        arec = None
+        aname = ARIS_NAMES.get(rid)
+        if aname:
+            arec = aris_idx.get(norm_name(aname))
+            if arec:
+                matched_aris.add(norm_name(aname))
+                # 노형계열 불일치(참고용) 플래그
+                fam = (r.get("family") or "").upper()
+                atype = (arec.get("type") or "").upper()
+                if atype and fam and atype not in fam and fam not in atype \
+                        and not (fam in ("IPWR", "PWR") and atype == "PWR"):
+                    aris_flags.append(f"ℹ {r['name']}: 계열 DB={r.get('family')} / ARIS={arec.get('type')}")
+
         collected[rid] = {
             "news": [{k: it[k] for k in ("title", "source", "date", "url")} for it in items[:3]],
             "wiki": w,
             "status_hint": hint,
+            "aris": arec,
         }
 
         top = items[0]["title"] if items else "(뉴스 없음)"
@@ -115,18 +153,30 @@ def main(delay: float = 0.8) -> None:
         report_lines.append("")
         print(f"  · {rid:<20} 뉴스 {len(items)}건" + (f" · 힌트 {hint['label']}" if hint else ""))
 
+    # ARIS에 있으나 우리 DB에 없는 SMR 설계(향후 추가 후보)
+    discovery = [d for k, d in sorted(aris_idx.items()) if k not in matched_aris]
+
     out = {"collected_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-           "count": len(collected), "reactors": collected}
+           "count": len(collected), "reactors": collected,
+           "aris_matched": len(matched_aris), "aris_total_smr": len(aris_idx),
+           "aris_discovery": [{"name": d["name"], "country": d["country"],
+                               "status": d["design_status"], "net_mwe": d["net_mwe"],
+                               "type": d["type"]} for d in discovery]}
     (DATA / "collected.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
 
     header = [f"# SMR 수집 리포트", f"수집 시각: {out['collected_at']}", "",
-              f"## 검토 필요 ({len(flags)}건)", ""]
-    header += [f"- {m}" for m in flags] if flags else ["- (없음) 큐레이션 상태와 수집 신호 일치", ""]
+              f"## 검토 필요 — 상태 변화 감지 ({len(flags)}건)", ""]
+    header += [f"- {m}" for m in flags] if flags else ["- (없음) 큐레이션 상태와 수집 신호 일치"]
+    header += ["", f"## IAEA ARIS 참고 ({len(matched_aris)}/{len(aris_idx)} 매칭)", ""]
+    header += [f"- {m}" for m in aris_flags] if aris_flags else ["- 계열 불일치 없음"]
+    header += ["", f"## ARIS 미등재 → 추가 후보 ({len(discovery)}건)", ""]
+    header += [f"- {d['name']} ({d['country']}, {d['design_status']}, "
+               f"{d['net_mwe'] or '?'}MWe, {d['type']})" for d in discovery]
     header += ["", "## 노형별 최신 신호", ""]
     (DATA / "collection_report.md").write_text("\n".join(header + report_lines), encoding="utf-8")
 
     print(f"\n완료 → data/collected.json, data/collection_report.md")
-    print(f"검토 필요 {len(flags)}건")
+    print(f"상태변화 검토 {len(flags)}건 · ARIS 매칭 {len(matched_aris)}/{len(aris_idx)} · 추가후보 {len(discovery)}건")
     for m in flags:
         print("  " + m)
 

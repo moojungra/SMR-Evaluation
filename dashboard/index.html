@@ -174,6 +174,15 @@
   .review-flag { font-size: 9.5px; font-weight: 700; color: #fff; background: var(--warn);
     padding: 2px 6px; border-radius: 5px; }
 
+  .aris-box { grid-column: 1 / -1; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: 10px; padding: 11px 13px; margin-top: 8px; }
+  .aris-box .lh { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600;
+    color: var(--accent-ink); letter-spacing: .03em; margin-bottom: 8px; }
+  .ar-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 12px; }
+  .ar-k { color: var(--ink-3); }
+  .ar-v { color: var(--ink); font-weight: 500; }
+  .ar-note { font-size: 10.5px; color: var(--ink-3); margin-top: 8px; }
+
   .sec { margin: 32px 0 12px; display: flex; align-items: baseline; gap: 12px; }
   .sec h2 { font-size: 16px; letter-spacing: -.01em; }
   .sec .hint { font-size: 12px; color: var(--ink-3); }
@@ -475,17 +484,32 @@ function reviewFlag(r){
   const cur=curatedLevel(r, h.dimension);
   return (cur!==null && h.suggested_level>cur) ? h : null;
 }
+function arisHTML(a){
+  if(!a) return "";
+  const row=(k,v)=> v?`<span class="ar-k">${k}</span><span class="ar-v">${v}</span>`:"";
+  const specs=[
+    row("설계기관", a.org), row("설계성숙도", a.design_status),
+    row("정격출력", a.net_mwe!=null?`${a.net_mwe} MWe`:null),
+    row("노형/냉각재", [a.type,a.coolant,a.spectrum].filter(Boolean).join(" · ")||null),
+    row("연료", a.fuel), row("농축도", a.enrichment!=null?`${a.enrichment}%`:null),
+  ].filter(Boolean).join("");
+  return `<div class="aris-box"><div class="lh"><span class="dot" style="background:var(--accent)"></span>IAEA ARIS · 공식 설계 스펙</div>
+    <div class="ar-grid">${specs}</div>
+    <div class="ar-note">* 설계성숙도는 IAEA 설계 라벨(실시간 프로젝트 상태 아님) · 출처 <a href="https://aris.iaea.org/" target="_blank" rel="noopener">aris.iaea.org</a></div></div>`;
+}
 function liveHTML(r){
   const lv=r.live; if(!lv) return "";
   const news=(lv.news||[]).filter(n=>n.title);
   const flag=reviewFlag(r);
-  if(!news.length && !lv.wiki && !flag) return "";
+  if(!news.length && !lv.wiki && !flag && !lv.aris) return "";
   let h=`<div class="live-box"><div class="lh"><span class="dot"></span>자동수집 신호 · Wikipedia + Google News</div>`;
   if(flag) h+=`<div class="hint"><b>상태 변화 감지:</b> ${flag.label} → ${flag.dimension} 제안 Lv${flag.suggested_level} (현재 큐레이션 Lv${curatedLevel(r,flag.dimension)}). 근거: ${flag.evidence}</div>`;
   h+=news.map(n=>`<div class="live-item"><span class="d">${n.date||'—'}</span>
     <span><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a> <span class="sc">· ${n.source||''}</span></span></div>`).join("");
   if(lv.wiki&&lv.wiki.url) h+=`<div class="live-item"><span class="d">위키</span><span><a href="${lv.wiki.url}" target="_blank" rel="noopener">${lv.wiki.title||'Wikipedia'}</a> <span class="sc">· 최종수정 ${(lv.wiki.modified||'').slice(0,10)}</span></span></div>`;
-  return h+`</div>`;
+  h+=`</div>`;
+  h+=arisHTML(lv.aris);
+  return h;
 }
 function rowHTML(r, rank){
   const ev=r.ev; const sc=scoreColor(ev.overall); const g4=r.generation==="Gen IV";
