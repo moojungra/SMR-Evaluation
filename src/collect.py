@@ -53,6 +53,18 @@ QUERIES: dict[str, tuple[str | None, str]] = {
     "usnc-mmr":          ("Ultra Safe Nuclear Corporation", '("USNC" OR "Kronos MMR") microreactor'),
     "last-energy-pws20": ("Last Energy", '"Last Energy" reactor'),
     "radiant-kaleidos":  (None, '"Radiant" (Kaleidos OR microreactor) nuclear -stock'),
+    "bharat-smr":        ("Bharat Small Modular Reactor", '"Bharat Small Modular Reactor" OR "BSMR-200" India'),
+    "httr":              ("High-temperature engineering test reactor", '"HTTR" (JAEA OR hydrogen OR reactor) Japan'),
+    "marvel":            (None, '"MARVEL" microreactor INL Idaho'),
+    "acpr50s":           ("ACPR50S", '"ACPR50S" OR "ACPR50" CGN floating reactor'),
+    "svbr-100":          ("SVBR-100", '"SVBR-100" reactor'),
+    "moltex-ssr":        ("Moltex Energy", '"Moltex" (SSR OR reactor) -stock'),
+    "ga-em2":            ("Energy Multiplier Module", '"General Atomics" (EM2 OR "fast modular reactor") nuclear -stock'),
+    "nano-zeus":         (None, '"NANO Nuclear" (ZEUS OR microreactor) -stock'),
+    "dhr-400":           (None, '"DHR-400" OR "Yanlong" OR "district heating reactor" China nuclear'),
+    "copenhagen-atomics":(None, '"Copenhagen Atomics" (reactor OR thorium)'),
+    "blykalla-sealer":   ("Blykalla", '"Blykalla" OR "SEALER" reactor Sweden -stock'),
+    "thorcon":           ("ThorCon nuclear reactor", '"ThorCon" Indonesia reactor'),
 }
 
 
