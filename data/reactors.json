@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "updated": "2026-10-05",
+  "updated": "2026-10-17",
   "disclaimer": "공개 자료(IAEA ARIS/PRIS, NEA SMR Dashboard, WNA, World Nuclear News, 각국 규제기관·벤더 공개자료)를 2026년 기준으로 정규화한 베이스라인. 수치는 근사·변동 가능하므로 각 항목의 confidence와 sources를 함께 확인할 것.",
   "taxonomy": {
     "generation": ["Gen III+", "Gen IV"],
