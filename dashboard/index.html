@@ -340,12 +340,13 @@
     "generation": ["Gen III+", "Gen IV"]
   },
   "rubric": { "dimensions": [
-    { "key":"technology_readiness", "label":"기술 성숙도", "label_en":"Tech", "weight":0.22 },
-    { "key":"licensing",           "label":"인허가 진행도", "label_en":"License", "weight":0.20 },
-    { "key":"economics",           "label":"경제성",       "label_en":"Economy", "weight":0.18 },
-    { "key":"safety",              "label":"안전성·설계",  "label_en":"Safety",  "weight":0.15 },
-    { "key":"supply_fuel",         "label":"공급망·연료",  "label_en":"Supply",  "weight":0.13 },
-    { "key":"deployment",          "label":"배치 성숙도",  "label_en":"Deploy",  "weight":0.12 }
+    { "key":"commercial",          "label":"사업성·재원조달", "label_en":"Commercial", "weight":0.22 },
+    { "key":"technology_readiness", "label":"기술 성숙도", "label_en":"Tech", "weight":0.16 },
+    { "key":"deployment",          "label":"배치 성숙도",  "label_en":"Deploy",  "weight":0.16 },
+    { "key":"economics",           "label":"경제성",       "label_en":"Economy", "weight":0.15 },
+    { "key":"licensing",           "label":"인허가 진행도", "label_en":"License", "weight":0.15 },
+    { "key":"safety",              "label":"안전성·설계",  "label_en":"Safety",  "weight":0.08 },
+    { "key":"supply_fuel",         "label":"공급망·연료",  "label_en":"Supply",  "weight":0.08 }
   ]},
   "sources": [
     { "name":"IAEA ARIS", "homepage":"https://aris.iaea.org/", "provides":["설계 서술","용량","연료"], "note":"Advanced Reactors Information System — 설계 서술 표준 출처.", "connected":false },
@@ -402,7 +403,7 @@ const CAT_COLOR = {"경수로 SMR":"var(--accent)","비경수로 SMR":"var(--gen
 
 function scoreReactor(r){
   let w=0, wSum=0, cSum=0, tally={high:0,medium:0,low:0};
-  const dims = DIMS.map(d=>{
+  const dims = DIMS.filter(d=>r.dimensions[d.key]).map(d=>{
     const e=r.dimensions[d.key]; const base=LEVEL_TO_SCORE[e.level];
     w+=d.weight; wSum+=base*d.weight; cSum+=base*d.weight*CONF_FACTOR[e.confidence]; tally[e.confidence]++;
     return {key:d.key,label:d.label,label_en:d.label_en,weight:d.weight,level:e.level,confidence:e.confidence,score:base,rationale:e.rationale};
@@ -666,7 +667,7 @@ function renderSources(){
 }
 
 el("footer").innerHTML = `
-  <p><b>평가 방법.</b> 각 노형을 6개 차원(기술 성숙도 22% · 인허가 20% · 경제성 18% · 안전성 15% · 공급망/연료 13% · 배치 12%)에서 성숙도 1~5로 매핑하고, 가중 평균을 0~100으로 정규화합니다. 데이터 신뢰도(高/中/低)는 '신뢰도보정' 점수와 배지로 별도 표시됩니다.</p>
+  <p><b>평가 방법(상업화 우선 v0.3).</b> 영업·BD 관점에서 7개 차원 — <b>사업성·재원조달 22%</b> · 기술 성숙도 16% · 배치 16% · 경제성 15% · 인허가 15% · 안전성 8% · 공급망/연료 8% — 을 1~5로 매핑해 가중 평균을 0~100으로 정규화합니다. '사업성·재원조달'은 확보 재원·확정 발주·모기업 자금력·상업 실적을 반영합니다. 데이터 신뢰도(高/中/低)는 '신뢰도보정' 점수와 배지로 별도 표시됩니다.</p>
   <p><b>분류.</b> 세대(Gen III+ 경수로 중심 / Gen IV 고속로·고온가스로·용융염·납냉각) · 분류(경수로 SMR / 비경수로 SMR / 마이크로로 MMR) · 기술계열(PWR·iPWR·BWR·HTGR·SFR·LFR·MSR·FHR·히트파이프)로 필터링할 수 있습니다.</p>
   <p><b>주의.</b> ${DATA.meta.disclaimer} 의사결정 보조용이며 1차 자료 검증을 대체하지 않습니다. rubric v${DATA.meta.rubric_version} · data v${DATA.meta.data_version}</p>`;
 

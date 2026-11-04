@@ -1,7 +1,7 @@
 {
-  "version": "0.1.0",
-  "updated": "2026-10-05",
-  "description": "SMR 노형 평가 루브릭. 각 차원은 1~5의 성숙도/점수로 평가하며, 수집된 공개 자료를 근거로 에이전트가 매핑한다. 종합 점수는 가중 평균을 0~100으로 정규화한다.",
+  "version": "0.3.0",
+  "updated": "2026-11-04",
+  "description": "SMR 노형 평가 루브릭(상업화 우선). 각 차원은 1~5로 평가하며, 영업·BD 관점에서 재원조달·상업적 성공 가능성(사업성)을 최대 가중한다. 종합 점수는 가중 평균을 0~100으로 정규화한다.",
   "maturity_scale": {
     "1": "개념 설계 (Conceptual)",
     "2": "기본 설계 (Preliminary design)",
@@ -15,7 +15,7 @@
       "key": "technology_readiness",
       "label": "기술 성숙도",
       "label_en": "Technology Readiness",
-      "weight": 0.22,
+      "weight": 0.16,
       "description": "노형 설계의 성숙도와 기반 기술(냉각재·연료·구조)의 운전 경험. 검증된 기술 계보일수록 높음.",
       "criteria": {
         "5": "실증로/상용로 운전 경험 또는 동급 기술 다수 운전 실적",
@@ -29,7 +29,7 @@
       "key": "licensing",
       "label": "인허가 진행도",
       "label_en": "Licensing & Regulatory",
-      "weight": 0.2,
+      "weight": 0.15,
       "description": "규제기관과의 인허가 진행 단계. 설계인증/표준설계승인/건설허가 취득 여부.",
       "criteria": {
         "5": "건설/운영 허가 취득 또는 다수 규제권역에서 승인",
@@ -43,7 +43,7 @@
       "key": "economics",
       "label": "경제성",
       "label_en": "Economics",
-      "weight": 0.18,
+      "weight": 0.15,
       "description": "목표 균등화발전원가(LCOE), 건설단가($/kWe), FOAK 비용 신뢰도. 공개 수치의 불확실성이 크므로 신뢰도 함께 기록.",
       "criteria": {
         "5": "실적 기반 경쟁력 있는 단가 입증",
@@ -57,7 +57,7 @@
       "key": "safety",
       "label": "안전성·설계특성",
       "label_en": "Safety & Design",
-      "weight": 0.15,
+      "weight": 0.08,
       "description": "피동안전 수준, 비상계획구역(EPZ) 축소 가능성, 노심손상빈도, 핵확산저항성.",
       "criteria": {
         "5": "완전 피동안전 + 부지경계 EPZ 등 규제적으로 입증",
@@ -71,7 +71,7 @@
       "key": "supply_fuel",
       "label": "공급망·연료",
       "label_en": "Supply Chain & Fuel",
-      "weight": 0.13,
+      "weight": 0.08,
       "description": "연료 유형(LEU/HALEU)과 연료 공급 준비도, 핵심기기 제작 공급망 성숙도.",
       "criteria": {
         "5": "기성 LEU 연료 + 확립된 공급망, 모듈 양산체계 가동",
@@ -85,7 +85,7 @@
       "key": "deployment",
       "label": "배치 성숙도",
       "label_en": "Deployment Readiness",
-      "weight": 0.12,
+      "weight": 0.16,
       "description": "확정 발주·부지·착공 여부, FOAK 목표 상업운전 시점, 배치 파이프라인.",
       "criteria": {
         "5": "상업운전 중 또는 다수 확정 발주·착공",
@@ -93,6 +93,20 @@
         "3": "부지 선정·초기 발주 의향, FOAK 2030년 전후 목표",
         "2": "타당성조사/MOU 수준 파이프라인",
         "1": "구체적 배치 계획 부재"
+      }
+    },
+    {
+      "key": "commercial",
+      "label": "사업성·재원조달",
+      "label_en": "Commercial & Financing",
+      "weight": 0.22,
+      "description": "현실적 상업화 가능성: 확보된 재원(정부 대출·그랜트·대형 투자), 확정 발주·PPA, 모기업 자금력, 상업 인도 실적. 영업·BD 관점의 최우선 축.",
+      "criteria": {
+        "5": "확정 재원·발주 다수 + 강력한 자금력(대기업/국가), 상업 인도 임박·실적",
+        "4": "FOAK 재원 확보(대출보증·대형 투자·국가 지원) + 구속력 있는 발주/PPA",
+        "3": "정부 프로그램 지원·주요 투자 유치, 발주 의향 수준",
+        "2": "초기 투자·MOU 수준, 재원 불확실",
+        "1": "재원 전략 전무 또는 자금난·사업 중단 위험"
       }
     }
   ]

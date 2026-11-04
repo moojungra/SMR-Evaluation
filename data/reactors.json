@@ -1,179 +1,3440 @@
 {
-  "version": "0.2.0",
-  "updated": "2026-10-17",
-  "disclaimer": "공개 자료(IAEA ARIS/PRIS, NEA SMR Dashboard, WNA, World Nuclear News, 각국 규제기관·벤더 공개자료)를 2026년 기준으로 정규화한 베이스라인. 수치는 근사·변동 가능하므로 각 항목의 confidence와 sources를 함께 확인할 것.",
-  "taxonomy": {
-    "generation": ["Gen III+", "Gen IV"],
-    "category": ["경수로 SMR", "비경수로 SMR", "마이크로로(MMR)"],
-    "family": ["PWR", "iPWR", "PHWR", "BWR", "HTGR", "SFR", "LFR", "MSR", "FHR", "GFR", "Heat-pipe", "Pool"]
-  },
-  "dimension_keys": ["technology_readiness", "licensing", "economics", "safety", "supply_fuel", "deployment"],
-  "reactors": [
-    {"id":"htr-pm","name":"HTR-PM (스다오완)","vendor":"CNNC / 칭화대","country":"중국","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":210,"capacity_mwe_module":210,"modules":1,"fuel":"LEU TRISO","status":"운전중","foak_target":"2023 상업운전","tags":["운전중","공정열"],
-      "summary":"세계 최초 상업운전 중인 4세대 원자로. 2023년 12월 상업운전 개시, 페블베드 고온가스로로 본질안전성 입증(무개입 잔열제거 시험 성공).",
-      "dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"상업 실증 운전 중, 기술 입증 완료."},"licensing":{"level":5,"confidence":"high","rationale":"중국 규제 운영허가 취득."},"economics":{"level":3,"confidence":"low","rationale":"실증로 수준, 상용 단가 불확실."},"safety":{"level":5,"confidence":"high","rationale":"TRISO 본질안전, 무개입 잔열제거 입증."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"중국 내 TRISO 공급망 가동."},"deployment":{"level":5,"confidence":"high","rationale":"상업운전·후속호기 검토."}},
-      "sources":["IAEA ARIS","CNNC","World Nuclear News"]},
-
-    {"id":"klt-40s","name":"KLT-40S (Akademik Lomonosov)","vendor":"Rosatom","country":"러시아","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":70,"capacity_mwe_module":35,"modules":2,"fuel":"LEU","status":"운전중","foak_target":"2020 상업운전","tags":["운전중","해상부유식"],
-      "summary":"세계 유일 상업 운전 중 부유식 원전. 2019년 Pevek 송전 개시, 2020년 상업운전. 쇄빙선 원자로 계보의 검증 기술.",
-      "dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"해상 상업운전 중, 함정 원자로 계보."},"licensing":{"level":5,"confidence":"high","rationale":"러시아 규제 운영허가."},"economics":{"level":3,"confidence":"low","rationale":"오지·군수 특수용도, 일반 단가 비교 제한."},"safety":{"level":3,"confidence":"medium","rationale":"기존 함정로 기반, 피동 특성 제한적."},"supply_fuel":{"level":5,"confidence":"high","rationale":"Rosatom 일관 연료·공급망."},"deployment":{"level":5,"confidence":"high","rationale":"운전 중, Baimsky 후속 사업."}},
-      "sources":["IAEA PRIS","Rosatom","World Nuclear News"]},
-
-    {"id":"bwrx-300","name":"GE Hitachi BWRX-300","vendor":"GE Vernova Hitachi","country":"캐나다/미국","generation":"Gen III+","category":"경수로 SMR","family":"BWR","coolant":"경수","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"LEU","status":"건설중","foak_target":"2030 상업운전","tags":["건설중"],
-      "summary":"인증 ESBWR 기반 단순화 BWR. 캐나다 OPG Darlington 1호기 착공(2025)·기초 설치(2026), 미국 최초 BWRX-300 건설허가 취득, 영국 GDA 진행.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"인증 ESBWR 계보, 검증 기술."},"licensing":{"level":5,"confidence":"high","rationale":"캐나다 건설허가+미국 NRC 건설허가 취득."},"economics":{"level":3,"confidence":"medium","rationale":"기존 BWR 공급망 활용, FOAK 실적 진행."},"safety":{"level":4,"confidence":"high","rationale":"피동 격리응축기·단순화 계통."},"supply_fuel":{"level":4,"confidence":"high","rationale":"표준 LEU BWR 연료, 성숙 공급망."},"deployment":{"level":5,"confidence":"high","rationale":"Darlington 착공·기초 설치, 다수 파이프라인."}},
-      "sources":["IAEA ARIS","CNSC","US NRC","OPG","World Nuclear News"]},
-
-    {"id":"linglong-one","name":"Linglong One (ACP100)","vendor":"CNNC","country":"중국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":125,"capacity_mwe_module":125,"modules":1,"fuel":"LEU","status":"시운전","foak_target":"2027 상업운전(지연)","tags":["건설완료단계"],
-      "summary":"세계 최초 착공한 육상 상업용 SMR. 2021년 착공, 냉기능시험(2025)·터빈 시운전(2025) 완료, 2026년 고온기능시험 중. 연료장전 전, 상업운전 2027년 전망.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"검증 PWR, FOAK 건설 완료·시운전."},"licensing":{"level":5,"confidence":"high","rationale":"건설허가 취득, 운영허가 심사."},"economics":{"level":3,"confidence":"low","rationale":"건설비 공개 제한, 자국 공급망 이점."},"safety":{"level":4,"confidence":"medium","rationale":"일체형·피동안전."},"supply_fuel":{"level":5,"confidence":"high","rationale":"표준 LEU, CNNC 일관 공급망."},"deployment":{"level":5,"confidence":"high","rationale":"건설 완료·시운전, 상업운전 임박."}},
-      "sources":["IAEA ARIS","CNNC","World Nuclear News"]},
-
-    {"id":"nuscale-voygr","name":"NuScale VOYGR (US460)","vendor":"NuScale Power","country":"미국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":462,"capacity_mwe_module":77,"modules":6,"fuel":"LEU","status":"인허가","foak_target":"2033 (루마니아)","tags":[],
-      "summary":"자연순환 일체형 PWR. 50MWe 설계 NRC 표준설계승인 취득, US460 상향 심사 중. 루마니아 RoPower VOYGR-6 FEED 완료, FID 2026~2027 전망.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"통합시험루프 검증, 신기술 리스크 낮음."},"licensing":{"level":4,"confidence":"high","rationale":"50MWe 표준설계승인, US460 심사 중."},"economics":{"level":2,"confidence":"medium","rationale":"초기 CFPP 비용 상승·취소 전례."},"safety":{"level":5,"confidence":"high","rationale":"완전 피동 냉각, 부지경계 EPZ 추진."},"supply_fuel":{"level":4,"confidence":"high","rationale":"표준 LEU, 모듈 양산 목표."},"deployment":{"level":3,"confidence":"medium","rationale":"루마니아 사업 FID 임박, COD 2033."}},
-      "sources":["IAEA ARIS","US NRC","NuScale","World Nuclear News"]},
-
-    {"id":"natrium","name":"TerraPower Natrium","vendor":"TerraPower / GEH","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":345,"capacity_mwe_module":345,"modules":1,"fuel":"HALEU 금속","status":"건설중","foak_target":"2030~31 (Kemmerer)","tags":["건설중","축열(500MWe)"],
-      "summary":"소듐냉각 고속로+용융염 축열. 비LWR 최초 NRC 건설허가 취득(2026.3), Kemmerer 본 공사 착수(2026.4). 출력 500MWe까지 유연. HALEU 공급이 리스크.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 계보, 축열 결합은 신규."},"licensing":{"level":4,"confidence":"high","rationale":"NRC 건설허가 취득(비LWR 최초)."},"economics":{"level":2,"confidence":"low","rationale":"FOAK 비용 상향·불확실."},"safety":{"level":4,"confidence":"medium","rationale":"저압 풀형 SFR 피동, 소듐 관리 필요."},"supply_fuel":{"level":2,"confidence":"high","rationale":"HALEU 공급 차질로 일정 지연."},"deployment":{"level":4,"confidence":"high","rationale":"Kemmerer 착공, 완공 목표 2031."}},
-      "sources":["IAEA ARIS","US NRC","US DOE","World Nuclear News"]},
-
-    {"id":"rolls-royce-smr","name":"Rolls-Royce SMR","vendor":"Rolls-Royce SMR","country":"영국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":470,"capacity_mwe_module":470,"modules":1,"fuel":"LEU","status":"인허가·부지계약","foak_target":"2030년대 초 (Wylfa)","tags":[],
-      "summary":"470MWe급 공장모듈화 PWR. GDA 최종단계(2026.12 종료 예정), GB Energy–Nuclear 선정, 영국 Wylfa(Ynys Môn) 3기 부지계약 체결.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"high","rationale":"검증 PWR, 공장모듈 실증 전."},"licensing":{"level":4,"confidence":"high","rationale":"GDA 최종단계, 유럽 최선두."},"economics":{"level":3,"confidence":"medium","rationale":"공장제작·반복건설 비용 절감 목표."},"safety":{"level":3,"confidence":"medium","rationale":"피동/능동 혼합 안전계통."},"supply_fuel":{"level":4,"confidence":"high","rationale":"표준 LEU, 영국 공급망."},"deployment":{"level":4,"confidence":"high","rationale":"Wylfa 부지계약, 3기 배치 추진."}},
-      "sources":["IAEA ARIS","UK ONR","Rolls-Royce SMR","World Nuclear News"]},
-
-    {"id":"smart100","name":"SMART100","vendor":"KAERI / KHNP","country":"대한민국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":110,"capacity_mwe_module":110,"modules":1,"fuel":"LEU","status":"설계인가 취득","foak_target":"미확정","tags":[],
-      "summary":"한국형 일체형 PWR. 사우디 협력으로 피동안전 반영한 SMART100 표준설계인가(SDA) 취득. 수출 추진 중이나 FOAK 부지 미확정.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"SMART 계보, 설계 성숙."},"licensing":{"level":4,"confidence":"high","rationale":"표준설계인가 취득."},"economics":{"level":3,"confidence":"low","rationale":"상용 실적 미확보."},"safety":{"level":4,"confidence":"medium","rationale":"피동안전 반영 일체형."},"supply_fuel":{"level":5,"confidence":"high","rationale":"국내 표준 LEU·성숙 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"FOAK 부지·발주 미확정."}},
-      "sources":["IAEA ARIS","KAERI","KHNP","NEI"]},
-
-    {"id":"i-smr","name":"i-SMR (혁신형 SMR)","vendor":"KHNP / KAERI","country":"대한민국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":680,"capacity_mwe_module":170,"modules":4,"fuel":"LEU","status":"인허가(SDA 심사)","foak_target":"2030년대 중반","tags":["무붕산"],
-      "summary":"SMART 후속 한국형 혁신 SMR. 무붕산·피동안전·부하추종. 2026년 3월 표준설계인가(SDA) 신청, 2028년 승인 목표. 국내 성숙 공급망이 강점.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"SMART 경험 기반, 혁신요소 검증 중."},"licensing":{"level":3,"confidence":"high","rationale":"SDA 신청(2026.3), 심사 진행."},"economics":{"level":3,"confidence":"low","rationale":"경쟁력 목표, 실증단가 미확보."},"safety":{"level":4,"confidence":"medium","rationale":"피동안전·장기냉각, 붕소계통 제거."},"supply_fuel":{"level":5,"confidence":"high","rationale":"국내 표준 LEU·기기 제작 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"FOAK 부지 미확정, 로드맵 단계."}},
-      "sources":["IAEA ARIS","KHNP","KAERI","KINS","World Nuclear News"]},
-
-    {"id":"holtec-smr-300","name":"Holtec SMR-300","vendor":"Holtec International","country":"미국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"LEU","status":"인허가(건설허가 심사)","foak_target":"2030년대 초 (Palisades)","tags":[],
-      "summary":"300MWe급 피동안전 PWR. Palisades 부지 쌍둥이 SMR 건설허가(CPA)·PSAR 제출(2026), DOE First Mover 4억달러 지원. 영국 Cottam 제안도 진행.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"표준 PWR 기반, 설계 상세화."},"licensing":{"level":3,"confidence":"high","rationale":"NRC 건설허가 심사(Part1·PSAR 제출)."},"economics":{"level":3,"confidence":"medium","rationale":"DOE 4억달러 지원, 상세 단가 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"피동 냉각 중심."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"표준 LEU, Holtec 제작 인프라."},"deployment":{"level":3,"confidence":"medium","rationale":"Palisades 추진, 완공 2030년대 초."}},
-      "sources":["IAEA ARIS","US NRC","Holtec","US DOE","World Nuclear News"]},
-
-    {"id":"ritm-200","name":"RITM-200 (Baimsky/육상)","vendor":"Rosatom","country":"러시아","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":106,"capacity_mwe_module":53,"modules":2,"fuel":"LEU","status":"건설·제작","foak_target":"2020년대 후반","tags":["해상부유식","건설중"],
-      "summary":"쇄빙선 검증 일체형 PWR. Baimsky 광산용 부유식 4기(각 106MWe)·육상형 추진, 1호 원자로 제작 완료(2026.5).",
-      "dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"쇄빙선 다수 운전 실적."},"licensing":{"level":4,"confidence":"medium","rationale":"러시아 규제 건설 단계."},"economics":{"level":3,"confidence":"low","rationale":"오지 특수용도."},"safety":{"level":4,"confidence":"medium","rationale":"일체형·피동 특성 강화."},"supply_fuel":{"level":5,"confidence":"high","rationale":"Rosatom 일관 공급망."},"deployment":{"level":4,"confidence":"medium","rationale":"부유식 유닛 건설·원자로 제작 완료."}},
-      "sources":["IAEA ARIS","Rosatom","World Nuclear News"]},
-
-    {"id":"kairos-kp-fhr","name":"Kairos KP-FHR (Hermes)","vendor":"Kairos Power","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"FHR","coolant":"불소염(FLiBe)","capacity_mwe_total":140,"capacity_mwe_module":140,"modules":1,"fuel":"HALEU TRISO","status":"건설중(실증)","foak_target":"Hermes 2028 가동","tags":["건설중","실증로"],
-      "summary":"불소염냉각 고온로. Hermes 1 실증로 건설 중(2025 착공, 2028 가동 목표), Hermes 2 착공(2026). 상용 KP-X는 ~140MWe급.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"실증로 건설 중, 상용 입증 전."},"licensing":{"level":4,"confidence":"high","rationale":"NRC 건설허가 취득·건설 중."},"economics":{"level":2,"confidence":"low","rationale":"FOAK 비용 불확실."},"safety":{"level":5,"confidence":"high","rationale":"저압 염냉각+TRISO 본질안전."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU TRISO·FLiBe 공급 구축 중."},"deployment":{"level":3,"confidence":"high","rationale":"Hermes 1·2 건설, 상용 실증 단계."}},
-      "sources":["IAEA ARIS","US NRC","Kairos Power","World Nuclear News"]},
-
-    {"id":"xe-100","name":"X-energy Xe-100","vendor":"X-energy","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":320,"capacity_mwe_module":80,"modules":4,"fuel":"HALEU TRISO","status":"인허가(건설허가 심사)","foak_target":"2020년대 후반 (Dow)","tags":["공정열"],
-      "summary":"TRISO 페블베드 고온가스로. Dow Seadrift 4모듈 건설허가 심사(환경평가 FONSI 2026.5, 허가 2027 1분기 전망). 고온 공정열 공급.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"HTR-PM 선례, Xe-100 실증 전."},"licensing":{"level":3,"confidence":"high","rationale":"NRC 건설허가 심사, 환경평가 통과."},"economics":{"level":2,"confidence":"low","rationale":"FOAK 비용 불확실, 공정열 가치."},"safety":{"level":5,"confidence":"high","rationale":"TRISO 본질안전, 고온 봉입."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU·TRISO 공급 제약, TX 연료공장 건설."},"deployment":{"level":3,"confidence":"medium","rationale":"Dow Seadrift, 허가 후 착공."}},
-      "sources":["IAEA ARIS","US NRC","X-energy","Dow","World Nuclear News"]},
-
-    {"id":"brest-od-300","name":"BREST-OD-300","vendor":"Rosatom","country":"러시아","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"질화물(U-Pu)","status":"건설중","foak_target":"2029 가동","tags":["건설중","폐쇄핵주기"],
-      "summary":"납냉각 고속로. Seversk 현장 핵연료주기와 결합. 원자로용기 ~70% 조립(2026 초), 가동 2029년으로 지연. 질화물 연료 현장 제작.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"납냉각·질화물연료 대형 실증 신규."},"licensing":{"level":4,"confidence":"medium","rationale":"러시아 규제 건설허가·건설 중."},"economics":{"level":2,"confidence":"low","rationale":"실증·연료주기 통합, 단가 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"납냉각 저압·고비점 안전 특성."},"supply_fuel":{"level":3,"confidence":"medium","rationale":"질화물연료 현장 제작 시설 가동."},"deployment":{"level":4,"confidence":"medium","rationale":"건설 중, 가동 2029 전망."}},
-      "sources":["IAEA ARIS","Rosatom","World Nuclear News"]},
-
-    {"id":"carem-25","name":"CAREM-25","vendor":"CNEA","country":"아르헨티나","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":27,"capacity_mwe_module":27,"modules":1,"fuel":"LEU","status":"건설중(지연)","foak_target":"미확정","tags":["건설중","프로토타입"],
-      "summary":"아르헨티나 자체 개발 자연순환 일체형 PWR 프로토타입. 2014 착공했으나 재원 문제로 장기 지연. 설계 경험 가치는 높음.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"자연순환 일체형 설계·일부 건설."},"licensing":{"level":4,"confidence":"high","rationale":"아르헨티나 건설허가·건설 중."},"economics":{"level":1,"confidence":"medium","rationale":"프로토타입 비용 초과·재원 난항."},"safety":{"level":4,"confidence":"medium","rationale":"자연순환·일체형 피동."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"표준 LEU, 자국 연료 역량."},"deployment":{"level":3,"confidence":"high","rationale":"건설 중이나 장기 지연."}},
-      "sources":["IAEA ARIS","CNEA","IAEA PRIS"]},
-
-    {"id":"ap300","name":"Westinghouse AP300","vendor":"Westinghouse","country":"미국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"LEU","status":"설계·사전인허가","foak_target":"2030년대 초","tags":[],
-      "summary":"인증 AP1000 축소판 단일루프 PWR. 검증 기술 레버리지가 강점이나 인허가·배치는 초기 단계.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"AP1000 검증 기술 기반."},"licensing":{"level":2,"confidence":"medium","rationale":"NRC 사전인허가 초기."},"economics":{"level":3,"confidence":"low","rationale":"AP1000 공급망 활용 기대, 실적 전."},"safety":{"level":4,"confidence":"medium","rationale":"AP 피동안전 계승."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"표준 LEU, 기존 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"구체 부지·발주 초기."}},
-      "sources":["IAEA ARIS","Westinghouse","US NRC"]},
-
-    {"id":"terrestrial-imsr","name":"Terrestrial Energy IMSR","vendor":"Terrestrial Energy","country":"캐나다","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염(연료염)","capacity_mwe_total":390,"capacity_mwe_module":195,"modules":2,"fuel":"LEU 용융염","status":"인허가(CNSC VDR2 완료)","foak_target":"2030년대 초","tags":[],
-      "summary":"일체형 용융염로. CNSC 벤더설계심사 2단계 완료, 상용 액체연료 MSR 최초 NRC 안전평가 선례. 설계·인허가 단계.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"MSR 설계 성숙, 실증 전."},"licensing":{"level":3,"confidence":"high","rationale":"CNSC VDR 2단계 완료, NRC engagement."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"저압 액체연료·피동 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"용융염 연료염·공급망 구축 중."},"deployment":{"level":2,"confidence":"medium","rationale":"부지·발주 초기, 착공 전."}},
-      "sources":["IAEA ARIS","CNSC","Terrestrial Energy","World Nuclear News"]},
-
-    {"id":"arc-100","name":"ARC-100","vendor":"ARC Clean Technology","country":"캐나다","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"금속연료","status":"인허가(CNSC VDR2 완료)","foak_target":"2030년대 초 (Point Lepreau)","tags":[],
-      "summary":"EBR-II 계보 소듐냉각 고속로. CNSC 벤더설계심사 2단계 완료(2025.7), 뉴브런즈윅 Point Lepreau 배치 목표.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 계보, 상용 실증 전."},"licensing":{"level":3,"confidence":"high","rationale":"CNSC VDR 2단계 완료."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"풀형 SFR 피동 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"금속연료 공급망 구축 중."},"deployment":{"level":2,"confidence":"medium","rationale":"Point Lepreau 목표, 착공 전."}},
-      "sources":["IAEA ARIS","CNSC","ARC Clean Technology"]},
-
-    {"id":"nuward","name":"Nuward SMR","vendor":"EDF","country":"프랑스","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":340,"capacity_mwe_module":170,"modules":2,"fuel":"LEU","status":"설계(재설계)","foak_target":"2030년대","tags":[],
-      "summary":"EDF 주도 일체형 PWR. 2024년 검증기술 중심으로 설계 전면 재검토. 유럽 공동 인허가 사전검토 추진.",
-      "dimensions":{"technology_readiness":{"level":2,"confidence":"medium","rationale":"설계 재검토로 성숙도 재설정."},"licensing":{"level":2,"confidence":"medium","rationale":"유럽 공동 사전검토 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"medium","rationale":"일체형 피동안전 설계."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"프랑스 표준 LEU 공급망."},"deployment":{"level":2,"confidence":"medium","rationale":"FOAK 일정 재설정."}},
-      "sources":["IAEA ARIS","EDF","World Nuclear News"]},
-
-    {"id":"newcleo-lfr","name":"newcleo LFR-AS-200","vendor":"newcleo","country":"영국/이탈리아","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납","capacity_mwe_total":200,"capacity_mwe_module":200,"modules":1,"fuel":"MOX","status":"설계·인허가준비","foak_target":"2030년대","tags":["폐쇄핵주기"],
-      "summary":"납냉각 고속로. MOX 연료로 사용후핵연료 활용 지향. 프랑스 실증로·연료공장 추진, 설계·인허가 준비 단계.",
-      "dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"납냉각 상용 실증 전, 개발 초기."},"licensing":{"level":2,"confidence":"medium","rationale":"인허가 사전 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"medium","rationale":"납냉각 저압·고비점 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"MOX 연료 체인 구축 중."},"deployment":{"level":2,"confidence":"low","rationale":"실증로 계획 단계."}},
-      "sources":["IAEA ARIS","newcleo","World Nuclear News"]},
-
-    {"id":"seaborg-cmsr","name":"Seaborg CMSR","vendor":"Seaborg Technologies","country":"덴마크","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"용융염","status":"설계","foak_target":"미확정","tags":["해상부유식"],
-      "summary":"컴팩트 용융염로를 바지선에 탑재하는 해상 배치 개념. 설계·인허가 사전 단계, 상용 실증 전.",
-      "dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"MSR 개념 설계, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 사전 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"low","rationale":"저압 액체연료 안전 지향."},"supply_fuel":{"level":2,"confidence":"low","rationale":"용융염 연료·조절재 공급 과제."},"deployment":{"level":1,"confidence":"medium","rationale":"구체 배치 계획 초기."}},
-      "sources":["IAEA ARIS","Seaborg","World Nuclear News"]},
-
-    {"id":"tmsr-lf1","name":"TMSR-LF1 (토륨 용융염)","vendor":"SINAP","country":"중국","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":0,"capacity_mwe_module":0,"modules":1,"fuel":"토륨/용융염","status":"운전(실험로)","foak_target":"실험로 운전","tags":["실험로","운전중","토륨"],
-      "summary":"세계 유일 운전 중 용융염 실험로(2MWth). 2023년 임계, 2025년 토륨 장전으로 토륨연료주기 실증. 발전용 아닌 연구로.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"실험로 운전·토륨 실증, 상용 전."},"licensing":{"level":4,"confidence":"medium","rationale":"중국 규제 운영허가(실험로)."},"economics":{"level":1,"confidence":"low","rationale":"연구로, 상용 단가 해당 없음."},"safety":{"level":4,"confidence":"medium","rationale":"저압 액체연료 안전 특성."},"supply_fuel":{"level":2,"confidence":"low","rationale":"토륨 용융염 연료주기 실증 단계."},"deployment":{"level":2,"confidence":"medium","rationale":"후속 상용로(10MWe급) 계획."}},
-      "sources":["IAEA ARIS","SINAP","World Nuclear News"]},
-
-    {"id":"evinci","name":"Westinghouse eVinci","vendor":"Westinghouse","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"Heat-pipe","coolant":"히트파이프(고체노심)","capacity_mwe_total":5,"capacity_mwe_module":5,"modules":1,"fuel":"HALEU TRISO","status":"시험(영출력 임계)","foak_target":"2020년대 후반","tags":["마이크로","무냉각재펌프"],
-      "summary":"히트파이프 냉각 고체노심 마이크로로(5MWe). 영출력 임계 시험 성공(2026.8), 미 육군 Janus 프로그램 선정. 가동부 최소화.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"영출력 임계 시험으로 핵심 설계 검증."},"licensing":{"level":3,"confidence":"medium","rationale":"NRC 인허가·시험로 단계."},"economics":{"level":2,"confidence":"low","rationale":"오지·분산 특수용도, 단가 전."},"safety":{"level":5,"confidence":"high","rationale":"히트파이프 피동·고체노심 본질안전."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU TRISO 공급 구축 중."},"deployment":{"level":3,"confidence":"medium","rationale":"시험·실증, 군·산업 수요."}},
-      "sources":["IAEA ARIS","US NRC","Westinghouse","US DOE"]},
-
-    {"id":"bwxt-pele","name":"BWXT Project Pele","vendor":"BWXT","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"HTGR","coolant":"가스(이동형)","capacity_mwe_total":5,"capacity_mwe_module":5,"modules":1,"fuel":"HALEU TRISO","status":"건설·연료장전","foak_target":"2026 실증 (INL)","tags":["마이크로","이동형","국방"],
-      "summary":"미 국방부 이동형 마이크로로. 조립 완료 후 INL에서 연료장전·실증(2026). TRISO 연료 가스냉각 이동형.",
-      "dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"하드웨어 조립·실증 임박."},"licensing":{"level":4,"confidence":"medium","rationale":"국방부(DOE 권한) 실증 승인."},"economics":{"level":2,"confidence":"low","rationale":"국방 특수용도."},"safety":{"level":5,"confidence":"high","rationale":"TRISO 본질안전·이동형 격납."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU TRISO 공급 구축."},"deployment":{"level":4,"confidence":"high","rationale":"INL 실증 2026, 하드웨어 완성."}},
-      "sources":["IAEA ARIS","US DoD","BWXT","US DOE"]},
-
-    {"id":"oklo-aurora","name":"Oklo Aurora","vendor":"Oklo","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"SFR","coolant":"히트파이프/금속","capacity_mwe_total":15,"capacity_mwe_module":15,"modules":1,"fuel":"HALEU 금속","status":"인허가(COLA 준비)","foak_target":"2027~28 (INL)","tags":["마이크로"],
-      "summary":"소형 고속 마이크로로. INL 부지, DOE HALEU 연료 지원. 통합운영허가(COLA) 준비, 가동 2027~28 목표.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 금속연료 계보, 실증 전."},"licensing":{"level":2,"confidence":"medium","rationale":"COLA 준비, 초기 신청 반려 이력."},"economics":{"level":2,"confidence":"low","rationale":"BOT(전력판매) 모델, 단가 전."},"safety":{"level":4,"confidence":"medium","rationale":"소형 금속연료 피동 특성."},"supply_fuel":{"level":2,"confidence":"medium","rationale":"HALEU 공급, DOE 연료 지원."},"deployment":{"level":3,"confidence":"medium","rationale":"INL 부지 확보, 가동 목표 2027~28."}},
-      "sources":["IAEA ARIS","US NRC","Oklo","US DOE"]},
-
-    {"id":"usnc-mmr","name":"USNC MMR","vendor":"USNC","country":"미국/캐나다","generation":"Gen IV","category":"마이크로로(MMR)","family":"HTGR","coolant":"헬륨","capacity_mwe_total":5,"capacity_mwe_module":5,"modules":1,"fuel":"FCM TRISO","status":"인허가(재편)","foak_target":"미확정","tags":["마이크로"],
-      "summary":"초소형 모듈 고온가스로(5MWe). Chalk River 실증 추진했으나 2024년 모회사 재무난·구조조정으로 일정 불확실.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"low","rationale":"TRISO/FCM 기반, 모회사 재편으로 불확실."},"licensing":{"level":3,"confidence":"low","rationale":"CNSC 인허가 진행했으나 사업 재편."},"economics":{"level":2,"confidence":"low","rationale":"재무 불확실."},"safety":{"level":5,"confidence":"medium","rationale":"FCM TRISO 본질안전."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU TRISO 공급 과제."},"deployment":{"level":1,"confidence":"low","rationale":"사업 재편으로 배치 일정 불확실."}},
-      "sources":["IAEA ARIS","CNSC","World Nuclear News"]},
-
-    {"id":"last-energy-pws20","name":"Last Energy PWS-20","vendor":"Last Energy","country":"미국/영국","generation":"Gen III+","category":"마이크로로(MMR)","family":"PWR","coolant":"경수","capacity_mwe_total":20,"capacity_mwe_module":20,"modules":1,"fuel":"LEU","status":"설계·사전발주","foak_target":"2020년대 후반","tags":["마이크로","공장제작"],
-      "summary":"컨테이너형 20MWe 소형 PWR. 검증 PWR 기술로 공장제작·반복배치 지향. 유럽 다수 전력구매 의향(PPA) 체결 보도.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"low","rationale":"표준 PWR 기반, 자체 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"각국 인허가 초기."},"economics":{"level":3,"confidence":"low","rationale":"반복배치 저가 지향, 실적 전."},"safety":{"level":3,"confidence":"low","rationale":"소형 PWR, 피동 특성 제한적."},"supply_fuel":{"level":4,"confidence":"low","rationale":"표준 LEU."},"deployment":{"level":2,"confidence":"low","rationale":"PPA 의향 다수, 착공 전."}},
-      "sources":["IAEA ARIS","Last Energy","World Nuclear News"]},
-
-    {"id":"radiant-kaleidos","name":"Radiant Kaleidos","vendor":"Radiant","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"HTGR","coolant":"가스(이동형)","capacity_mwe_total":1,"capacity_mwe_module":1,"modules":1,"fuel":"HALEU TRISO","status":"설계·시험준비","foak_target":"2020년대 후반 (INL 시험)","tags":["마이크로","이동형"],
-      "summary":"컨테이너 이동형 가스냉각 마이크로로(1.2MWe). INL에서 연료 포함 실증시험 추진, 설계·시험 준비 단계.",
-      "dimensions":{"technology_readiness":{"level":3,"confidence":"low","rationale":"TRISO 가스로, 실증 시험 준비."},"licensing":{"level":2,"confidence":"low","rationale":"시험·인허가 초기."},"economics":{"level":2,"confidence":"low","rationale":"오지·분산 특수용도."},"safety":{"level":5,"confidence":"medium","rationale":"TRISO 본질안전·이동형."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU TRISO 공급 과제."},"deployment":{"level":2,"confidence":"low","rationale":"INL 실증 시험 준비."}},
-      "sources":["IAEA ARIS","Radiant","US DOE"]},
-    {"id":"bharat-smr","name":"Bharat SMR (BSMR-200)","vendor":"NPCIL / BARC","country":"인도","generation":"Gen III+","category":"경수로 SMR","family":"PHWR","coolant":"중수","capacity_mwe_total":200,"capacity_mwe_module":200,"modules":1,"fuel":"저농축우라늄(SEU)","status":"건설중","foak_target":"2030년대 초 (Tarapur)","tags":["건설중"],"summary":"IPHWR-220 계보의 인도형 가압중수로 SMR. 2026년 3월 Tarapur 실증 2기 첫 콘크리트 타설, EPC 계약·AEC 승인 완료. 인도 산업 자립 기반.","dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"검증 PHWR(IPHWR-220) 계보."},"licensing":{"level":4,"confidence":"medium","rationale":"AEC 재정승인·AERB 인허가 단계."},"economics":{"level":3,"confidence":"low","rationale":"인도 산업 자립·SEU, 실증단가 전."},"safety":{"level":3,"confidence":"medium","rationale":"PHWR 기반, 일부 피동 개선."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"인도 중수·연료 공급망, SEU 전환."},"deployment":{"level":4,"confidence":"high","rationale":"2026.3 첫 콘크리트, Tarapur 2기."}},"sources":["WNA","World Nuclear News","NPCIL"]},
-    {"id":"httr","name":"HTTR (고온공학시험로)","vendor":"JAEA","country":"일본","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":0,"capacity_mwe_module":0,"modules":1,"fuel":"LEU 피복입자","status":"운전(시험로)","foak_target":"수소실증 2030 목표","tags":["운전중","시험로","수소"],"summary":"일본 고온가스로 시험로(30MWth). 2021년 규제 재가동, 950℃ 고온 공급. 원자력 수소생산(SMR 수소) 실증을 MHI와 추진.","dimensions":{"technology_readiness":{"level":4,"confidence":"high","rationale":"장기 운전 시험로, HTGR 데이터 축적."},"licensing":{"level":5,"confidence":"high","rationale":"NRA 재가동 허가·운전 중."},"economics":{"level":1,"confidence":"low","rationale":"시험로, 상용 단가 해당 없음."},"safety":{"level":5,"confidence":"high","rationale":"TRISO·고온 본질안전, 상실시험 실증."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"일본 피복입자 연료 역량."},"deployment":{"level":2,"confidence":"medium","rationale":"상용 HTGR·수소는 2030년대 과제."}},"sources":["IAEA ARIS","JAEA","World Nuclear News"]},
-    {"id":"marvel","name":"MARVEL","vendor":"INL / US DOE","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"SFR","coolant":"NaK(액체금속)","capacity_mwe_total":0,"capacity_mwe_module":0,"modules":1,"fuel":"HALEU UZrH","status":"조립중","foak_target":"2027 임계 (INL)","tags":["마이크로","연구로"],"summary":"INL의 초소형 연구 마이크로로(~100kWth/20kWe). NaK 자연순환+스털링 엔진. 안전문서(PDSA) 승인(2026.3), 조립 중, 2027 임계 목표.","dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"조립 단계, 안전문서 승인."},"licensing":{"level":4,"confidence":"medium","rationale":"DOE 승인 기반 연구로."},"economics":{"level":1,"confidence":"low","rationale":"연구 실증로, 상용 아님."},"safety":{"level":4,"confidence":"medium","rationale":"초소형·자연순환 피동."},"supply_fuel":{"level":3,"confidence":"low","rationale":"HALEU UZrH 연료."},"deployment":{"level":3,"confidence":"medium","rationale":"조립 중, 2027 임계."}},"sources":["IAEA ARIS","INL","US DOE"]},
-    {"id":"acpr50s","name":"ACPR50S","vendor":"CGN","country":"중국","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":60,"capacity_mwe_module":60,"modules":1,"fuel":"LEU","status":"설계·추진","foak_target":"미확정","tags":["해상부유식"],"summary":"CGN의 해상 부유식 소형 PWR(60MWe). 해양 플랫폼·도서 전력 공급 지향, 설계·사업 추진 단계.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"검증 PWR 기반 소형화."},"licensing":{"level":3,"confidence":"low","rationale":"중국 규제 사전 단계."},"economics":{"level":3,"confidence":"low","rationale":"해상·도서 특수용도."},"safety":{"level":3,"confidence":"low","rationale":"소형 PWR 피동 특성."},"supply_fuel":{"level":5,"confidence":"medium","rationale":"표준 LEU, 중국 공급망."},"deployment":{"level":2,"confidence":"low","rationale":"구체 착공 전."}},"sources":["IAEA ARIS","CGN","WNA"]},
-    {"id":"svbr-100","name":"SVBR-100","vendor":"Rosatom / AKME","country":"러시아","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납-비스무트","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"UO2/MOX","status":"설계·지연","foak_target":"미확정","tags":["폐쇄핵주기"],"summary":"잠수함 납-비스무트 계보의 고속로(100MWe). Dimitrovgrad 실증 추진했으나 장기 지연. 폐쇄핵연료주기 지향.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"잠수함 Pb-Bi 운전 경험."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 사전, 사업 지연."},"economics":{"level":2,"confidence":"low","rationale":"실증 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"납-비스무트 저압·고비점."},"supply_fuel":{"level":3,"confidence":"low","rationale":"MOX·연료주기 구축."},"deployment":{"level":2,"confidence":"low","rationale":"장기 지연, 착공 불확실."}},"sources":["IAEA ARIS","Rosatom","WNA"]},
-    {"id":"moltex-ssr","name":"Moltex SSR-W","vendor":"Moltex Energy","country":"캐나다/영국","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"사용후핵연료 유래","status":"설계·인허가","foak_target":"2030년대","tags":["폐기물연소"],"summary":"안정염로(Stable Salt Reactor). 사용후핵연료를 연료로 활용하는 폐기물연소 고속 MSR. 뉴브런즈윅 Point Lepreau에서 ARC와 병행 추진.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"신개념 MSR, 실증 전."},"licensing":{"level":3,"confidence":"medium","rationale":"CNSC 벤더설계심사 진행."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"low","rationale":"저압 염 연료 안전 지향."},"supply_fuel":{"level":3,"confidence":"low","rationale":"사용후핵연료 재처리 체인 필요."},"deployment":{"level":2,"confidence":"medium","rationale":"Point Lepreau 추진, 착공 전."}},"sources":["IAEA ARIS","CNSC","Moltex Energy"]},
-    {"id":"ga-em2","name":"General Atomics EM2/FMR","vendor":"General Atomics","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"GFR","coolant":"헬륨(고속)","capacity_mwe_total":42,"capacity_mwe_module":42,"modules":1,"fuel":"HALEU 탄화물","status":"설계","foak_target":"미확정","tags":[],"summary":"가스냉각 고속 모듈로(Fast Modular Reactor). 장수명 노심·고온 공급 지향. 설계·개발 단계, 상용 실증 전.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"가스냉각 고속로 상용 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 사전 단계."},"economics":{"level":2,"confidence":"low","rationale":"비용 추정 초기."},"safety":{"level":4,"confidence":"low","rationale":"고온·고속로 설계 특성."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU 탄화물 연료 과제."},"deployment":{"level":2,"confidence":"low","rationale":"DOE ARDP 지원·NRC 사전협의, 배치 2030년대."}},"sources":["IAEA ARIS","General Atomics"]},
-    {"id":"nano-zeus","name":"NANO Nuclear ZEUS","vendor":"NANO Nuclear Energy","country":"미국","generation":"Gen IV","category":"마이크로로(MMR)","family":"Heat-pipe","coolant":"고체노심","capacity_mwe_total":2,"capacity_mwe_module":2,"modules":1,"fuel":"HALEU","status":"설계","foak_target":"미확정","tags":["마이크로"],"summary":"고체노심 초소형 마이크로로. 분산·오지 전력 지향, 설계·개발 단계(KRONOS MMR과 별개 자체 설계).","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"개발 초기, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 초기."},"economics":{"level":2,"confidence":"low","rationale":"특수용도, 단가 전."},"safety":{"level":5,"confidence":"low","rationale":"고체노심 본질안전 지향."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU 공급 과제."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 계획 초기."}},"sources":["IAEA ARIS","NANO Nuclear"]},
-    {"id":"dhr-400","name":"DHR-400 (Yanlong)","vendor":"CNNC","country":"중국","generation":"Gen III+","category":"경수로 SMR","family":"Pool","coolant":"경수(수조형)","capacity_mwe_total":0,"capacity_mwe_module":0,"modules":1,"fuel":"LEU","status":"설계·추진","foak_target":"미확정","tags":["열공급"],"summary":"저온 수조형 지역난방 전용로(400MWth). 상압·저온 운전으로 안전성 높음. 발전이 아닌 열 공급 목적.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"수조형 저온로, 검증 기술."},"licensing":{"level":3,"confidence":"low","rationale":"중국 규제 추진 단계."},"economics":{"level":3,"confidence":"low","rationale":"난방 전용, 발전 단가 비해당."},"safety":{"level":5,"confidence":"medium","rationale":"상압·저온 수조, 높은 안전여유."},"supply_fuel":{"level":5,"confidence":"medium","rationale":"표준 LEU, 중국 공급망."},"deployment":{"level":2,"confidence":"low","rationale":"실증·사업 추진 단계."}},"sources":["IAEA ARIS","CNNC","WNA"]},
-    {"id":"copenhagen-atomics","name":"Copenhagen Atomics","vendor":"Copenhagen Atomics","country":"덴마크","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":40,"capacity_mwe_module":40,"modules":1,"fuel":"토륨/사용후핵연료","status":"설계·시험","foak_target":"미확정","tags":["토륨","폐기물연소"],"summary":"컨테이너형 토륨 용융염로(waste-burner). 사용후핵연료·토륨 활용 지향, 염 루프 시험·개발 단계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"염 루프 시험, 원자로 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 사전 단계."},"economics":{"level":2,"confidence":"low","rationale":"양산 저가 목표, 실적 전."},"safety":{"level":4,"confidence":"low","rationale":"저압 액체연료 안전 지향."},"supply_fuel":{"level":3,"confidence":"low","rationale":"토륨·사용후핵연료 체인 필요."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전, 시험 단계."}},"sources":["IAEA ARIS","Copenhagen Atomics"]},
-    {"id":"blykalla-sealer","name":"Blykalla SEALER","vendor":"Blykalla","country":"스웨덴","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납","capacity_mwe_total":55,"capacity_mwe_module":55,"modules":1,"fuel":"저농축 질화물","status":"인허가 신청","foak_target":"2030년대 초","tags":[],"summary":"스웨덴 납냉각 고속 모듈로(SEALER). Untra(8기)·Norrsundet(6기) 원자로단지 인허가 신청(2026), 전기가열 시제품 시험. 2030년대 초 가동 목표.","dimensions":{"technology_readiness":{"level":2,"confidence":"medium","rationale":"전기가열 시제품, 핵 실증 전."},"licensing":{"level":2,"confidence":"medium","rationale":"스웨덴 원자로단지 인허가 신청."},"economics":{"level":2,"confidence":"low","rationale":"양산 저가 목표, 실적 전."},"safety":{"level":4,"confidence":"medium","rationale":"납냉각 저압·고비점 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"질화물 연료 공급망 구축."},"deployment":{"level":2,"confidence":"medium","rationale":"부지단지 인허가 신청, 착공 전."}},"sources":["IAEA ARIS","Blykalla","World Nuclear News"]},
-    {"id":"thorcon","name":"ThorCon TMSR500","vendor":"ThorCon International","country":"인도네시아","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":500,"capacity_mwe_module":250,"modules":2,"fuel":"토륨/용융염","status":"설계·부지평가","foak_target":"미확정","tags":["해상부유식","토륨"],"summary":"바지 탑재 토륨 용융염로(500MWe). 인도네시아 Kelasa섬 부지평가 승인(BAPETEN, 2025). 초기 인허가 단계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"MSR 개념·조선 통합, 실증 전."},"licensing":{"level":2,"confidence":"medium","rationale":"인도네시아 부지평가 승인 단계."},"economics":{"level":2,"confidence":"low","rationale":"조선 양산 저가 목표, 실적 전."},"safety":{"level":4,"confidence":"low","rationale":"저압 액체연료 안전 지향."},"supply_fuel":{"level":2,"confidence":"low","rationale":"토륨 용융염 연료주기 과제."},"deployment":{"level":2,"confidence":"medium","rationale":"부지평가 승인, 다단계 허가 남음."}},"sources":["IAEA ARIS","ThorCon","World Nuclear News"]},
-    {"id":"htr-10","name":"HTR-10","vendor":"INET / 칭화대","country":"중국","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":2.5,"capacity_mwe_module":2.5,"modules":1,"fuel":"LEU(17%) TRISO","status":"운전(시험로)","foak_target":"운전 중","tags":["운전중","시험로"],"summary":"중국 칭화대 10MWth 페블베드 시험로. 2000년 임계 후 운전, HTR-PM 상용화의 기술 기반.","dimensions":{"technology_readiness":{"level":5,"confidence":"high","rationale":"장기 운전 시험로, HTR-PM 선행 실증."},"licensing":{"level":5,"confidence":"high","rationale":"중국 규제 운영허가."},"economics":{"level":1,"confidence":"low","rationale":"시험로, 상용 단가 비해당."},"safety":{"level":5,"confidence":"high","rationale":"TRISO·고온 본질안전."},"supply_fuel":{"level":4,"confidence":"medium","rationale":"중국 TRISO 연료 역량."},"deployment":{"level":2,"confidence":"medium","rationale":"시험로, 후속은 HTR-PM."}},"sources":["IAEA ARIS","INET","World Nuclear News"]},
-    {"id":"prism","name":"PRISM","vendor":"GE-Hitachi","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":311,"capacity_mwe_module":311,"modules":1,"fuel":"U-Pu-Zr 금속","status":"상세설계","foak_target":"미확정","tags":[],"summary":"GEH 풀형 소듐냉각 고속로. EBR-II 계보로 Natrium의 선조격. 상세설계 완료, 현 상용 추진은 Natrium.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"EBR-II 계보, 상세설계."},"licensing":{"level":2,"confidence":"low","rationale":"현재 활성 인허가 프로젝트 없음."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"풀형 SFR 피동 특성."},"supply_fuel":{"level":2,"confidence":"low","rationale":"HALEU 금속연료."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 계획 없음."}},"sources":["IAEA ARIS","GE-Hitachi"]},
-    {"id":"vber-300","name":"VBER-300","vendor":"OKBM Afrikantov","country":"러시아","generation":"Gen III+","category":"경수로 SMR","family":"iPWR","coolant":"경수","capacity_mwe_total":325,"capacity_mwe_module":325,"modules":1,"fuel":"UO2(4.95%)","status":"인허가 심사","foak_target":"미확정","tags":[],"summary":"OKBM 중형 PWR. 함정·쇄빙선 계보 기술. 러시아 규제 심사 단계.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"함정로 계보, 설계 성숙."},"licensing":{"level":3,"confidence":"medium","rationale":"러시아 규제 심사 단계."},"economics":{"level":2,"confidence":"low","rationale":"상용 실적 미확보."},"safety":{"level":3,"confidence":"medium","rationale":"PWR 기반 개선."},"supply_fuel":{"level":5,"confidence":"medium","rationale":"Rosatom 일관 공급망."},"deployment":{"level":2,"confidence":"low","rationale":"구체 착공 전."}},"sources":["IAEA ARIS","OKBM Afrikantov"]},
-    {"id":"gthtr300","name":"GTHTR300","vendor":"JAEA 외","country":"일본","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":300,"capacity_mwe_module":300,"modules":1,"fuel":"UO2(14%) TRISO","status":"기본설계","foak_target":"미확정","tags":["수소"],"summary":"JAEA 가스터빈 고온가스로. HTTR 경험 기반 상용 HTGR 개념(발전+수소 공급).","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"HTTR 운전 경험 기반."},"licensing":{"level":2,"confidence":"low","rationale":"기본설계, 인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":5,"confidence":"high","rationale":"TRISO·고온 본질안전."},"supply_fuel":{"level":3,"confidence":"low","rationale":"일본 피복입자 연료 역량."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","JAEA"]},
-    {"id":"gt-mhr","name":"GT-MHR","vendor":"OKBM / General Atomics","country":"러시아","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":288,"capacity_mwe_module":288,"modules":1,"fuel":"UO2/PuO2(14-18%)","status":"예비설계","foak_target":"미확정","tags":[],"summary":"러·미 공동 가스터빈 모듈 헬륨로. 무기급 Pu 소각 가능. 예비설계 단계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"예비설계, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":5,"confidence":"medium","rationale":"HTGR 본질안전."},"supply_fuel":{"level":2,"confidence":"low","rationale":"Pu 혼합연료 공급 과제."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 없음."}},"sources":["IAEA ARIS","OKBM Afrikantov"]},
-    {"id":"w-lfr","name":"Westinghouse LFR","vendor":"Westinghouse","country":"미국","generation":"Gen IV","category":"비경수로 SMR","family":"LFR","coolant":"납","capacity_mwe_total":460,"capacity_mwe_module":460,"modules":1,"fuel":"산화물/MOX→선진연료","status":"개념설계","foak_target":"미확정","tags":[],"summary":"웨스팅하우스 납냉각 고속로. 고온·고출력 지향 개념설계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"납냉각 상용 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"개념설계, 인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":4,"confidence":"low","rationale":"납냉각 저압·고비점."},"supply_fuel":{"level":2,"confidence":"low","rationale":"선진연료 개발 필요."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 없음."}},"sources":["IAEA ARIS","Westinghouse"]},
-    {"id":"salus-100","name":"SALUS-100","vendor":"KAERI","country":"대한민국","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"U-Zr(13.7-19%)","status":"개념설계","foak_target":"미확정","tags":[],"summary":"KAERI 소형 장주기·궁극안전 소듐냉각 고속로. PGSFR 경험 기반 개념설계.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"KAERI SFR 장기 프로그램 기반."},"licensing":{"level":2,"confidence":"low","rationale":"개념설계, 인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"상용 비용 불확실."},"safety":{"level":4,"confidence":"medium","rationale":"장주기·궁극안전 지향."},"supply_fuel":{"level":4,"confidence":"low","rationale":"한국 금속연료 역량."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","KAERI"]},
-    {"id":"bandi","name":"BANDI-60","vendor":"KEPCO E&C","country":"대한민국","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":60,"capacity_mwe_module":60,"modules":1,"fuel":"UO2(4.95%)","status":"개념설계","foak_target":"미확정","tags":["해상부유식"],"summary":"KEPCO E&C 블록형 소형 PWR. 해상·분산 전력 적용 지향 개념설계.","dimensions":{"technology_readiness":{"level":2,"confidence":"medium","rationale":"블록형 PWR 개념설계."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 전."},"economics":{"level":3,"confidence":"low","rationale":"블록형 양산 지향."},"safety":{"level":3,"confidence":"medium","rationale":"소형 PWR 피동 특성."},"supply_fuel":{"level":5,"confidence":"medium","rationale":"한국 표준 LEU·공급망."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","KEPCO E&C"]},
-    {"id":"thorizon","name":"Thorizon One","vendor":"Thorizon","country":"네덜란드","generation":"Gen IV","category":"비경수로 SMR","family":"MSR","coolant":"용융염","capacity_mwe_total":100,"capacity_mwe_module":100,"modules":1,"fuel":"용융염 카트리지","status":"개념설계","foak_target":"미확정","tags":["폐기물연소"],"summary":"네덜란드 용융염로. 사용후핵연료+토륨 활용 카트리지 방식 개념설계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"MSR 카트리지 개념, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"개념설계, 인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":4,"confidence":"low","rationale":"저압 액체연료 안전 지향."},"supply_fuel":{"level":3,"confidence":"low","rationale":"사용후핵연료 염 체인 필요."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","Thorizon"]},
-    {"id":"htmr100","name":"HTMR-100","vendor":"STL Nuclear","country":"남아프리카공화국","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":35,"capacity_mwe_module":35,"modules":1,"fuel":"TRISO","status":"기본설계","foak_target":"미확정","tags":[],"summary":"남아공 소형 고온가스로. PBMR 유산 기반, 공정열·발전 지향 기본설계.","dimensions":{"technology_readiness":{"level":2,"confidence":"medium","rationale":"PBMR 유산, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"기본설계, 인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":5,"confidence":"medium","rationale":"TRISO 본질안전."},"supply_fuel":{"level":2,"confidence":"low","rationale":"TRISO 연료 공급 과제."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","STL Nuclear"]},
-    {"id":"peluit-40","name":"PeLUIt-40","vendor":"BRIN / ITB","country":"인도네시아","generation":"Gen IV","category":"비경수로 SMR","family":"HTGR","coolant":"헬륨","capacity_mwe_total":11.6,"capacity_mwe_module":11.6,"modules":1,"fuel":"UO2(17%) TRISO","status":"기본설계","foak_target":"미확정","tags":["공정열"],"summary":"인도네시아 실험동력로 후속 고온가스로. 열병합·공정열 지향 기본설계.","dimensions":{"technology_readiness":{"level":2,"confidence":"medium","rationale":"RDE 경험 기반 기본설계."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":5,"confidence":"medium","rationale":"TRISO 본질안전."},"supply_fuel":{"level":2,"confidence":"low","rationale":"TRISO 연료 공급 과제."},"deployment":{"level":2,"confidence":"low","rationale":"실증 추진 단계."}},"sources":["IAEA ARIS","BRIN"]},
-    {"id":"fbnr","name":"FBNR","vendor":"FURGS","country":"브라질","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":70,"capacity_mwe_module":70,"modules":1,"fuel":"CERMET 피복(5%)","status":"개념설계","foak_target":"미확정","tags":[],"summary":"브라질 고정층 원자로(Fixed Bed). 피동안전·핵확산저항 지향 학술 개념설계.","dimensions":{"technology_readiness":{"level":1,"confidence":"low","rationale":"학술 개념, 실증 전무."},"licensing":{"level":1,"confidence":"low","rationale":"인허가 전략 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":4,"confidence":"low","rationale":"고정층·피동 특성 지향."},"supply_fuel":{"level":3,"confidence":"low","rationale":"피복 연료 개발 필요."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 없음."}},"sources":["IAEA ARIS","FURGS"]},
-    {"id":"hexana","name":"HEXANA","vendor":"HEXANA","country":"프랑스","generation":"Gen IV","category":"비경수로 SMR","family":"SFR","coolant":"소듐","capacity_mwe_total":150,"capacity_mwe_module":150,"modules":1,"fuel":"MOX","status":"개념설계","foak_target":"미확정","tags":["축열"],"summary":"프랑스 스타트업 소듐냉각 고속로. 열저장 결합 산업 열·전력 지향 개념설계.","dimensions":{"technology_readiness":{"level":2,"confidence":"low","rationale":"스타트업 개념, 실증 전."},"licensing":{"level":2,"confidence":"low","rationale":"인허가 전."},"economics":{"level":2,"confidence":"low","rationale":"비용 불확실."},"safety":{"level":4,"confidence":"low","rationale":"풀형 SFR 특성."},"supply_fuel":{"level":3,"confidence":"low","rationale":"MOX 연료 체인(프랑스)."},"deployment":{"level":1,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","HEXANA"]},
-    {"id":"abv-6e","name":"ABV-6E","vendor":"OKBM Afrikantov","country":"러시아","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수","capacity_mwe_total":6,"capacity_mwe_module":6,"modules":1,"fuel":"UO2(<20%)","status":"상세설계","foak_target":"미확정","tags":["해상부유식","마이크로"],"summary":"OKBM 초소형 부유식 PWR(6MWe). 자연순환·열병합 가능, 쇄빙선 계보. 상세설계.","dimensions":{"technology_readiness":{"level":4,"confidence":"medium","rationale":"함정로 계보, 상세설계."},"licensing":{"level":3,"confidence":"low","rationale":"러시아 설계 단계."},"economics":{"level":2,"confidence":"low","rationale":"오지·특수용도."},"safety":{"level":3,"confidence":"medium","rationale":"소형·자연순환 특성."},"supply_fuel":{"level":5,"confidence":"medium","rationale":"Rosatom 일관 공급망."},"deployment":{"level":2,"confidence":"low","rationale":"구체 배치 전."}},"sources":["IAEA ARIS","OKBM Afrikantov"]},
-    {"id":"steady-ldr50","name":"Steady Energy LDR-50","vendor":"Steady Energy","country":"핀란드","generation":"Gen III+","category":"경수로 SMR","family":"PWR","coolant":"경수(저온)","capacity_mwe_total":0,"capacity_mwe_module":0,"modules":1,"fuel":"LEU","status":"인허가·파일럿건설","foak_target":"2030년경 (핀란드)","tags":["열공급","건설중"],"summary":"핀란드 저온 지역난방 전용 SMR(50MWth, ~150℃·저압). '세계에서 가장 단순한 원자로' 지향. 헬싱키 Salmisaari 비핵 파일럿 착공(2026.2), 다국 규제 합동 조기심사 완료, EIB 4천만유로 지원.","dimensions":{"technology_readiness":{"level":3,"confidence":"medium","rationale":"저온·저압 단순 설계, 비핵 파일럿 단계."},"licensing":{"level":3,"confidence":"medium","rationale":"다국 규제 합동 조기심사 완료."},"economics":{"level":3,"confidence":"low","rationale":"화석 난방 대체 경쟁력 목표."},"safety":{"level":5,"confidence":"medium","rationale":"저온·저압 극단순 피동 설계."},"supply_fuel":{"level":4,"confidence":"low","rationale":"표준 LEU, 유럽 공급망."},"deployment":{"level":3,"confidence":"medium","rationale":"비핵 파일럿 착공·다수 도시 LOI·EIB 자금."}},"sources":["World Nuclear News","Steady Energy","STUK"]}
-  ]
+   "dimension_keys" : [
+      "technology_readiness",
+      "licensing",
+      "economics",
+      "safety",
+      "supply_fuel",
+      "deployment",
+      "commercial"
+   ],
+   "disclaimer" : "공개 자료(IAEA ARIS/PRIS, NEA SMR Dashboard, WNA, World Nuclear News, 각국 규제기관·벤더 공개자료)를 2026년 기준으로 정규화한 베이스라인. 수치는 근사·변동 가능하므로 각 항목의 confidence와 sources를 함께 확인할 것.",
+   "reactors" : [
+      {
+         "capacity_mwe_module" : 210,
+         "capacity_mwe_total" : 210,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "중국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "CNNC êµ­ê° ì¬ìÂ·ì´ì  ì¤(ë¨ì¼ ìì¥)"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "상업운전·후속호기 검토."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "실증로 수준, 상용 단가 불확실."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "중국 규제 운영허가 취득."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "TRISO 본질안전, 무개입 잔열제거 입증."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "중국 내 TRISO 공급망 가동."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "상업 실증 운전 중, 기술 입증 완료."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "2023 상업운전",
+         "fuel" : "LEU TRISO",
+         "generation" : "Gen IV",
+         "id" : "htr-pm",
+         "modules" : 1,
+         "name" : "HTR-PM (스다오완)",
+         "sources" : [
+            "IAEA ARIS",
+            "CNNC",
+            "World Nuclear News"
+         ],
+         "status" : "운전중",
+         "summary" : "세계 최초 상업운전 중인 4세대 원자로. 2023년 12월 상업운전 개시, 페블베드 고온가스로로 본질안전성 입증(무개입 잔열제거 시험 성공).",
+         "tags" : [
+            "운전중",
+            "공정열"
+         ],
+         "vendor" : "CNNC / 칭화대"
+      },
+      {
+         "capacity_mwe_module" : 35,
+         "capacity_mwe_total" : 70,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "Rosatom êµ­ê° ì¬ìÂ·ì´ì  ì¤"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "운전 중, Baimsky 후속 사업."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "오지·군수 특수용도, 일반 단가 비교 제한."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "러시아 규제 운영허가."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "기존 함정로 기반, 피동 특성 제한적."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "Rosatom 일관 연료·공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "해상 상업운전 중, 함정 원자로 계보."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "2020 상업운전",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "klt-40s",
+         "modules" : 2,
+         "name" : "KLT-40S (Akademik Lomonosov)",
+         "sources" : [
+            "IAEA PRIS",
+            "Rosatom",
+            "World Nuclear News"
+         ],
+         "status" : "운전중",
+         "summary" : "세계 유일 상업 운전 중 부유식 원전. 2019년 Pevek 송전 개시, 2020년 상업운전. 쇄빙선 원자로 계보의 검증 기술.",
+         "tags" : [
+            "운전중",
+            "해상부유식"
+         ],
+         "vendor" : "Rosatom"
+      },
+      {
+         "capacity_mwe_module" : 300,
+         "capacity_mwe_total" : 300,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "캐나다/미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "OPG FIDÂ·ì¨íë¦¬ì¤ ì§ì, ë¤ì ë°ì£¼(TVAÂ·í´ëë), GE Vernova ìê¸ë ¥"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "Darlington 착공·기초 설치, 다수 파이프라인."
+            },
+            "economics" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "기존 BWR 공급망 활용, FOAK 실적 진행."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "캐나다 건설허가+미국 NRC 건설허가 취득."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "피동 격리응축기·단순화 계통."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "표준 LEU BWR 연료, 성숙 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "인증 ESBWR 계보, 검증 기술."
+            }
+         },
+         "family" : "BWR",
+         "foak_target" : "2030 상업운전",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "bwrx-300",
+         "modules" : 1,
+         "name" : "GE Hitachi BWRX-300",
+         "sources" : [
+            "IAEA ARIS",
+            "CNSC",
+            "US NRC",
+            "OPG",
+            "World Nuclear News"
+         ],
+         "status" : "건설중",
+         "summary" : "인증 ESBWR 기반 단순화 BWR. 캐나다 OPG Darlington 1호기 착공(2025)·기초 설치(2026), 미국 최초 BWRX-300 건설허가 취득, 영국 GDA 진행.",
+         "tags" : [
+            "건설중"
+         ],
+         "vendor" : "GE Vernova Hitachi"
+      },
+      {
+         "capacity_mwe_module" : 125,
+         "capacity_mwe_total" : 125,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "중국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "CNNC êµ­ê° ì¬ìÂ·ê±´ì¤ ìë£"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "건설 완료·시운전, 상업운전 임박."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "건설비 공개 제한, 자국 공급망 이점."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "건설허가 취득, 운영허가 심사."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "일체형·피동안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "표준 LEU, CNNC 일관 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "검증 PWR, FOAK 건설 완료·시운전."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "2027 상업운전(지연)",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "linglong-one",
+         "modules" : 1,
+         "name" : "Linglong One (ACP100)",
+         "sources" : [
+            "IAEA ARIS",
+            "CNNC",
+            "World Nuclear News"
+         ],
+         "status" : "시운전",
+         "summary" : "세계 최초 착공한 육상 상업용 SMR. 2021년 착공, 냉기능시험(2025)·터빈 시운전(2025) 완료, 2026년 고온기능시험 중. 연료장전 전, 상업운전 2027년 전망.",
+         "tags" : [
+            "건설완료단계"
+         ],
+         "vendor" : "CNNC"
+      },
+      {
+         "capacity_mwe_module" : 77,
+         "capacity_mwe_total" : 462,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "íê¸ ì ëì± íë¶íë íì  ë°ì£¼ ë¶ì¬(CFPP ì·¨ì), ë£¨ë§ëì FID ëê¸°"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "루마니아 사업 FID 임박, COD 2033."
+            },
+            "economics" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "초기 CFPP 비용 상승·취소 전례."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "50MWe 표준설계승인, US460 심사 중."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "완전 피동 냉각, 부지경계 EPZ 추진."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "표준 LEU, 모듈 양산 목표."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "통합시험루프 검증, 신기술 리스크 낮음."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "2033 (루마니아)",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "nuscale-voygr",
+         "modules" : 6,
+         "name" : "NuScale VOYGR (US460)",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "NuScale",
+            "World Nuclear News"
+         ],
+         "status" : "인허가",
+         "summary" : "자연순환 일체형 PWR. 50MWe 설계 NRC 표준설계승인 취득, US460 상향 심사 중. 루마니아 RoPower VOYGR-6 FEED 완료, FID 2026~2027 전망.",
+         "tags" : [],
+         "vendor" : "NuScale Power"
+      },
+      {
+         "capacity_mwe_module" : 345,
+         "capacity_mwe_total" : 345,
+         "category" : "비경수로 SMR",
+         "coolant" : "소듐",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "Gates/TerraPower+DOE ë¶ë´ê¸, ì°©ê³µ. HALEU ë¦¬ì¤í¬"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "Kemmerer 착공, 완공 목표 2031."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "FOAK 비용 상향·불확실."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "NRC 건설허가 취득(비LWR 최초)."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "저압 풀형 SFR 피동, 소듐 관리 필요."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 2,
+               "rationale" : "HALEU 공급 차질로 일정 지연."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "EBR-II 계보, 축열 결합은 신규."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "2030~31 (Kemmerer)",
+         "fuel" : "HALEU 금속",
+         "generation" : "Gen IV",
+         "id" : "natrium",
+         "modules" : 1,
+         "name" : "TerraPower Natrium",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "US DOE",
+            "World Nuclear News"
+         ],
+         "status" : "건설중",
+         "summary" : "소듐냉각 고속로+용융염 축열. 비LWR 최초 NRC 건설허가 취득(2026.3), Kemmerer 본 공사 착수(2026.4). 출력 500MWe까지 유연. HALEU 공급이 리스크.",
+         "tags" : [
+            "건설중",
+            "축열(500MWe)"
+         ],
+         "vendor" : "TerraPower / GEH"
+      },
+      {
+         "capacity_mwe_module" : 470,
+         "capacity_mwe_total" : 470,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "영국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "ìêµ­ì ë¶(GB Energy) ì ì Â·ì¬ì ì§ì, RR ëª¨íì¬"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "Wylfa 부지계약, 3기 배치 추진."
+            },
+            "economics" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "공장제작·반복건설 비용 절감 목표."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "GDA 최종단계, 유럽 최선두."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "피동/능동 혼합 안전계통."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "표준 LEU, 영국 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "검증 PWR, 공장모듈 실증 전."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "2030년대 초 (Wylfa)",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "rolls-royce-smr",
+         "modules" : 1,
+         "name" : "Rolls-Royce SMR",
+         "sources" : [
+            "IAEA ARIS",
+            "UK ONR",
+            "Rolls-Royce SMR",
+            "World Nuclear News"
+         ],
+         "status" : "인허가·부지계약",
+         "summary" : "470MWe급 공장모듈화 PWR. GDA 최종단계(2026.12 종료 예정), GB Energy–Nuclear 선정, 영국 Wylfa(Ynys Môn) 3기 부지계약 체결.",
+         "tags" : [],
+         "vendor" : "Rolls-Royce SMR"
+      },
+      {
+         "capacity_mwe_module" : 110,
+         "capacity_mwe_total" : 110,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "대한민국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "KHNPÂ·ì¬ì°ë ê´ì¬, íì  FOAK ì¬ì ë¶ì¬"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "FOAK 부지·발주 미확정."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "상용 실적 미확보."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "표준설계인가 취득."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "피동안전 반영 일체형."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "국내 표준 LEU·성숙 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "SMART 계보, 설계 성숙."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "미확정",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "smart100",
+         "modules" : 1,
+         "name" : "SMART100",
+         "sources" : [
+            "IAEA ARIS",
+            "KAERI",
+            "KHNP",
+            "NEI"
+         ],
+         "status" : "설계인가 취득",
+         "summary" : "한국형 일체형 PWR. 사우디 협력으로 피동안전 반영한 SMART100 표준설계인가(SDA) 취득. 수출 추진 중이나 FOAK 부지 미확정.",
+         "tags" : [],
+         "vendor" : "KAERI / KHNP"
+      },
+      {
+         "capacity_mwe_module" : 170,
+         "capacity_mwe_total" : 680,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "대한민국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "íêµ­ ì ë¶ íë¡ê·¸ë¨Â·í¹ë³ë² ì§ì, FOAK ì¬ì ë¯¸íì "
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "FOAK 부지 미확정, 로드맵 단계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "경쟁력 목표, 실증단가 미확보."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "SDA 신청(2026.3), 심사 진행."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "피동안전·장기냉각, 붕소계통 제거."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "국내 표준 LEU·기기 제작 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "SMART 경험 기반, 혁신요소 검증 중."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "2030년대 중반",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "i-smr",
+         "modules" : 4,
+         "name" : "i-SMR (혁신형 SMR)",
+         "sources" : [
+            "IAEA ARIS",
+            "KHNP",
+            "KAERI",
+            "KINS",
+            "World Nuclear News"
+         ],
+         "status" : "인허가(SDA 심사)",
+         "summary" : "SMART 후속 한국형 혁신 SMR. 무붕산·피동안전·부하추종. 2026년 3월 표준설계인가(SDA) 신청, 2028년 승인 목표. 국내 성숙 공급망이 강점.",
+         "tags" : [
+            "무붕산"
+         ],
+         "vendor" : "KHNP / KAERI"
+      },
+      {
+         "capacity_mwe_module" : 300,
+         "capacity_mwe_total" : 300,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "DOE First Mover 4ìµë¬ë¬+ëì¶ë³´ì¦, Palisades ì¶ì§"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "Palisades 추진, 완공 2030년대 초."
+            },
+            "economics" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "DOE 4억달러 지원, 상세 단가 불확실."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "NRC 건설허가 심사(Part1·PSAR 제출)."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "피동 냉각 중심."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "표준 LEU, Holtec 제작 인프라."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "표준 PWR 기반, 설계 상세화."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "2030년대 초 (Palisades)",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "holtec-smr-300",
+         "modules" : 1,
+         "name" : "Holtec SMR-300",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "Holtec",
+            "US DOE",
+            "World Nuclear News"
+         ],
+         "status" : "인허가(건설허가 심사)",
+         "summary" : "300MWe급 피동안전 PWR. Palisades 부지 쌍둥이 SMR 건설허가(CPA)·PSAR 제출(2026), DOE First Mover 4억달러 지원. 영국 Cottam 제안도 진행.",
+         "tags" : [],
+         "vendor" : "Holtec International"
+      },
+      {
+         "capacity_mwe_module" : 53,
+         "capacity_mwe_total" : 106,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "Rosatom êµ­ê° ì¬ì, Baimsky íì "
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "부유식 유닛 건설·원자로 제작 완료."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "오지 특수용도."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "러시아 규제 건설 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "일체형·피동 특성 강화."
+            },
+            "supply_fuel" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "Rosatom 일관 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "쇄빙선 다수 운전 실적."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "2020년대 후반",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "ritm-200",
+         "modules" : 2,
+         "name" : "RITM-200 (Baimsky/육상)",
+         "sources" : [
+            "IAEA ARIS",
+            "Rosatom",
+            "World Nuclear News"
+         ],
+         "status" : "건설·제작",
+         "summary" : "쇄빙선 검증 일체형 PWR. Baimsky 광산용 부유식 4기(각 106MWe)·육상형 추진, 1호 원자로 제작 완료(2026.5).",
+         "tags" : [
+            "해상부유식",
+            "건설중"
+         ],
+         "vendor" : "Rosatom"
+      },
+      {
+         "capacity_mwe_module" : 140,
+         "capacity_mwe_total" : 140,
+         "category" : "비경수로 SMR",
+         "coolant" : "불소염(FLiBe)",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "Google PPA+ì¼ì±ë¬¼ì° 1ìµë¬ë¬+DOE, ê±´ì¤ ì¤"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "Hermes 1·2 건설, 상용 실증 단계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "FOAK 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "NRC 건설허가 취득·건설 중."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "저압 염냉각+TRISO 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "HALEU TRISO·FLiBe 공급 구축 중."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "실증로 건설 중, 상용 입증 전."
+            }
+         },
+         "family" : "FHR",
+         "foak_target" : "Hermes 2028 가동",
+         "fuel" : "HALEU TRISO",
+         "generation" : "Gen IV",
+         "id" : "kairos-kp-fhr",
+         "modules" : 1,
+         "name" : "Kairos KP-FHR (Hermes)",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "Kairos Power",
+            "World Nuclear News"
+         ],
+         "status" : "건설중(실증)",
+         "summary" : "불소염냉각 고온로. Hermes 1 실증로 건설 중(2025 착공, 2028 가동 목표), Hermes 2 착공(2026). 상용 KP-X는 ~140MWe급.",
+         "tags" : [
+            "건설중",
+            "실증로"
+         ],
+         "vendor" : "Kairos Power"
+      },
+      {
+         "capacity_mwe_module" : 80,
+         "capacity_mwe_total" : 320,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "Amazon í¬ì+DOE 12ìµë¬ë¬, Dow íí¸ë, ìì¥(2026)"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "Dow Seadrift, 허가 후 착공."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "FOAK 비용 불확실, 공정열 가치."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "NRC 건설허가 심사, 환경평가 통과."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "TRISO 본질안전, 고온 봉입."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "HALEU·TRISO 공급 제약, TX 연료공장 건설."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "HTR-PM 선례, Xe-100 실증 전."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "2020년대 후반 (Dow)",
+         "fuel" : "HALEU TRISO",
+         "generation" : "Gen IV",
+         "id" : "xe-100",
+         "modules" : 4,
+         "name" : "X-energy Xe-100",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "X-energy",
+            "Dow",
+            "World Nuclear News"
+         ],
+         "status" : "인허가(건설허가 심사)",
+         "summary" : "TRISO 페블베드 고온가스로. Dow Seadrift 4모듈 건설허가 심사(환경평가 FONSI 2026.5, 허가 2027 1분기 전망). 고온 공정열 공급.",
+         "tags" : [
+            "공정열"
+         ],
+         "vendor" : "X-energy"
+      },
+      {
+         "capacity_mwe_module" : 300,
+         "capacity_mwe_total" : 300,
+         "category" : "비경수로 SMR",
+         "coolant" : "납",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "Rosatom êµ­ê° ì¬ìÂ·ê±´ì¤ ì¤"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "건설 중, 가동 2029 전망."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "실증·연료주기 통합, 단가 불확실."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "러시아 규제 건설허가·건설 중."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "납냉각 저압·고비점 안전 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "질화물연료 현장 제작 시설 가동."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "납냉각·질화물연료 대형 실증 신규."
+            }
+         },
+         "family" : "LFR",
+         "foak_target" : "2029 가동",
+         "fuel" : "질화물(U-Pu)",
+         "generation" : "Gen IV",
+         "id" : "brest-od-300",
+         "modules" : 1,
+         "name" : "BREST-OD-300",
+         "sources" : [
+            "IAEA ARIS",
+            "Rosatom",
+            "World Nuclear News"
+         ],
+         "status" : "건설중",
+         "summary" : "납냉각 고속로. Seversk 현장 핵연료주기와 결합. 원자로용기 ~70% 조립(2026 초), 가동 2029년으로 지연. 질화물 연료 현장 제작.",
+         "tags" : [
+            "건설중",
+            "폐쇄핵주기"
+         ],
+         "vendor" : "Rosatom"
+      },
+      {
+         "capacity_mwe_module" : 27,
+         "capacity_mwe_total" : 27,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "아르헨티나",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "high",
+               "level" : 1,
+               "rationale" : "ì¬ìëÂ·ê³µì¬ ì¤ë¨Â·ê°ì"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "건설 중이나 장기 지연."
+            },
+            "economics" : {
+               "confidence" : "medium",
+               "level" : 1,
+               "rationale" : "프로토타입 비용 초과·재원 난항."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "아르헨티나 건설허가·건설 중."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "자연순환·일체형 피동."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "표준 LEU, 자국 연료 역량."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "자연순환 일체형 설계·일부 건설."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "미확정",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "carem-25",
+         "modules" : 1,
+         "name" : "CAREM-25",
+         "sources" : [
+            "IAEA ARIS",
+            "CNEA",
+            "IAEA PRIS"
+         ],
+         "status" : "건설중(지연)",
+         "summary" : "아르헨티나 자체 개발 자연순환 일체형 PWR 프로토타입. 2014 착공했으나 재원 문제로 장기 지연. 설계 경험 가치는 높음.",
+         "tags" : [
+            "건설중",
+            "프로토타입"
+         ],
+         "vendor" : "CNEA"
+      },
+      {
+         "capacity_mwe_module" : 300,
+         "capacity_mwe_total" : 300,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "Westinghouse(BrookfieldÂ·Cameco) ëª¨íì¬ ìê¸ë ¥, ë°ì£¼ ì "
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "구체 부지·발주 초기."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "AP1000 공급망 활용 기대, 실적 전."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "NRC 사전인허가 초기."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "AP 피동안전 계승."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "표준 LEU, 기존 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "AP1000 검증 기술 기반."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "2030년대 초",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "ap300",
+         "modules" : 1,
+         "name" : "Westinghouse AP300",
+         "sources" : [
+            "IAEA ARIS",
+            "Westinghouse",
+            "US NRC"
+         ],
+         "status" : "설계·사전인허가",
+         "summary" : "인증 AP1000 축소판 단일루프 PWR. 검증 기술 레버리지가 강점이나 인허가·배치는 초기 단계.",
+         "tags" : [],
+         "vendor" : "Westinghouse"
+      },
+      {
+         "capacity_mwe_module" : 195,
+         "capacity_mwe_total" : 390,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염(연료염)",
+         "country" : "캐나다",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ìì¥íì¼ë íì  ì¬ìÂ·ë°ì£¼ ë¶ì¬"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "부지·발주 초기, 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "상용 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "CNSC VDR 2단계 완료, NRC engagement."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "저압 액체연료·피동 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "용융염 연료염·공급망 구축 중."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "MSR 설계 성숙, 실증 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "2030년대 초",
+         "fuel" : "LEU 용융염",
+         "generation" : "Gen IV",
+         "id" : "terrestrial-imsr",
+         "modules" : 2,
+         "name" : "Terrestrial Energy IMSR",
+         "sources" : [
+            "IAEA ARIS",
+            "CNSC",
+            "Terrestrial Energy",
+            "World Nuclear News"
+         ],
+         "status" : "인허가(CNSC VDR2 완료)",
+         "summary" : "일체형 용융염로. CNSC 벤더설계심사 2단계 완료, 상용 액체연료 MSR 최초 NRC 안전평가 선례. 설계·인허가 단계.",
+         "tags" : [],
+         "vendor" : "Terrestrial Energy"
+      },
+      {
+         "capacity_mwe_module" : 100,
+         "capacity_mwe_total" : 100,
+         "category" : "비경수로 SMR",
+         "coolant" : "소듐",
+         "country" : "캐나다",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "NB PowerÂ·ìºëë¤ ì¼ë¶ ì§ì, ì¬ì ì í"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "Point Lepreau 목표, 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "상용 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 3,
+               "rationale" : "CNSC VDR 2단계 완료."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "풀형 SFR 피동 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "금속연료 공급망 구축 중."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "EBR-II 계보, 상용 실증 전."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "2030년대 초 (Point Lepreau)",
+         "fuel" : "금속연료",
+         "generation" : "Gen IV",
+         "id" : "arc-100",
+         "modules" : 1,
+         "name" : "ARC-100",
+         "sources" : [
+            "IAEA ARIS",
+            "CNSC",
+            "ARC Clean Technology"
+         ],
+         "status" : "인허가(CNSC VDR2 완료)",
+         "summary" : "EBR-II 계보 소듐냉각 고속로. CNSC 벤더설계심사 2단계 완료(2025.7), 뉴브런즈윅 Point Lepreau 배치 목표.",
+         "tags" : [],
+         "vendor" : "ARC Clean Technology"
+      },
+      {
+         "capacity_mwe_module" : 170,
+         "capacity_mwe_total" : 340,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "프랑스",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "EDFÂ·íëì¤ ë°°ê²½ì´ë ì¤ê³ ë¦¬ìÂ·ì§ì°"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "FOAK 일정 재설정."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 추정 초기."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "유럽 공동 사전검토 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "일체형 피동안전 설계."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "프랑스 표준 LEU 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "설계 재검토로 성숙도 재설정."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "2030년대",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "nuward",
+         "modules" : 2,
+         "name" : "Nuward SMR",
+         "sources" : [
+            "IAEA ARIS",
+            "EDF",
+            "World Nuclear News"
+         ],
+         "status" : "설계(재설계)",
+         "summary" : "EDF 주도 일체형 PWR. 2024년 검증기술 중심으로 설계 전면 재검토. 유럽 공동 인허가 사전검토 추진.",
+         "tags" : [],
+         "vendor" : "EDF"
+      },
+      {
+         "capacity_mwe_module" : 200,
+         "capacity_mwe_total" : 200,
+         "category" : "비경수로 SMR",
+         "coolant" : "납",
+         "country" : "영국/이탈리아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "ë¯¼ê° 5ìµì ë¡+ ì¡°ë¬, ì¤ì¦ë¡ ì¶ì§"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "실증로 계획 단계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 추정 초기."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "인허가 사전 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "납냉각 저압·고비점 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "MOX 연료 체인 구축 중."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "납냉각 상용 실증 전, 개발 초기."
+            }
+         },
+         "family" : "LFR",
+         "foak_target" : "2030년대",
+         "fuel" : "MOX",
+         "generation" : "Gen IV",
+         "id" : "newcleo-lfr",
+         "modules" : 1,
+         "name" : "newcleo LFR-AS-200",
+         "sources" : [
+            "IAEA ARIS",
+            "newcleo",
+            "World Nuclear News"
+         ],
+         "status" : "설계·인허가준비",
+         "summary" : "납냉각 고속로. MOX 연료로 사용후핵연료 활용 지향. 프랑스 실증로·연료공장 추진, 설계·인허가 준비 단계.",
+         "tags" : [
+            "폐쇄핵주기"
+         ],
+         "vendor" : "newcleo"
+      },
+      {
+         "capacity_mwe_module" : 100,
+         "capacity_mwe_total" : 100,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염",
+         "country" : "덴마크",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ë¯¼ê° ì¡°ë¬Â·ì¼ì±ì¤ê³µì íë ¥, ì´ê¸°"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 1,
+               "rationale" : "구체 배치 계획 초기."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 추정 초기."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 사전 단계."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "저압 액체연료 안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "용융염 연료·조절재 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "MSR 개념 설계, 실증 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "미확정",
+         "fuel" : "용융염",
+         "generation" : "Gen IV",
+         "id" : "seaborg-cmsr",
+         "modules" : 1,
+         "name" : "Seaborg CMSR",
+         "sources" : [
+            "IAEA ARIS",
+            "Seaborg",
+            "World Nuclear News"
+         ],
+         "status" : "설계",
+         "summary" : "컴팩트 용융염로를 바지선에 탑재하는 해상 배치 개념. 설계·인허가 사전 단계, 상용 실증 전.",
+         "tags" : [
+            "해상부유식"
+         ],
+         "vendor" : "Seaborg Technologies"
+      },
+      {
+         "capacity_mwe_module" : 0,
+         "capacity_mwe_total" : 0,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염",
+         "country" : "중국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ì¤êµ­ êµ­ê° ì°êµ¬ íë¡ê·¸ë¨(ì°êµ¬ë¡)"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "후속 상용로(10MWe급) 계획."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "연구로, 상용 단가 해당 없음."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "중국 규제 운영허가(실험로)."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "저압 액체연료 안전 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "토륨 용융염 연료주기 실증 단계."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "실험로 운전·토륨 실증, 상용 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "실험로 운전",
+         "fuel" : "토륨/용융염",
+         "generation" : "Gen IV",
+         "id" : "tmsr-lf1",
+         "modules" : 1,
+         "name" : "TMSR-LF1 (토륨 용융염)",
+         "sources" : [
+            "IAEA ARIS",
+            "SINAP",
+            "World Nuclear News"
+         ],
+         "status" : "운전(실험로)",
+         "summary" : "세계 유일 운전 중 용융염 실험로(2MWth). 2023년 임계, 2025년 토륨 장전으로 토륨연료주기 실증. 발전용 아닌 연구로.",
+         "tags" : [
+            "실험로",
+            "운전중",
+            "토륨"
+         ],
+         "vendor" : "SINAP"
+      },
+      {
+         "capacity_mwe_module" : 5,
+         "capacity_mwe_total" : 5,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "히트파이프(고체노심)",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "Westinghouse ìê¸Â·ë¯¸ ì¡êµ° Janus íë¡ê·¸ë¨"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "시험·실증, 군·산업 수요."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "오지·분산 특수용도, 단가 전."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "NRC 인허가·시험로 단계."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "히트파이프 피동·고체노심 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "HALEU TRISO 공급 구축 중."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "영출력 임계 시험으로 핵심 설계 검증."
+            }
+         },
+         "family" : "Heat-pipe",
+         "foak_target" : "2020년대 후반",
+         "fuel" : "HALEU TRISO",
+         "generation" : "Gen IV",
+         "id" : "evinci",
+         "modules" : 1,
+         "name" : "Westinghouse eVinci",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "Westinghouse",
+            "US DOE"
+         ],
+         "status" : "시험(영출력 임계)",
+         "summary" : "히트파이프 냉각 고체노심 마이크로로(5MWe). 영출력 임계 시험 성공(2026.8), 미 육군 Janus 프로그램 선정. 가동부 최소화.",
+         "tags" : [
+            "마이크로",
+            "무냉각재펌프"
+         ],
+         "vendor" : "Westinghouse"
+      },
+      {
+         "capacity_mwe_module" : 5,
+         "capacity_mwe_total" : 5,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "가스(이동형)",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "ë¯¸ êµ­ë°©ë¶ ì ì¡ ì§ìÂ·íëì¨ì´ ìì±"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "INL 실증 2026, 하드웨어 완성."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "국방 특수용도."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "국방부(DOE 권한) 실증 승인."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "TRISO 본질안전·이동형 격납."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "HALEU TRISO 공급 구축."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "하드웨어 조립·실증 임박."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "2026 실증 (INL)",
+         "fuel" : "HALEU TRISO",
+         "generation" : "Gen IV",
+         "id" : "bwxt-pele",
+         "modules" : 1,
+         "name" : "BWXT Project Pele",
+         "sources" : [
+            "IAEA ARIS",
+            "US DoD",
+            "BWXT",
+            "US DOE"
+         ],
+         "status" : "건설·연료장전",
+         "summary" : "미 국방부 이동형 마이크로로. 조립 완료 후 INL에서 연료장전·실증(2026). TRISO 연료 가스냉각 이동형.",
+         "tags" : [
+            "마이크로",
+            "이동형",
+            "국방"
+         ],
+         "vendor" : "BWXT"
+      },
+      {
+         "capacity_mwe_module" : 15,
+         "capacity_mwe_total" : 15,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "히트파이프/금속",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "ëí í¬ì(ìì¥)Â·ê³µêµ°Â·DOE ì°ë£, íëí¸ ì¬ì ì "
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "INL 부지 확보, 가동 목표 2027~28."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "BOT(전력판매) 모델, 단가 전."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "COLA 준비, 초기 신청 반려 이력."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "소형 금속연료 피동 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "HALEU 공급, DOE 연료 지원."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "EBR-II 금속연료 계보, 실증 전."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "2027~28 (INL)",
+         "fuel" : "HALEU 금속",
+         "generation" : "Gen IV",
+         "id" : "oklo-aurora",
+         "modules" : 1,
+         "name" : "Oklo Aurora",
+         "sources" : [
+            "IAEA ARIS",
+            "US NRC",
+            "Oklo",
+            "US DOE"
+         ],
+         "status" : "인허가(COLA 준비)",
+         "summary" : "소형 고속 마이크로로. INL 부지, DOE HALEU 연료 지원. 통합운영허가(COLA) 준비, 가동 2027~28 목표.",
+         "tags" : [
+            "마이크로"
+         ],
+         "vendor" : "Oklo"
+      },
+      {
+         "capacity_mwe_module" : 5,
+         "capacity_mwe_total" : 5,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "헬륨",
+         "country" : "미국/캐나다",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 1,
+               "rationale" : "ëª¨íì¬ íì°Â·ì¬í¸ì¼ë¡ ì¬ì ë¶íì¤"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "사업 재편으로 배치 일정 불확실."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "재무 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "CNSC 인허가 진행했으나 사업 재편."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "FCM TRISO 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "HALEU TRISO 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "TRISO/FCM 기반, 모회사 재편으로 불확실."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "미확정",
+         "fuel" : "FCM TRISO",
+         "generation" : "Gen IV",
+         "id" : "usnc-mmr",
+         "modules" : 1,
+         "name" : "USNC MMR",
+         "sources" : [
+            "IAEA ARIS",
+            "CNSC",
+            "World Nuclear News"
+         ],
+         "status" : "인허가(재편)",
+         "summary" : "초소형 모듈 고온가스로(5MWe). Chalk River 실증 추진했으나 2024년 모회사 재무난·구조조정으로 일정 불확실.",
+         "tags" : [
+            "마이크로"
+         ],
+         "vendor" : "USNC"
+      },
+      {
+         "capacity_mwe_module" : 20,
+         "capacity_mwe_total" : 20,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "경수",
+         "country" : "미국/영국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "ë¯¼ê° ì¡°ë¬Â·ë¤ì PPA(ê³µê²©ì  ëª¨ë¸), ì¤ì  ì "
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "PPA 의향 다수, 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "반복배치 저가 지향, 실적 전."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "각국 인허가 초기."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "소형 PWR, 피동 특성 제한적."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "표준 LEU."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "표준 PWR 기반, 자체 실증 전."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "2020년대 후반",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "last-energy-pws20",
+         "modules" : 1,
+         "name" : "Last Energy PWS-20",
+         "sources" : [
+            "IAEA ARIS",
+            "Last Energy",
+            "World Nuclear News"
+         ],
+         "status" : "설계·사전발주",
+         "summary" : "컨테이너형 20MWe 소형 PWR. 검증 PWR 기술로 공장제작·반복배치 지향. 유럽 다수 전력구매 의향(PPA) 체결 보도.",
+         "tags" : [
+            "마이크로",
+            "공장제작"
+         ],
+         "vendor" : "Last Energy"
+      },
+      {
+         "capacity_mwe_module" : 1,
+         "capacity_mwe_total" : 1,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "가스(이동형)",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ë¯¼ê° VCÂ·DOE ì°ë£, ì´ê¸°"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "INL 실증 시험 준비."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "오지·분산 특수용도."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "시험·인허가 초기."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "TRISO 본질안전·이동형."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "HALEU TRISO 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "TRISO 가스로, 실증 시험 준비."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "2020년대 후반 (INL 시험)",
+         "fuel" : "HALEU TRISO",
+         "generation" : "Gen IV",
+         "id" : "radiant-kaleidos",
+         "modules" : 1,
+         "name" : "Radiant Kaleidos",
+         "sources" : [
+            "IAEA ARIS",
+            "Radiant",
+            "US DOE"
+         ],
+         "status" : "설계·시험준비",
+         "summary" : "컨테이너 이동형 가스냉각 마이크로로(1.2MWe). INL에서 연료 포함 실증시험 추진, 설계·시험 준비 단계.",
+         "tags" : [
+            "마이크로",
+            "이동형"
+         ],
+         "vendor" : "Radiant"
+      },
+      {
+         "capacity_mwe_module" : 200,
+         "capacity_mwe_total" : 200,
+         "category" : "경수로 SMR",
+         "coolant" : "중수",
+         "country" : "인도",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "ì¸ë ì ë¶ 2ë§crore ë¯¸ìÂ·EPC ë°ì£¼Â·ì°©ê³µ"
+            },
+            "deployment" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "2026.3 첫 콘크리트, Tarapur 2기."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "인도 산업 자립·SEU, 실증단가 전."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "AEC 재정승인·AERB 인허가 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "PHWR 기반, 일부 피동 개선."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "인도 중수·연료 공급망, SEU 전환."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "검증 PHWR(IPHWR-220) 계보."
+            }
+         },
+         "family" : "PHWR",
+         "foak_target" : "2030년대 초 (Tarapur)",
+         "fuel" : "저농축우라늄(SEU)",
+         "generation" : "Gen III+",
+         "id" : "bharat-smr",
+         "modules" : 1,
+         "name" : "Bharat SMR (BSMR-200)",
+         "sources" : [
+            "WNA",
+            "World Nuclear News",
+            "NPCIL"
+         ],
+         "status" : "건설중",
+         "summary" : "IPHWR-220 계보의 인도형 가압중수로 SMR. 2026년 3월 Tarapur 실증 2기 첫 콘크리트 타설, EPC 계약·AEC 승인 완료. 인도 산업 자립 기반.",
+         "tags" : [
+            "건설중"
+         ],
+         "vendor" : "NPCIL / BARC"
+      },
+      {
+         "capacity_mwe_module" : 0,
+         "capacity_mwe_total" : 0,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "일본",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "JAEA êµ­ê° ì°êµ¬(ìíë¡)"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "상용 HTGR·수소는 2030년대 과제."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "시험로, 상용 단가 해당 없음."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "NRA 재가동 허가·운전 중."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "TRISO·고온 본질안전, 상실시험 실증."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "일본 피복입자 연료 역량."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 4,
+               "rationale" : "장기 운전 시험로, HTGR 데이터 축적."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "수소실증 2030 목표",
+         "fuel" : "LEU 피복입자",
+         "generation" : "Gen IV",
+         "id" : "httr",
+         "modules" : 1,
+         "name" : "HTTR (고온공학시험로)",
+         "sources" : [
+            "IAEA ARIS",
+            "JAEA",
+            "World Nuclear News"
+         ],
+         "status" : "운전(시험로)",
+         "summary" : "일본 고온가스로 시험로(30MWth). 2021년 규제 재가동, 950℃ 고온 공급. 원자력 수소생산(SMR 수소) 실증을 MHI와 추진.",
+         "tags" : [
+            "운전중",
+            "시험로",
+            "수소"
+         ],
+         "vendor" : "JAEA"
+      },
+      {
+         "capacity_mwe_module" : 0,
+         "capacity_mwe_total" : 0,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "NaK(액체금속)",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "DOE ì ì¡ ì§ì(ì°êµ¬ë¡)"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "조립 중, 2027 임계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "연구 실증로, 상용 아님."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "DOE 승인 기반 연구로."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "초소형·자연순환 피동."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "HALEU UZrH 연료."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "조립 단계, 안전문서 승인."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "2027 임계 (INL)",
+         "fuel" : "HALEU UZrH",
+         "generation" : "Gen IV",
+         "id" : "marvel",
+         "modules" : 1,
+         "name" : "MARVEL",
+         "sources" : [
+            "IAEA ARIS",
+            "INL",
+            "US DOE"
+         ],
+         "status" : "조립중",
+         "summary" : "INL의 초소형 연구 마이크로로(~100kWth/20kWe). NaK 자연순환+스털링 엔진. 안전문서(PDSA) 승인(2026.3), 조립 중, 2027 임계 목표.",
+         "tags" : [
+            "마이크로",
+            "연구로"
+         ],
+         "vendor" : "INL / US DOE"
+      },
+      {
+         "capacity_mwe_module" : 60,
+         "capacity_mwe_total" : 60,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "중국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "CGN êµ­ê° ë°°ê²½, ì¬ì ì´ê¸°"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "구체 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "해상·도서 특수용도."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "중국 규제 사전 단계."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "소형 PWR 피동 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "표준 LEU, 중국 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "검증 PWR 기반 소형화."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "미확정",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "acpr50s",
+         "modules" : 1,
+         "name" : "ACPR50S",
+         "sources" : [
+            "IAEA ARIS",
+            "CGN",
+            "WNA"
+         ],
+         "status" : "설계·추진",
+         "summary" : "CGN의 해상 부유식 소형 PWR(60MWe). 해양 플랫폼·도서 전력 공급 지향, 설계·사업 추진 단계.",
+         "tags" : [
+            "해상부유식"
+         ],
+         "vendor" : "CGN"
+      },
+      {
+         "capacity_mwe_module" : 100,
+         "capacity_mwe_total" : 100,
+         "category" : "비경수로 SMR",
+         "coolant" : "납-비스무트",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "ì¥ê¸° ì§ì°Â·ì¬ì ë¶íì¤"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "장기 지연, 착공 불확실."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "실증 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 사전, 사업 지연."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "납-비스무트 저압·고비점."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "MOX·연료주기 구축."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "잠수함 Pb-Bi 운전 경험."
+            }
+         },
+         "family" : "LFR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2/MOX",
+         "generation" : "Gen IV",
+         "id" : "svbr-100",
+         "modules" : 1,
+         "name" : "SVBR-100",
+         "sources" : [
+            "IAEA ARIS",
+            "Rosatom",
+            "WNA"
+         ],
+         "status" : "설계·지연",
+         "summary" : "잠수함 납-비스무트 계보의 고속로(100MWe). Dimitrovgrad 실증 추진했으나 장기 지연. 폐쇄핵연료주기 지향.",
+         "tags" : [
+            "폐쇄핵주기"
+         ],
+         "vendor" : "Rosatom / AKME"
+      },
+      {
+         "capacity_mwe_module" : 300,
+         "capacity_mwe_total" : 300,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염",
+         "country" : "캐나다/영국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ìºëë¤ ì¼ë¶ ì§ì, ì§ì² ëë¤"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "Point Lepreau 추진, 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 추정 초기."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "CNSC 벤더설계심사 진행."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "저압 염 연료 안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "사용후핵연료 재처리 체인 필요."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "신개념 MSR, 실증 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "2030년대",
+         "fuel" : "사용후핵연료 유래",
+         "generation" : "Gen IV",
+         "id" : "moltex-ssr",
+         "modules" : 1,
+         "name" : "Moltex SSR-W",
+         "sources" : [
+            "IAEA ARIS",
+            "CNSC",
+            "Moltex Energy"
+         ],
+         "status" : "설계·인허가",
+         "summary" : "안정염로(Stable Salt Reactor). 사용후핵연료를 연료로 활용하는 폐기물연소 고속 MSR. 뉴브런즈윅 Point Lepreau에서 ARC와 병행 추진.",
+         "tags" : [
+            "폐기물연소"
+         ],
+         "vendor" : "Moltex Energy"
+      },
+      {
+         "capacity_mwe_module" : 42,
+         "capacity_mwe_total" : 42,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨(고속)",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "General Atomics ëª¨íì¬ ìê¸+DOE ARDP, ë°ì£¼ ì "
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "DOE ARDP 지원·NRC 사전협의, 배치 2030년대."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 추정 초기."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 사전 단계."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "고온·고속로 설계 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "HALEU 탄화물 연료 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "가스냉각 고속로 상용 실증 전."
+            }
+         },
+         "family" : "GFR",
+         "foak_target" : "미확정",
+         "fuel" : "HALEU 탄화물",
+         "generation" : "Gen IV",
+         "id" : "ga-em2",
+         "modules" : 1,
+         "name" : "General Atomics EM2/FMR",
+         "sources" : [
+            "IAEA ARIS",
+            "General Atomics"
+         ],
+         "status" : "설계",
+         "summary" : "가스냉각 고속 모듈로(Fast Modular Reactor). 장수명 노심·고온 공급 지향. 설계·개발 단계, 상용 실증 전.",
+         "tags" : [],
+         "vendor" : "General Atomics"
+      },
+      {
+         "capacity_mwe_module" : 2,
+         "capacity_mwe_total" : 2,
+         "category" : "마이크로로(MMR)",
+         "coolant" : "고체노심",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ìì¥ ì¡°ë¬íë ê°ë° ì´ê¸°"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 계획 초기."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "특수용도, 단가 전."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 초기."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 5,
+               "rationale" : "고체노심 본질안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "HALEU 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "개발 초기, 실증 전."
+            }
+         },
+         "family" : "Heat-pipe",
+         "foak_target" : "미확정",
+         "fuel" : "HALEU",
+         "generation" : "Gen IV",
+         "id" : "nano-zeus",
+         "modules" : 1,
+         "name" : "NANO Nuclear ZEUS",
+         "sources" : [
+            "IAEA ARIS",
+            "NANO Nuclear"
+         ],
+         "status" : "설계",
+         "summary" : "고체노심 초소형 마이크로로. 분산·오지 전력 지향, 설계·개발 단계(KRONOS MMR과 별개 자체 설계).",
+         "tags" : [
+            "마이크로"
+         ],
+         "vendor" : "NANO Nuclear Energy"
+      },
+      {
+         "capacity_mwe_module" : 0,
+         "capacity_mwe_total" : 0,
+         "category" : "경수로 SMR",
+         "coolant" : "경수(수조형)",
+         "country" : "중국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "CNNC êµ­ê° ë°°ê²½, ê°ë ë¨ê³"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "실증·사업 추진 단계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "난방 전용, 발전 단가 비해당."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "중국 규제 추진 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "상압·저온 수조, 높은 안전여유."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "표준 LEU, 중국 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "수조형 저온로, 검증 기술."
+            }
+         },
+         "family" : "Pool",
+         "foak_target" : "미확정",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "dhr-400",
+         "modules" : 1,
+         "name" : "DHR-400 (Yanlong)",
+         "sources" : [
+            "IAEA ARIS",
+            "CNNC",
+            "WNA"
+         ],
+         "status" : "설계·추진",
+         "summary" : "저온 수조형 지역난방 전용로(400MWth). 상압·저온 운전으로 안전성 높음. 발전이 아닌 열 공급 목적.",
+         "tags" : [
+            "열공급"
+         ],
+         "vendor" : "CNNC"
+      },
+      {
+         "capacity_mwe_module" : 40,
+         "capacity_mwe_total" : 40,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염",
+         "country" : "덴마크",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ë¯¼ê° ì¡°ë¬ ì¤, ìí ë¨ê³"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전, 시험 단계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "양산 저가 목표, 실적 전."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 사전 단계."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "저압 액체연료 안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "토륨·사용후핵연료 체인 필요."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "염 루프 시험, 원자로 실증 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "미확정",
+         "fuel" : "토륨/사용후핵연료",
+         "generation" : "Gen IV",
+         "id" : "copenhagen-atomics",
+         "modules" : 1,
+         "name" : "Copenhagen Atomics",
+         "sources" : [
+            "IAEA ARIS",
+            "Copenhagen Atomics"
+         ],
+         "status" : "설계·시험",
+         "summary" : "컨테이너형 토륨 용융염로(waste-burner). 사용후핵연료·토륨 활용 지향, 염 루프 시험·개발 단계.",
+         "tags" : [
+            "토륨",
+            "폐기물연소"
+         ],
+         "vendor" : "Copenhagen Atomics"
+      },
+      {
+         "capacity_mwe_module" : 55,
+         "capacity_mwe_total" : 55,
+         "category" : "비경수로 SMR",
+         "coolant" : "납",
+         "country" : "스웨덴",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ì¤ì¨ë´ ì¡°ë¬Â·êµ­ê°ì§ì ì ì²­, ì°©ê³µ ì "
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "부지단지 인허가 신청, 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "양산 저가 목표, 실적 전."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "스웨덴 원자로단지 인허가 신청."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "납냉각 저압·고비점 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "질화물 연료 공급망 구축."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "전기가열 시제품, 핵 실증 전."
+            }
+         },
+         "family" : "LFR",
+         "foak_target" : "2030년대 초",
+         "fuel" : "저농축 질화물",
+         "generation" : "Gen IV",
+         "id" : "blykalla-sealer",
+         "modules" : 1,
+         "name" : "Blykalla SEALER",
+         "sources" : [
+            "IAEA ARIS",
+            "Blykalla",
+            "World Nuclear News"
+         ],
+         "status" : "인허가 신청",
+         "summary" : "스웨덴 납냉각 고속 모듈로(SEALER). Untra(8기)·Norrsundet(6기) 원자로단지 인허가 신청(2026), 전기가열 시제품 시험. 2030년대 초 가동 목표.",
+         "tags" : [],
+         "vendor" : "Blykalla"
+      },
+      {
+         "capacity_mwe_module" : 250,
+         "capacity_mwe_total" : 500,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염",
+         "country" : "인도네시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ì¸ëë¤ìì ì´ê¸°, ì¬ì ë¯¸íì "
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "부지평가 승인, 다단계 허가 남음."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "조선 양산 저가 목표, 실적 전."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "인도네시아 부지평가 승인 단계."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "저압 액체연료 안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "토륨 용융염 연료주기 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "MSR 개념·조선 통합, 실증 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "미확정",
+         "fuel" : "토륨/용융염",
+         "generation" : "Gen IV",
+         "id" : "thorcon",
+         "modules" : 2,
+         "name" : "ThorCon TMSR500",
+         "sources" : [
+            "IAEA ARIS",
+            "ThorCon",
+            "World Nuclear News"
+         ],
+         "status" : "설계·부지평가",
+         "summary" : "바지 탑재 토륨 용융염로(500MWe). 인도네시아 Kelasa섬 부지평가 승인(BAPETEN, 2025). 초기 인허가 단계.",
+         "tags" : [
+            "해상부유식",
+            "토륨"
+         ],
+         "vendor" : "ThorCon International"
+      },
+      {
+         "capacity_mwe_module" : 2.5,
+         "capacity_mwe_total" : 2.5,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "중국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ì¤êµ­ êµ­ê° ì°êµ¬(ìíë¡)"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "시험로, 후속은 HTR-PM."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "시험로, 상용 단가 비해당."
+            },
+            "licensing" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "중국 규제 운영허가."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "TRISO·고온 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "중국 TRISO 연료 역량."
+            },
+            "technology_readiness" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "장기 운전 시험로, HTR-PM 선행 실증."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "운전 중",
+         "fuel" : "LEU(17%) TRISO",
+         "generation" : "Gen IV",
+         "id" : "htr-10",
+         "modules" : 1,
+         "name" : "HTR-10",
+         "sources" : [
+            "IAEA ARIS",
+            "INET",
+            "World Nuclear News"
+         ],
+         "status" : "운전(시험로)",
+         "summary" : "중국 칭화대 10MWth 페블베드 시험로. 2000년 임계 후 운전, HTR-PM 상용화의 기술 기반.",
+         "tags" : [
+            "운전중",
+            "시험로"
+         ],
+         "vendor" : "INET / 칭화대"
+      },
+      {
+         "capacity_mwe_module" : 311,
+         "capacity_mwe_total" : 311,
+         "category" : "비경수로 SMR",
+         "coolant" : "소듐",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "GEH ëª¨íì¬ì´ë íì± íë¡ì í¸Â·ì¬ì ìì"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 계획 없음."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "상용 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "현재 활성 인허가 프로젝트 없음."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "풀형 SFR 피동 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "HALEU 금속연료."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "EBR-II 계보, 상세설계."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "미확정",
+         "fuel" : "U-Pu-Zr 금속",
+         "generation" : "Gen IV",
+         "id" : "prism",
+         "modules" : 1,
+         "name" : "PRISM",
+         "sources" : [
+            "IAEA ARIS",
+            "GE-Hitachi"
+         ],
+         "status" : "상세설계",
+         "summary" : "GEH 풀형 소듐냉각 고속로. EBR-II 계보로 Natrium의 선조격. 상세설계 완료, 현 상용 추진은 Natrium.",
+         "tags" : [],
+         "vendor" : "GE-Hitachi"
+      },
+      {
+         "capacity_mwe_module" : 325,
+         "capacity_mwe_total" : 325,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "Rosatom ë°°ê²½ì´ë íì  ì¬ì ìì"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "구체 착공 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "상용 실적 미확보."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "러시아 규제 심사 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "PWR 기반 개선."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "Rosatom 일관 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "함정로 계보, 설계 성숙."
+            }
+         },
+         "family" : "iPWR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2(4.95%)",
+         "generation" : "Gen III+",
+         "id" : "vber-300",
+         "modules" : 1,
+         "name" : "VBER-300",
+         "sources" : [
+            "IAEA ARIS",
+            "OKBM Afrikantov"
+         ],
+         "status" : "인허가 심사",
+         "summary" : "OKBM 중형 PWR. 함정·쇄빙선 계보 기술. 러시아 규제 심사 단계.",
+         "tags" : [],
+         "vendor" : "OKBM Afrikantov"
+      },
+      {
+         "capacity_mwe_module" : 300,
+         "capacity_mwe_total" : 300,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "일본",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "JAEA êµ­ê° ì°êµ¬, ìì© ì¬ì ì "
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "상용 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "기본설계, 인허가 전."
+            },
+            "safety" : {
+               "confidence" : "high",
+               "level" : 5,
+               "rationale" : "TRISO·고온 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "일본 피복입자 연료 역량."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "HTTR 운전 경험 기반."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2(14%) TRISO",
+         "generation" : "Gen IV",
+         "id" : "gthtr300",
+         "modules" : 1,
+         "name" : "GTHTR300",
+         "sources" : [
+            "IAEA ARIS",
+            "JAEA"
+         ],
+         "status" : "기본설계",
+         "summary" : "JAEA 가스터빈 고온가스로. HTTR 경험 기반 상용 HTGR 개념(발전+수소 공급).",
+         "tags" : [
+            "수소"
+         ],
+         "vendor" : "JAEA 외"
+      },
+      {
+         "capacity_mwe_module" : 288,
+         "capacity_mwe_total" : 288,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "ì¬ì¤ì ì¤ë¨"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 없음."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 전."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "HTGR 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "Pu 혼합연료 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "예비설계, 실증 전."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2/PuO2(14-18%)",
+         "generation" : "Gen IV",
+         "id" : "gt-mhr",
+         "modules" : 1,
+         "name" : "GT-MHR",
+         "sources" : [
+            "IAEA ARIS",
+            "OKBM Afrikantov"
+         ],
+         "status" : "예비설계",
+         "summary" : "러·미 공동 가스터빈 모듈 헬륨로. 무기급 Pu 소각 가능. 예비설계 단계.",
+         "tags" : [],
+         "vendor" : "OKBM / General Atomics"
+      },
+      {
+         "capacity_mwe_module" : 460,
+         "capacity_mwe_total" : 460,
+         "category" : "비경수로 SMR",
+         "coolant" : "납",
+         "country" : "미국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "Westinghouse ëª¨íì¬, ê°ë ë¨ê³"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 없음."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "개념설계, 인허가 전."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "납냉각 저압·고비점."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "선진연료 개발 필요."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "납냉각 상용 실증 전."
+            }
+         },
+         "family" : "LFR",
+         "foak_target" : "미확정",
+         "fuel" : "산화물/MOX→선진연료",
+         "generation" : "Gen IV",
+         "id" : "w-lfr",
+         "modules" : 1,
+         "name" : "Westinghouse LFR",
+         "sources" : [
+            "IAEA ARIS",
+            "Westinghouse"
+         ],
+         "status" : "개념설계",
+         "summary" : "웨스팅하우스 납냉각 고속로. 고온·고출력 지향 개념설계.",
+         "tags" : [],
+         "vendor" : "Westinghouse"
+      },
+      {
+         "capacity_mwe_module" : 100,
+         "capacity_mwe_total" : 100,
+         "category" : "비경수로 SMR",
+         "coolant" : "소듐",
+         "country" : "대한민국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "KAERI êµ­ê° R&D, ê°ë"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "상용 비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "개념설계, 인허가 전."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "장주기·궁극안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "한국 금속연료 역량."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "KAERI SFR 장기 프로그램 기반."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "미확정",
+         "fuel" : "U-Zr(13.7-19%)",
+         "generation" : "Gen IV",
+         "id" : "salus-100",
+         "modules" : 1,
+         "name" : "SALUS-100",
+         "sources" : [
+            "IAEA ARIS",
+            "KAERI"
+         ],
+         "status" : "개념설계",
+         "summary" : "KAERI 소형 장주기·궁극안전 소듐냉각 고속로. PGSFR 경험 기반 개념설계.",
+         "tags" : [],
+         "vendor" : "KAERI"
+      },
+      {
+         "capacity_mwe_module" : 60,
+         "capacity_mwe_total" : 60,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "대한민국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "KEPCO E&C ë°°ê²½, ê°ë"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "블록형 양산 지향."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 전."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "소형 PWR 피동 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "한국 표준 LEU·공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "블록형 PWR 개념설계."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2(4.95%)",
+         "generation" : "Gen III+",
+         "id" : "bandi",
+         "modules" : 1,
+         "name" : "BANDI-60",
+         "sources" : [
+            "IAEA ARIS",
+            "KEPCO E&C"
+         ],
+         "status" : "개념설계",
+         "summary" : "KEPCO E&C 블록형 소형 PWR. 해상·분산 전력 적용 지향 개념설계.",
+         "tags" : [
+            "해상부유식"
+         ],
+         "vendor" : "KEPCO E&C"
+      },
+      {
+         "capacity_mwe_module" : 100,
+         "capacity_mwe_total" : 100,
+         "category" : "비경수로 SMR",
+         "coolant" : "용융염",
+         "country" : "네덜란드",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ë¯¼ê° ì¡°ë¬ ì´ê¸°"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "개념설계, 인허가 전."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "저압 액체연료 안전 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "사용후핵연료 염 체인 필요."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "MSR 카트리지 개념, 실증 전."
+            }
+         },
+         "family" : "MSR",
+         "foak_target" : "미확정",
+         "fuel" : "용융염 카트리지",
+         "generation" : "Gen IV",
+         "id" : "thorizon",
+         "modules" : 1,
+         "name" : "Thorizon One",
+         "sources" : [
+            "IAEA ARIS",
+            "Thorizon"
+         ],
+         "status" : "개념설계",
+         "summary" : "네덜란드 용융염로. 사용후핵연료+토륨 활용 카트리지 방식 개념설계.",
+         "tags" : [
+            "폐기물연소"
+         ],
+         "vendor" : "Thorizon"
+      },
+      {
+         "capacity_mwe_module" : 35,
+         "capacity_mwe_total" : 35,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "남아프리카공화국",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "ì íì  ì¬ì, ê°ë"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "기본설계, 인허가 전."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "TRISO 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "TRISO 연료 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "PBMR 유산, 실증 전."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "미확정",
+         "fuel" : "TRISO",
+         "generation" : "Gen IV",
+         "id" : "htmr100",
+         "modules" : 1,
+         "name" : "HTMR-100",
+         "sources" : [
+            "IAEA ARIS",
+            "STL Nuclear"
+         ],
+         "status" : "기본설계",
+         "summary" : "남아공 소형 고온가스로. PBMR 유산 기반, 공정열·발전 지향 기본설계.",
+         "tags" : [],
+         "vendor" : "STL Nuclear"
+      },
+      {
+         "capacity_mwe_module" : 11.6,
+         "capacity_mwe_total" : 11.6,
+         "category" : "비경수로 SMR",
+         "coolant" : "헬륨",
+         "country" : "인도네시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "ì¸ëë¤ìì êµ­ê° ì°êµ¬, ì´ê¸°"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "실증 추진 단계."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 전."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "TRISO 본질안전."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "TRISO 연료 공급 과제."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 2,
+               "rationale" : "RDE 경험 기반 기본설계."
+            }
+         },
+         "family" : "HTGR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2(17%) TRISO",
+         "generation" : "Gen IV",
+         "id" : "peluit-40",
+         "modules" : 1,
+         "name" : "PeLUIt-40",
+         "sources" : [
+            "IAEA ARIS",
+            "BRIN"
+         ],
+         "status" : "기본설계",
+         "summary" : "인도네시아 실험동력로 후속 고온가스로. 열병합·공정열 지향 기본설계.",
+         "tags" : [
+            "공정열"
+         ],
+         "vendor" : "BRIN / ITB"
+      },
+      {
+         "capacity_mwe_module" : 70,
+         "capacity_mwe_total" : 70,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "브라질",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "íì  ê°ëÂ·ì¬ì ì ë¬´"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 없음."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "인허가 전략 전."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "고정층·피동 특성 지향."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "피복 연료 개발 필요."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "학술 개념, 실증 전무."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "미확정",
+         "fuel" : "CERMET 피복(5%)",
+         "generation" : "Gen III+",
+         "id" : "fbnr",
+         "modules" : 1,
+         "name" : "FBNR",
+         "sources" : [
+            "IAEA ARIS",
+            "FURGS"
+         ],
+         "status" : "개념설계",
+         "summary" : "브라질 고정층 원자로(Fixed Bed). 피동안전·핵확산저항 지향 학술 개념설계.",
+         "tags" : [],
+         "vendor" : "FURGS"
+      },
+      {
+         "capacity_mwe_module" : 150,
+         "capacity_mwe_total" : 150,
+         "category" : "비경수로 SMR",
+         "coolant" : "소듐",
+         "country" : "프랑스",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "íëì¤ ì¤íí¸ì ìë ì¡°ë¬"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 1,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "비용 불확실."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "인허가 전."
+            },
+            "safety" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "풀형 SFR 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "MOX 연료 체인(프랑스)."
+            },
+            "technology_readiness" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "스타트업 개념, 실증 전."
+            }
+         },
+         "family" : "SFR",
+         "foak_target" : "미확정",
+         "fuel" : "MOX",
+         "generation" : "Gen IV",
+         "id" : "hexana",
+         "modules" : 1,
+         "name" : "HEXANA",
+         "sources" : [
+            "IAEA ARIS",
+            "HEXANA"
+         ],
+         "status" : "개념설계",
+         "summary" : "프랑스 스타트업 소듐냉각 고속로. 열저장 결합 산업 열·전력 지향 개념설계.",
+         "tags" : [
+            "축열"
+         ],
+         "vendor" : "HEXANA"
+      },
+      {
+         "capacity_mwe_module" : 6,
+         "capacity_mwe_total" : 6,
+         "category" : "경수로 SMR",
+         "coolant" : "경수",
+         "country" : "러시아",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "Rosatom ë°°ê²½, íì  ì¬ì ìì"
+            },
+            "deployment" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "구체 배치 전."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 2,
+               "rationale" : "오지·특수용도."
+            },
+            "licensing" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "러시아 설계 단계."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "소형·자연순환 특성."
+            },
+            "supply_fuel" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "Rosatom 일관 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 4,
+               "rationale" : "함정로 계보, 상세설계."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "미확정",
+         "fuel" : "UO2(<20%)",
+         "generation" : "Gen III+",
+         "id" : "abv-6e",
+         "modules" : 1,
+         "name" : "ABV-6E",
+         "sources" : [
+            "IAEA ARIS",
+            "OKBM Afrikantov"
+         ],
+         "status" : "상세설계",
+         "summary" : "OKBM 초소형 부유식 PWR(6MWe). 자연순환·열병합 가능, 쇄빙선 계보. 상세설계.",
+         "tags" : [
+            "해상부유식",
+            "마이크로"
+         ],
+         "vendor" : "OKBM Afrikantov"
+      },
+      {
+         "capacity_mwe_module" : 0,
+         "capacity_mwe_total" : 0,
+         "category" : "경수로 SMR",
+         "coolant" : "경수(저온)",
+         "country" : "핀란드",
+         "dimensions" : {
+            "commercial" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "EIB 4ì²ë§ì ë¡Â·íì¼ë¿ ì°©ê³µÂ·ë¤ì ëì LOI"
+            },
+            "deployment" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "비핵 파일럿 착공·다수 도시 LOI·EIB 자금."
+            },
+            "economics" : {
+               "confidence" : "low",
+               "level" : 3,
+               "rationale" : "화석 난방 대체 경쟁력 목표."
+            },
+            "licensing" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "다국 규제 합동 조기심사 완료."
+            },
+            "safety" : {
+               "confidence" : "medium",
+               "level" : 5,
+               "rationale" : "저온·저압 극단순 피동 설계."
+            },
+            "supply_fuel" : {
+               "confidence" : "low",
+               "level" : 4,
+               "rationale" : "표준 LEU, 유럽 공급망."
+            },
+            "technology_readiness" : {
+               "confidence" : "medium",
+               "level" : 3,
+               "rationale" : "저온·저압 단순 설계, 비핵 파일럿 단계."
+            }
+         },
+         "family" : "PWR",
+         "foak_target" : "2030년경 (핀란드)",
+         "fuel" : "LEU",
+         "generation" : "Gen III+",
+         "id" : "steady-ldr50",
+         "modules" : 1,
+         "name" : "Steady Energy LDR-50",
+         "sources" : [
+            "World Nuclear News",
+            "Steady Energy",
+            "STUK"
+         ],
+         "status" : "인허가·파일럿건설",
+         "summary" : "핀란드 저온 지역난방 전용 SMR(50MWth, ~150℃·저압). '세계에서 가장 단순한 원자로' 지향. 헬싱키 Salmisaari 비핵 파일럿 착공(2026.2), 다국 규제 합동 조기심사 완료, EIB 4천만유로 지원.",
+         "tags" : [
+            "열공급",
+            "건설중"
+         ],
+         "vendor" : "Steady Energy"
+      }
+   ],
+   "taxonomy" : {
+      "category" : [
+         "경수로 SMR",
+         "비경수로 SMR",
+         "마이크로로(MMR)"
+      ],
+      "family" : [
+         "PWR",
+         "iPWR",
+         "PHWR",
+         "BWR",
+         "HTGR",
+         "SFR",
+         "LFR",
+         "MSR",
+         "FHR",
+         "GFR",
+         "Heat-pipe",
+         "Pool"
+      ],
+      "generation" : [
+         "Gen III+",
+         "Gen IV"
+      ]
+   },
+   "updated" : "2026-10-17",
+   "version" : "0.2.0"
 }
